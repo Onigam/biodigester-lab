@@ -1189,7 +1189,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
     maxDistance: 26,
     near: 0.03,
     far: 90,
-    homePadding: 0.94,
+    homePadding: 1.04,
     declutter: true,
     update(s, dt, view) {
       const now = partsNow(registry);
