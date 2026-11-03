@@ -4,7 +4,7 @@ import { ASSEMBLY } from '../data/assembly';
 import { lf } from '../data/part-helpers';
 import { PLANT_1000 } from '../sim/machine';
 import { BELL, FEED, OVERFLOW, TANK, VALVES } from '../three/dims';
-import { balloon, cat, fig, grid, heading, marksLegend, mL, mm, note } from './draw';
+import { balloon, fig, grid, heading, marksLegend, mL, mm, note } from './draw';
 import { sideView } from './machine-view';
 
 // PL-B02: the digester in section at 1:12.5, the bell at rest. The source's figures carry no mark, our estimates their star: the two tables tell them apart. The balloons are the assembly guide's own step numbers, read from src/data/assembly.ts.
@@ -116,9 +116,9 @@ export const sectionSheet: DrawingSheet = {
       title: l('La cuve en coupe', 'The tank in section'),
       subtitle: l('Le long de l’axe, cloche au repos, à 1:12,5', 'Along the axis, bell at rest, at 1:12.5'),
       number: 'PL-B02',
-      scale: '1:12.5',
+      scale: tr(l('1:12,5', '1:12.5')),
     });
-    heading(d, 14, 14, cat(l('COUPE LE LONG DE L’AXE', 'SECTION ALONG THE AXIS'), ' 1:12.5'));
+    heading(d, 14, 14, l('COUPE LE LONG DE L’AXE 1:12,5', 'SECTION ALONG THE AXIS 1:12.5'));
     section(d);
     const x = 232;
     let y = 16;
