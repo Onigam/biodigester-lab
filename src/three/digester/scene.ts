@@ -298,7 +298,8 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
     declutter: true,
     update(s, dt, view) {
       const now = partsNow(registry);
-      const v = view.cutaway ? 'across' : now.ghosted || now.hidden ? 'whole' : 'cut';
+      // a guide's step stays in section: the inner feed pipe of its step 4 is drawn inside the tank, and a closed tank hides it
+      const v = view.cutaway ? 'across' : now.xray || now.isolated ? 'whole' : 'cut';
       machine.setView(v);
       const live = !now.hidden && !now.exploded;
       machine.update(s, dt * view.slowMo, { addedWeight: params().addedWeight, live: live && !now.ghosted });
@@ -307,12 +308,15 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
       const scenery = !now.isolated && !now.exploded && !across;
       pad.visible = !now.isolated;
       padShadow.visible = !now.isolated && !now.exploded;
-      hose.visible = scenery;
-      hoseRest.visible = scenery;
-      machine.bucket.root.visible = !now.isolated && !now.exploded;
+      // what hangs from a part waits for it in a guide: no hose before its tap, no bucket before its overflow
+      const hoseOn = scenery && registry.get('gas-tap')!.display === 'solid';
+      hose.visible = hoseOn;
+      hoseRest.visible = hoseOn;
+      machine.bucket.root.visible =
+        !now.isolated && !now.exploded && registry.get('overflow-pipe')!.display === 'solid';
       palletShadow.visible = !now.exploded && !now.isolated;
       bucketShadow.visible = !now.exploded && !now.isolated;
-      if (scenery) {
+      if (hoseOn) {
         machine.bellPoseGroup.updateWorldMatrix(true, true);
         machine.tapOutlet.getWorldPosition(out);
         machine.root.worldToLocal(out);

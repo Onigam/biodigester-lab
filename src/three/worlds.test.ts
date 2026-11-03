@@ -221,6 +221,21 @@ describe('the digester world', () => {
     expect(digester.machine.view).toBe('cut');
     expect(digester.pad.visible).toBe(true);
   });
+  it('stays in section during a guide, what is still to come hidden or in its wire preview', () => {
+    const s = stateWith();
+    for (const future of ['hidden', 'wire'] as const) {
+      for (const id of digester.registry.ids()) {
+        digester.registry.setDisplay(id, id === 'inner-feed-pipe' || id === 'digester-tank' ? 'solid' : future);
+      }
+      digester.update(s, 1 / 60, view());
+      expect(digester.machine.view, future).toBe('cut');
+      // nothing hangs from what is still to come
+      expect((digester as DigesterScene).hose.visible, future).toBe(false);
+      expect((digester as DigesterScene).machine.bucket.root.visible, future).toBe(false);
+    }
+    digester.registry.setAllDisplay('solid');
+    digester.update(s, 1 / 60, view());
+  });
   it('stands the machine on its pad, in this world, within 3 mm', () => {
     digester.update(stateWith(), 1 / 60, view());
     const pallet = boxOf(digester.machine.parts.pallet);

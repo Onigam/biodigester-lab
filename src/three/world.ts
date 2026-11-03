@@ -135,25 +135,28 @@ export function hotspots(defs: HotspotDef[], anchors: Record<string, THREE.Objec
 
 /**
  * What the registry says of a world's parts this frame. `isolated`: one part alone is left, the others hidden: what holds the machine goes too, or posts would stand holding nothing. A guide's step also hides parts, and there
- * the bench and the wall stay, as long as more than one part shows. `exploded`: one has left its place. `ghosted`: x-ray or a guide's wire preview is on.
+ * the bench and the wall stay, as long as more than one part shows. `exploded`: one has left its place. `ghosted`: x-ray or a guide's wire preview is on; `xray`: x-ray alone, a preview being no reason to close a section.
  */
 export function partsNow(reg: PartRegistry): {
   hidden: boolean;
   isolated: boolean;
   exploded: boolean;
   ghosted: boolean;
+  xray: boolean;
 } {
   let hidden = 0;
   let solid = 0;
   let exploded = false;
   let ghosted = false;
+  let xray = false;
   const ids = reg.ids();
   for (const id of ids) {
     const p = reg.get(id)!;
     if (p.display === 'hidden') hidden++;
     if (p.display === 'solid') solid++;
     if (p.display === 'ghost' || p.display === 'wire') ghosted = true;
+    if (p.display === 'ghost') xray = true;
     if (p.factor > 0.001) exploded = true;
   }
-  return { hidden: hidden > 0, isolated: solid === 1 && hidden === ids.length - 1, exploded, ghosted };
+  return { hidden: hidden > 0, isolated: solid === 1 && hidden === ids.length - 1, exploded, ghosted, xray };
 }
