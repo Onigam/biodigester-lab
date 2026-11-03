@@ -28,7 +28,7 @@ Words used for a number: **reported** (a source of `docs/research.md`, K or S nu
 
 ## 1. The model
 
-All SI inside, except biological rates, which are per day as in every source. Temperatures in °C. Files: `machine.ts` (every number of every machine, with its tag, and `MODEL`), `substrates.ts`, `climate.ts`, `bio/` (the chain, shaped for the kit), `plant.ts` (one step), `runs.ts` (long runs, the hand checks), `presets.ts`, `types.ts`, `tags.ts`, `strip.ts`, `texts.ts`, `engine.ts` (`BiodigesterSim implements LabSim`). `demo.ts` is the template's flywheel, kept until the lead wires the lab.
+All SI inside, except biological rates, which are per day as in every source. Temperatures in °C. Files: `machine.ts` (every number of every machine, with its tag, and `MODEL`), `substrates.ts`, `climate.ts`, `bio/` (the chain, shaped for the kit), `plant.ts` (one step), `runs.ts` (long runs, the hand checks), `presets.ts`, `types.ts`, `tags.ts`, `strip.ts`, `texts.ts`, `engine.ts` (`BiodigesterSim implements LabSim`).
 
 ### 1.1 The feed
 
@@ -294,6 +294,8 @@ A jump to 12 kg/d, stopped at a pH (`rescueRun`):
 
 **The date also depends on the plant's history.** The table's plant was started warm in July. The live scenario's has lived since April on this climate, and at Ea 60 it goes in early December at about 6 °C. That scenario's words say so.
 
+**So does the switch, by one kJ** (found by the lead on wiring, 2026-11-03, held by `figures.test.ts`). In the live scenario, asked again at each Ea from the start of its history, the tank **holds at 44 and sours from 45**, where the table's holds to 43 and sours from 44. The scenario's words give the table's figures, and the slider beside them asks the live plant: its hint says both, or a visitor at 44 would see the words proved wrong. Live, it goes in January at 45 and 46, in December from 47 to 60, in November from 70.
+
 What it does know: the outcome is decided by load against temperature, and a smaller load does what a warmer tank does. A held tank on 50 % peelings is still alive at 10 °C.
 
 **Why a yield barely falls and then all stops.** Hydrolysis and methanogens slow alike, and with solids held 300 days the food waits. So steady gas is 94 % at 15 °C. **The price of cold is margin:** the methanogens' capacity falls by Arrhenius while the food stays, until it passes what is arriving.
@@ -347,6 +349,7 @@ Each row moves one thing: the steady plant on 2 kg/d of leftovers.
 - **Over-the-top** is the reported travel, not computed. **The tilt** moves no number, and does not stop the bell. No float limiter, no mosquitoes.
 - **Air** is modelled only as the first fill's dilution: the alarm says so. **Nothing here says when the gas and air are in an explosive range,** and nothing computes any concentration in a room. **CO from a burner has no figure,** no flame temperature or colour is modelled, and **the flame's height** in the state is only flow against the reference.
 - **The weather** repeats inside a day: no cloud, no rain, no wind.
+- **The drum's preset** runs unheated, 27 °C at Dar es Salaam. Its label said « at 38 °C », which only the scenario does: the lead took the words out on wiring, 2026-11-03. `lightBurner` also opens a burner set to closed, or the next step shut it again.
 - **Not a plan.** Nothing here shows that a build would be safe or allowed.
 
 ## 7. What was read beyond the research, and what it changes
@@ -394,10 +397,10 @@ Each row moves one thing: the steady plant on 2 kg/d of leftovers.
 - **`gas-line`:** `flameOn`, `flameShare` (what the flame's height may follow, **not a measured height**), `burnerLph`, `burnerMbar`, `pressureMbar`, `hoseDropMbar`, `waterPlugMbar`, `flameOutCause`, `hoseWaterMl`, `trapWaterMl`, `usefulPowerW`, `ch4Share`, `co2Share`, `vapourShare`.
 - **`yard`:** `sunAlt`, `sunAz`, `sunG`, `airT`, `hour`, `month`, `dayEffluentL`, `feedCount`.
 
-**Honesty, in the state.** `regime` ('inside-measurements' or 'below-measurements', at 25 °C), `siteMeasured`, `figureTag` († or *), `h2sPpm` (always null), `h2sTag` ('unknown'). `stripValues` carries the tag on every value.
+**Honesty, in the state.** `regime` ('inside-measurements' or 'below-measurements', at 25 °C), `siteMeasured`, `figureTag` († or *; since 2026-11-03 also * on a size nobody measured, the lead's fix: the drum preset at Dar es Salaam showed †), `h2sPpm` (always null), `h2sTag` ('unknown'). `stripValues` carries the tag on every value.
 
 **For the data role.** Scenarios and alarms in `texts.ts`, tested against the runs. **The lessons should not say:** that the leftovers beat the peelings per kilo but « not per kilo of solids » as a finding (§3.3, the thesis measured it, the model does not retrieve it, and the measurement is suspect); « half a brick doubles the flame » (the pressure doubles; §3.3); that a cold tank « stops » as a fact (§4.3).
 
-**Film contract.** `LabSim`, flat keys, `applyPreset`, `applyScenario`, `reset`, `feedNow()`, `lightBurner()`, `shutBurner()`, `set({ addedWeight })`, `set({ feedKg })`. Moments as numbers: `feedCount`, `flameLitCount`, `flameOutCount`, `fullBellCount`, `souredCount`. No random number, no wall clock. One clock: `timeScale`. The bell's true speed is about 17 cm per 100 L, about 50 cm a day: run it fast and say by how much.
+**Film contract.** `LabSim`, flat keys, `applyPreset`, `applyScenario` (with an optional `from`, what differs from the scenario in the plant's whole history; `scenarioNow` says what runs), `reset`, `feedNow()`, `lightBurner()`, `shutBurner()`, `set({ addedWeight })`, `set({ feedKg })`. Moments as numbers: `feedCount`, `flameLitCount`, `flameOutCount`, `fullBellCount`, `souredCount`. No random number, no wall clock. One clock: `timeScale`. The bell's true speed is about 17 cm per 100 L, about 50 cm a day: run it fast and say by how much.
 
 **Say to the writer.** 2 kg → 98 g in the model, 105 g measured, 500 g only for dry matter. The bell's pressure runs from 1.3 to 3.0 mbar with its height. « Half a brick » doubles the pressure, and 1.4 to 1.8 times the flow. A soured tank gives no warning a keeper can read from the pH. A Geneva winter is a simulation that cannot decide its own answer.

@@ -4,23 +4,22 @@
 
 ## Files
 
-| File                                 | What                                                                                                                  |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `src/data/parts.ts`                  | `PARTS`: the 58 sheets in the order of `src/three/part-ids.ts`, with the dimension rows appended                      |
-| `src/data/parts/yard.ts`             | 10 sheets of `yard`                                                                                                   |
-| `src/data/parts/digester.ts`         | 20 sheets of `digester`                                                                                               |
-| `src/data/parts/slurry.ts`           | 11 sheets of `slurry`                                                                                                 |
-| `src/data/parts/gasline.ts`          | 17 sheets of `gas-line`                                                                                               |
-| `src/data/parts/dim-specs.ts`        | lengths of a sheet, **read from `src/three/dims.ts`**, nothing typed                                                  |
-| `src/data/assembly.ts`, `install.ts` | the guides: 20 and 10 steps. Each ends on its origin. No torque, tool list or duration                                |
-| `src/data/guide.ts`                  | a re-export for the template's `src/lab.ts`; **to delete once the lead has wired the lab**                            |
-| `src/data/overviews.ts`              | `OVERVIEWS`: title and text per world, for `scenes[i].overview` with the `go…` actions                                |
-| `src/data/lessons.ts`                | `LESSONS`, see `docs/lessons.md`                                                                                      |
-| `src/data/sources.ts`                | `SOURCE_GROUPS`, `MAIN_VIDEO`, `sourcesPanel(ctx)`: `about: sourcesPanel` in `src/lab.ts`                             |
-| `src/data/chapters.ts`               | `VIDEO_ID` for `video: { id }`, `CHAPTERS` **empty**: nobody has watched the videos yet                               |
-| `src/data/figures.ts`                | `FIG`: every figure that is not reported, with its unit and status; `GENEVA_TABLE`, `HEAT_TABLE` for the sheets       |
-| `src/data/part-helpers.ts`           | `lf` fills `{placeholders}` with number, unit and mark; `sp`, `maint`, `v`                                            |
-| `src/i18n/ui.ts`                     | `LAB_STRINGS`: only the lab's own. The template's keys stay at the end until the lead wires the lab, then they can go |
+| File                                 | What                                                                                                            |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| `src/data/parts.ts`                  | `PARTS`: the 58 sheets in the order of `src/three/part-ids.ts`, with the dimension rows appended                |
+| `src/data/parts/yard.ts`             | 10 sheets of `yard`                                                                                             |
+| `src/data/parts/digester.ts`         | 20 sheets of `digester`                                                                                         |
+| `src/data/parts/slurry.ts`           | 11 sheets of `slurry`                                                                                           |
+| `src/data/parts/gasline.ts`          | 17 sheets of `gas-line`                                                                                         |
+| `src/data/parts/dim-specs.ts`        | lengths of a sheet, **read from `src/three/dims.ts`**, nothing typed                                            |
+| `src/data/assembly.ts`, `install.ts` | the guides: 20 and 10 steps. Each ends on its origin. No torque, tool list or duration                          |
+| `src/data/overviews.ts`              | `OVERVIEWS`: title and text per world, for `scenes[i].overview` with the `go…` actions                          |
+| `src/data/lessons.ts`                | `LESSONS`, see `docs/lessons.md`                                                                                |
+| `src/data/sources.ts`                | `SOURCE_GROUPS`, `MAIN_VIDEO`, `sourcesPanel(ctx)`: `about: sourcesPanel` in `src/lab.ts`                       |
+| `src/data/chapters.ts`               | `VIDEO_ID` for `video: { id }`, `CHAPTERS` **empty**: nobody has watched the videos yet                         |
+| `src/data/figures.ts`                | `FIG`: every figure that is not reported, with its unit and status; `GENEVA_TABLE`, `HEAT_TABLE` for the sheets |
+| `src/data/part-helpers.ts`           | `lf` fills `{placeholders}` with number, unit and mark; `sp`, `maint`, `v`                                      |
+| `src/i18n/ui.ts`                     | `LAB_STRINGS`: only the lab's own                                                                               |
 
 ## The marks
 
@@ -30,11 +29,11 @@
 
 ## What departs from the research, and why
 
-- **K31: the thesis does give a cause.** Research and physics say the plant at pH 4.15 has no cause in the thesis. Table 25 of S5, read directly, remarks « Overfed » on that row (CBS 17, a 2,000/1,500 L plant), and p. 49 says that the plant « heavily overfed » was still at pH below 5 five weeks later, its gas not combustible. Lesson 5 says so. Neither the 2,000/1,500 nor the « below 5 » is printed, since research does not hold them. For the research role.
+- **K31: the thesis does give a cause (now marked in research §11 and physics, by the lead, who read it too).** Research and physics say the plant at pH 4.15 has no cause in the thesis. Table 25 of S5, read directly, remarks « Overfed » on that row (CBS 17, a 2,000/1,500 L plant), and p. 49 says that the plant « heavily overfed » was still at pH below 5 five weeks later, its gas not combustible. Lesson 5 says so. Neither the 2,000/1,500 nor the « below 5 » is printed.
 - **The order of the assembly.** Research §4.5 lowers the bell at step 3. Here it comes at step 11, after the feed and the overflow: the inner pipe cannot be seen, nor fitted, under a bell already there, and S9's own §4 uses the small tank to take the measure of the opening, not to float it. Step 2 says so. S9 gives no order of its own for that.
 - **Every part of `digester` is in a step, and the pot, the flame, the bell's space and the three layers too.** Research §4.5 leaves them to « appear by themselves ». The kit shows what no step names as solid from step 1: slurry would stand in the air before its tank, and a pot over an absent burner. So step 10 is the level, step 11 brings the gas space and the rim, step 13's scale brings the brick, step 20 brings the pot and the flame.
 - **21 candidates became 20:** the tee and the plug share step 5.
-- **45 %** methane as the least that burns is reported by both S5 and S8. `MODEL.leanFlame` calls it an estimate: for the physicist.
+- **45 %** methane as the least that burns is reported by both S5 and S8. `MODEL.leanFlame` called it an estimate: the lead read both, and it is now tagged reported.
 - **Installation step 4** has `kitchen-house`; `vent-opening` moves to step 5, the leak search, so that each step plays in one world.
 
 ## Sources read beyond the research
@@ -66,7 +65,7 @@ Educational reconstruction, ARTI, the law: the Sources (`disclaimer`, `noticeMac
 
 ## What the panel must use
 
-The sheets and lessons name its controls: the words are `slider*` in `src/i18n/ui.ts`, and `eaHint`, `drawnHint`, `siteHint` are written for it. **`src/panels/sim.ts` is still the template's:** a panel that names them otherwise breaks those texts. `lessons.test.ts` holds every capitalised quotation in a sheet against the scenario names, the alarms and those words.
+The sheets and lessons name its controls: the words are `slider*` in `src/i18n/ui.ts`, and `eaHint`, `drawnHint`, `siteHint` are written for it. **`src/panels/sim.ts` uses them,** with `toggleTrap`, which the lead added for the `condensate-trap` tip: a panel that names them otherwise breaks those texts. `lessons.test.ts` holds every capitalised quotation in a sheet against the scenario names, the alarms and those words. `src/panels/sim.test.ts` holds that the panel offers them.
 
 ## Choices
 
