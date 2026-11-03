@@ -2,11 +2,11 @@
   "name": "biodigester-lab",
   "private": true,
   "version": "0.1.0",
-  "description": "Interactive 3D lab of a home biodigester: organic waste turned into cooking gas",
+  "description": "Interactive 3D lab of a household floating-bell biodigester: from kitchen scraps to a flame, the life in the tank, the gas and its limits",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/check-narration.mjs && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

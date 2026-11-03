@@ -1,10 +1,13 @@
 {
   "id": "biodigester-lab",
-  "title": { "fr": "Biodigester Lab", "en": "Biodigester Lab" },
-  "tagline": { "fr": "Un lab à remplacer", "en": "A lab to replace" },
-  "tags": [],
-  "difficulty": 1,
-  "minutes": 10,
+  "title": { "fr": "Biodigesteur", "en": "Biodigester" },
+  "tagline": {
+    "fr": "Des restes de cuisine à la flamme, en 3D : la cloche, la vie dans la cuve, le gaz et ses limites",
+    "en": "From kitchen scraps to a flame, in 3D: the bell, the life in the tank, the gas and its limits"
+  },
+  "tags": ["biogas", "waste", "cooking", "biology"],
+  "difficulty": 3,
+  "minutes": 35,
   "status": "building",
   "energyProfile": null
 }
