@@ -143,8 +143,8 @@ export const SCENARIO_TEXTS: Record<ScenarioId, { name: Pair; lesson: Pair }> = 
   'small-drum': {
     name: ['Le bidon de 60 litres', 'The 60-litre drum'],
     lesson: [
-      'Un bidon de 60 L tenu à 38 °C, chargé cinq fois plus que la grande cuve. Le modèle tient : 93 L † par jour et un pH de 7,1 †, car ce peu d’eau concentre le tampon. Il ne voit pas l’ammoniac que cette même concentration peut rendre toxique pour les méthanogènes. Le tapis chauffant, lui, se paie : en janvier à Genève, trois fois * l’énergie du gaz.',
-      'A 60 L drum held at 38 °C, loaded five times more than the large tank. The model holds: 93 L † a day and a pH of 7.1 †, because so little water concentrates the buffer. It does not see the ammonia that the same concentration can make toxic to methanogens. The heating mat has its price: in January at Geneva, three times * the energy in the gas.',
+      'Un bidon de 60 L tenu à 38 °C, chargé cinq fois plus que la grande cuve. Le modèle tient : 93 L * par jour et un pH de 7,1 *, car ce peu d’eau concentre le tampon. Il ne voit pas l’ammoniac que cette même concentration peut rendre toxique pour les méthanogènes. Le tapis chauffant, lui, se paie : en janvier à Genève, trois fois * l’énergie du gaz.',
+      'A 60 L drum held at 38 °C, loaded five times more than the large tank. The model holds: 93 L * a day and a pH of 7.1 *, because so little water concentrates the buffer. It does not see the ammonia that the same concentration can make toxic to methanogens. The heating mat has its price: in January at Geneva, three times * the energy in the gas.',
     ],
   },
 };

@@ -251,13 +251,15 @@ describe('the figures in the lessons are the model’s', () => {
     },
     LONG,
   );
-  it('« Le bidon »: 93 L †, pH 7.1 †, three times *', () => {
+  it('« Le bidon »: 93 L *, pH 7.1 *, three times *: it runs at Geneva, where no plant was measured, as the strip says', () => {
     const s = runScenario('small-drum', 15).state;
     const [fr, en] = SCENARIO_TEXTS['small-drum'].lesson;
-    expect(Math.abs(s.dayGasL - read(fr, /(\d+) L †/)[0]!)).toBeLessThan(2);
-    expect(Math.abs(s.dayGasL - read(en, /(\d+) L †/)[0]!)).toBeLessThan(2);
-    expect(Math.abs(s.pH - read(en, /pH of (\d\.\d) †/)[0]!)).toBeLessThan(0.05);
-    expect(Math.abs(s.pH - read(fr, /pH de (\d,\d) †/)[0]!)).toBeLessThan(0.05);
+    expect(s.figureTag).toBe('*');
+    expect(fr + en).not.toMatch(/†/);
+    expect(Math.abs(s.dayGasL - read(fr, /(\d+) L \*/)[0]!)).toBeLessThan(2);
+    expect(Math.abs(s.dayGasL - read(en, /(\d+) L \*/)[0]!)).toBeLessThan(2);
+    expect(Math.abs(s.pH - read(en, /pH of (\d\.\d) \*/)[0]!)).toBeLessThan(0.05);
+    expect(Math.abs(s.pH - read(fr, /pH de (\d,\d) \*/)[0]!)).toBeLessThan(0.05);
     expect(Math.round(s.dayHeaterKWh / s.dayKWh)).toBe(3);
     expect(en).toMatch(/three times \*/);
     expect(fr).toMatch(/trois fois \*/);
