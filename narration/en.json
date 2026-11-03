@@ -1,0 +1,456 @@
+{
+  "lang": "en",
+  "voiceLabel": {
+    "fr": "Voix de synthèse",
+    "en": "Synthetic voice"
+  },
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.35,
+    "speed": 0.95
+  },
+  "segments": [
+    {
+      "id": "intro",
+      "scope": "intro",
+      "title": "Introducing the lab",
+      "scene": "yard",
+      "text": "[[home]] Picture the end of a meal. At the bottom of a plate, a grain of rice, forgotten. Nobody wants it… and yet, there is a flame in there. [[frame:scrap-caddy]] Let us follow it. Here it is in the scrap caddy, with the day’s leftovers. [[scene:gas-line]] On a bench, with no ceremony at all, [[frame:dilution-bucket]] it is drowned in a bucket of water, up to the ten-litre mark. [[scene:digester]] It dives into a funnel, and a long pipe carries it off, [[frame:inner-feed-pipe]] right to the bottom of a black tank, without a bubble of air. [[scene:slurry]] Let us go in with it, into one single drop. [[frame:hydrolysers]] Tiny creatures cut it up, and others turn it into acids. [[frame:methanogens]] And the last of them, slow and fragile, turn it into methane. [[frame:gas-bubble]] There: our grain of rice has become a bubble! [[scene:digester]] Up it comes, and slips under another tank, turned over, which floats and rises with the gas. [[scene:gas-line]] Come evening, the gas leaves through a hose, pushed by next to nothing: two centimetres of water. [[frame:biogas-burner,cooking-pot]] And under a pot, when the time comes, a small blue flame you can hardly see. [[scene:yard]] What is left in the tank is not lost: [[frame:vegetable-bed]] it goes back to the vegetable bed. That is the whole story: a grain of rice, a drop, a bubble, a bell… and a tenth of a second of flame. [[home]] A few landmarks: four views, the yard, the tank, the drop and the gas line. Click a part: its sheet opens, and you can hear its story. [[mode:assembly]] One guide tells how the two tanks go together, [[mode:install]] another runs from the plot to the daily feed. [[mode:sim]] The simulation changes the meal, the place, the month, and runs twelve scenarios. [[mode:lessons]] Seven lessons, with quizzes, explain the life of the tank. [[mode:plans]] Ten sheets gather the drawings. [[mode:explore]] One last thing: this lab is an educational reconstruction. It follows a real plant, from a thesis: just one, four months, at Dar es Salaam. It is neither a plan to follow nor a product of its designers. It proves nothing about the safety of a plant in your home. And before you build anything, ask your local authority. The figures come from the thesis and other documents, or from our simulation and our estimates. The Sources panel says who said what. That leaves the winter at Geneva: does a bare tank last it? Our model cannot decide. It all rests on one figure, the activation energy. And we found no measurement of a plant of this kind below about twenty-five degrees. [[scene:yard]] The scenario A winter at Geneva puts that slider in your hands. [[select:none]] Come on, the meal is over, and our grain of rice is waiting for you!"
+    },
+    {
+      "id": "scene-yard",
+      "scope": "scene:yard",
+      "title": "From kitchen scraps to a flame",
+      "scene": "yard",
+      "text": "[[home]] A yard, in a warm climate, and the whole circle at a glance. [[frame:scrap-caddy]] The scrap caddy: that is where our grain of rice waits. [[frame:biogas-plant]] The plant: two water tanks, one turned over inside the other. [[flows:on]] [[frame:hose-run]] The gas leaves by this hose, across the yard, [[frame:kitchen-house]] to the kitchen, only a few metres away. [[frame:overflow-bucket]] What goes into the tank pushes as much into this bucket, [[frame:vegetable-bed]] and the bucket ends at the bed: the circle is shut. [[flows:off]] [[frame:shade-tree]] And this tree? At Dar es Salaam three were cut down, because a black tank wants the sun. [[home]] In the simulation, the sun and the figures follow the place. This yard does not change: its mango trees do not show Geneva. And if night falls while we talk, that is normal: days are very short here."
+    },
+    {
+      "id": "scene-digester",
+      "scope": "scene:digester",
+      "title": "Two tanks, a bell that rises",
+      "scene": "digester",
+      "text": "[[home]] The machine alone, and it opens already cut. [[frame:inner-feed-pipe]] Our grain arrives by this pipe, which delivers it low, [[frame:sludge-bed]] into the sludge, right at the bottom of the tank. [[frame:clear-liquor]] Above it, a large volume of almost clear liquid, [[frame:scum-layer]] then what floats, which is called the scum. [[frame:gas-space]] And here is the gas, under the floating bell. [[home]] [[flows:on]] The grey dots are the gas lost, in our model’s proportion. [[flows:off]] [[frame:rim-gap]] [[cutaway:on]] Seen from above, here it is. So the Section tool cuts the other way, across: here is the open ring. [[cutaway:off]] [[home]] At the opening clock, an hour a second, the bell plainly climbs. Its true speed, about fifty centimetres a day, would not show. And whatever size you choose in the simulation, this view stays that of the thousand-litre tank."
+    },
+    {
+      "id": "scene-slurry",
+      "scope": "scene:slurry",
+      "title": "One drop, and what lives in it",
+      "scene": "slurry",
+      "text": "[[home]] The real machine is alive. Here is one single drop, and let us say it at once: this world is stylised, nothing in it is to scale. [[frame:food-particle]] On the left, all that remains of our grain of rice. [[frame:hydrolysers]] The hydrolysers cut it up, from the outside. [[frame:acid-makers]] The acid-makers, very quick, turn it into acids. [[frame:acetogens]] The acetogens shorten those same acids. [[frame:methanogens]] At the far end, the methanogens, the only ones making methane. [[home]] [[flows:on]] So the carbon travels, stage by stage, as far as the bubble. [[flows:off]] [[explode:0.7]] Let us spread the chain: each stage takes its place. [[explode:0]] The drop’s colour and the methanogens’ glow follow our model. Run the scenario Too much, at once: the acids climb, the buffer melts, and the methanogens go dark."
+    },
+    {
+      "id": "scene-gas-line",
+      "scope": "scene:gas-line",
+      "title": "Where the energy goes",
+      "scene": "gas-line",
+      "text": "[[home]] From left to right, in the order of the gas: our grain is now no more than a breath. [[frame:bell-hose]] It leaves the bell by this flexible hose, [[frame:condensate-trap]] passes a water trap, at the very lowest point. [[frame:hydraulic-relief,h2s-filter]] Then a relief and a filter, one after the other. [[frame:flame-arrester,pressure-gauge]] And here, a flame arrester and a gauge, [[frame:wall-sleeve]] and through the kitchen wall it goes. [[frame:biogas-burner,cooking-pot]] And at last the burner, under its pot. [[home]] Mind what you are looking at. The measured plant had only a tap, a hose and a stove, plus a gauge. The trap, the relief, the filter, the arrester and the detector come from elsewhere. Their sizes are ours. [[flows:on]] The dots follow the scraps, from the bench, and the gas at its true speed, as long as the burner burns. [[flows:off]] Then run the scenario Water in the hose: the silliest failure in the world!"
+    },
+    {
+      "id": "part-biogas-plant",
+      "scope": "part:biogas-plant",
+      "title": "Biogas plant",
+      "scene": "yard",
+      "text": "Scraps go in, a flame comes out. The thesis got two hundred and eighty-nine litres of gas a day from it. Our model finds about two hundred and eighty. Let us not applaud: whatever is done to its rates, it stays there. The verdict lies elsewhere: of twelve plants visited, four were running. Ten, after five weeks of repairs."
+    },
+    {
+      "id": "part-kitchen-house",
+      "scope": "part:kitchen-house",
+      "title": "House and kitchen",
+      "scene": "yard",
+      "text": "The start and the end of the circle: our grain of rice left this kitchen, and comes back to it as gas. What counts is its distance: at this pressure, gas cannot be carried far. Hence this wall, within reach of five metres of hose."
+    },
+    {
+      "id": "part-yard-pad",
+      "scope": "part:yard-pad",
+      "title": "Yard pad",
+      "scene": "yard",
+      "text": "A pad looks like nothing, and it carries about nine hundred kilos. Its one job: staying flat. And look at what is missing: no drain, no bund. A real pad has to ask where a leak of eight hundred and fifty litres would go."
+    },
+    {
+      "id": "part-water-butt",
+      "scope": "part:water-butt",
+      "title": "Water butt",
+      "scene": "yard",
+      "text": "A water butt, beside the tank. Why beside it? So that the water arrives at its temperature. And in a ten-degree month, bringing it to thirty degrees costs about a third of the energy in the day’s gas! Straw changes nothing: it keeps the tank warm, not the water coming in. The scenario Geneva, wrapped and heated counts it."
+    },
+    {
+      "id": "part-overflow-bucket",
+      "scope": "part:overflow-bucket",
+      "title": "Overflow bucket",
+      "scene": "yard",
+      "text": "Here is all the movement this machine has: at each feed, ten litres push ten litres out. No pump, no valve. What falls here looks like water, and is not. It is a fertiliser, still laden with organic matter. Not for a stream, not for a drain. And an empty bucket after a feed says something is blocking."
+    },
+    {
+      "id": "part-vegetable-bed",
+      "scope": "part:vegetable-bed",
+      "title": "Vegetable bed",
+      "scene": "yard",
+      "text": "[[flows:on]] Where the circle ends. What leaves as gas is the carbon: the nitrogen and phosphorus stay for the soil. [[flows:off]] The tutorial keeps this effluent off what is eaten raw once animal products are in the tank. The thesis, for its part, fed its tank meat and fish. The sources do not agree, and we do not rule."
+    },
+    {
+      "id": "part-shade-tree",
+      "scope": "part:shade-tree",
+      "title": "Shade tree",
+      "scene": "yard",
+      "text": "A tree, in an energy lab? At Dar es Salaam three were cut down, for seven and a half hours of direct sun. The tank there ran warmer than the air. Straw that holds heat in would also keep that sun out. A felled tree has a cost, and these figures do not count it."
+    },
+    {
+      "id": "part-compost-heap",
+      "scope": "part:compost-heap",
+      "title": "Compost heap",
+      "scene": "yard",
+      "text": "The tank does not swallow everything. Fibre, wood, anything hard blocks the way or settles for nothing. In the canteen’s leftovers, the thesis even picked out bottle caps and toothpicks! All that comes here. This heap is our reading. It says that a scrap tank asks for sorting, and so for a habit."
+    },
+    {
+      "id": "part-scrap-caddy",
+      "scope": "part:scrap-caddy",
+      "title": "Scrap caddy",
+      "scene": "yard",
+      "text": "And here is our grain of rice, in its covered caddy. Why two kilos? By the thesis, that is what an average household of the city makes in a day. The same kilos, two recipes. The canteen’s leftovers, where our grain sleeps: two hundred and eighty-nine litres of gas. The market’s unsold goods: a hundred and twenty-six, and our model finds only sixty-four to seventy-six. It does not force the figure."
+    },
+    {
+      "id": "part-hose-run",
+      "scope": "part:hose-run",
+      "title": "Gas hose run",
+      "scene": "yard",
+      "text": "[[flows:on]] The gas leaves laden with vapour, cools, and water settles out. Hence the rule: a steady fall, to a single low point. For the bell pushes at only two centimetres of water: it will not shift a plug of any length. [[flows:off]] A small flame with a high bell: that is the sign of water."
+    },
+    {
+      "id": "part-digester-tank",
+      "scope": "part:digester-tank",
+      "title": "Digester tank",
+      "scene": "digester",
+      "text": "[[isolate:on]] An ordinary water tank, with its top taken off. That is all! Black, it takes the sun along its whole side. [[isolate:off]] One rule, with no exception: nobody goes down here, nor into a pit of the kind, even emptied. Methane and carbon dioxide take the oxygen’s place. And whoever goes down to help the first is overcome in turn."
+    },
+    {
+      "id": "part-gas-bell",
+      "scope": "part:gas-bell",
+      "title": "Gas bell",
+      "scene": "digester",
+      "text": "Here is this machine’s great find, and it is not even a part: a tank turned over, floating. Our bubble arrives beneath and lifts it. With no mechanism at all, it is store, gauge and regulator in one! Yet its pressure changes with its height, from one point three to three millibars in our model. And it is taller than the liquid is deep. Once it rests, about two hundred and thirty litres stay under it, which nothing can draw."
+    },
+    {
+      "id": "part-gas-space",
+      "scope": "part:gas-space",
+      "title": "Gas space",
+      "scene": "digester",
+      "text": "The store itself: four hundred usable litres. On this burner that lasts barely an hour and a half: the evening is served what the day has made. One danger here: air. When the bell fills or the tank is opened, it mixes with the gas, and that mix can explode. So the first gas is not burnt: the thesis let it go for ten days."
+    },
+    {
+      "id": "part-rim-gap",
+      "scope": "part:rim-gap",
+      "title": "Open rim",
+      "scene": "digester",
+      "text": "[[cutaway:on]] Seen from above, this machine’s flaw. Two sizes off the shelf do not nest exactly: that leaves a ring open to the air, twenty-two per cent of the surface. Our model takes it as the share of bubbles that misses the bell. Let us hope our bubble comes up on the right side! [[cutaway:off]] [[flows:on]] The grey dots are that gas. [[flows:off]] The flaw and the relief are the same gap. The still water also takes in larvae: the thesis advises stirring it weekly, with a stick."
+    },
+    {
+      "id": "part-scale-marks",
+      "scope": "part:scale-marks",
+      "title": "Scale marks",
+      "scene": "digester",
+      "text": "No meter would do in running. So the thesis turned the problem round. It let the gas out twenty litres at a time, drawing a line of white correction fluid each time. Every gas figure in this lab goes through those lines of correction fluid!"
+    },
+    {
+      "id": "part-half-brick",
+      "scope": "part:half-brick",
+      "title": "Half brick",
+      "scene": "digester",
+      "text": "Customers complained of a weak flame. The installer’s recipe: half a brick on the bell. Twelve kilos, two point zero three millibars more: the cleanest figure in this lab. The pressure doubles. The flow goes up one point eight four times, where a plain orifice gives one point four. We found no explanation. Careful: a bell leans, and this block can slide off, at head height."
+    },
+    {
+      "id": "part-feed-funnel",
+      "scope": "part:feed-funnel",
+      "title": "Feed funnel",
+      "scene": "digester",
+      "text": "[[flows:on]] The tank’s mouth. On the measured plant, it was a cut-up water bottle! This is where our grain of rice dives in. [[flows:off]] And it is not the only customer: giant snails come and block the way in. So the thesis asks for it to be kept covered."
+    },
+    {
+      "id": "part-feed-riser",
+      "scope": "part:feed-riser",
+      "title": "Feed riser",
+      "scene": "digester",
+      "text": "This riser and the ring are open to the air, and join under the bell: they stand level. No valve, no flap: the level is what shuts the tank, as long as the end of the pipe stays under the slurry. And it stands proud: in the survey, one of them was knocked down by dogs!"
+    },
+    {
+      "id": "part-feed-tee",
+      "scope": "part:feed-tee",
+      "title": "Feed tee",
+      "scene": "digester",
+      "text": "A plumber’s fitting, used as it comes. [[explode:0.6]] What comes down changes direction here, and if a plug is to form, it forms here. Hence this third side: the pipe can be reached with nothing taken apart. [[explode:0]] The three-inch way dictates the size of the pieces, under one centimetre. Our grain of rice passes without knocking."
+    },
+    {
+      "id": "part-clean-out-plug",
+      "scope": "part:clean-out-plug",
+      "title": "Clean-out plug",
+      "scene": "digester",
+      "text": "A plug of no importance, at the foot of more than a metre of slurry. It is for clearing the pipe, or draining the tank. And when a blocked inlet is among the failures, being able to reach it is no small thing. But opening it lets go at once what the column is pushing, at knee height: in open air, and far from any flame."
+    },
+    {
+      "id": "part-inner-feed-pipe",
+      "scope": "part:inner-feed-pipe",
+      "title": "Inner feed pipe",
+      "scene": "digester",
+      "text": "[[flows:on]] Our grain goes down here, fifty-one centimetres in. Why so far? To land in the sludge, and to get away from the overflow: or it would leave at once. [[flows:off]] That is also where the tank turns sour first. Our model has a single volume, and cannot see that gap."
+    },
+    {
+      "id": "part-tank-connector",
+      "scope": "part:tank-connector",
+      "title": "Tank connector",
+      "scene": "digester",
+      "text": "Here is the machine’s one true difficulty in plumbing: taking a pipe through a soft wall, below the level. Rubber washers on each side, says the build manual, with silicone and tape. For a leak here is not mended with the tank full: coming back to it means emptying everything."
+    },
+    {
+      "id": "part-overflow-pipe",
+      "scope": "part:overflow-pipe",
+      "title": "Overflow pipe",
+      "scene": "digester",
+      "text": "[[flows:on]] A pipe, a fall, and nothing else: the machine’s only level regulator, and it cannot wear out. It takes the clear liquid, not the sludge: so solids stay far longer than water. Our grain of rice will not leave this way, or not in one piece. [[flows:off]]"
+    },
+    {
+      "id": "part-gas-tap",
+      "scope": "part:gas-tap",
+      "title": "Gas tap",
+      "scene": "digester",
+      "text": "One tap, and that is the machine’s whole control. The thesis names what that takes: a person who understands what she sees. And glued, it can cost the whole bell: the thesis prefers tape, so that it can be unscrewed."
+    },
+    {
+      "id": "part-bottom-valve",
+      "scope": "part:bottom-valve",
+      "title": "Bottom valve",
+      "scene": "digester",
+      "text": "This one is not on a household’s list: it is the research valve. To follow a tank stirred by nothing, the thesis sampled at three heights. That is how it saw the bottom more sour than the top. Many of this lab’s figures came out through this hole."
+    },
+    {
+      "id": "part-pallet",
+      "scope": "part:pallet",
+      "title": "Pallet",
+      "scene": "digester",
+      "text": "Nothing was calculated here. The thesis stood its tank on a pallet, and this drawing takes it as it is. [[explode:0.6]] Let us move the parts apart: the pallet stays, and the tank lifts off it. [[explode:0]] How long did it last? The thesis does not say, and four months could not."
+    },
+    {
+      "id": "part-float-limiter",
+      "scope": "part:float-limiter",
+      "title": "Float limiter",
+      "scene": "digester",
+      "text": "Look at these two arches, above the machine. They were not on the measured plant: they come from the build manual, scaled by this drawing. The thesis rates low the risk of a full bell tipping, with no test behind that. We do not take that judgement on."
+    },
+    {
+      "id": "part-scum-layer",
+      "scope": "part:scum-layer",
+      "title": "Scum layer",
+      "scene": "digester",
+      "text": "[[explode:0.6]] The thesis sampled its tank layer by layer. Seventy-four grams of dry matter per litre at the surface, a little over three in the middle, forty-one at the bottom. A well-ordered tank, stirred by nothing! [[explode:0]] The scum is no waste: with the sludge, it is the tank’s stock, and what cushions three days without a feed."
+    },
+    {
+      "id": "part-clear-liquor",
+      "scope": "part:clear-liquor",
+      "title": "Clear liquor",
+      "scene": "digester",
+      "text": "About six hundred litres, almost water. The liquid passes through in forty-two and a half days. The solids stay about three hundred: that is what allows digestion on the spot. And the button on this sheet dives into one of its drops, on the trail of our grain of rice."
+    },
+    {
+      "id": "part-sludge-bed",
+      "scope": "part:sludge-bed",
+      "title": "Sludge bed",
+      "scene": "digester",
+      "text": "Right at the bottom: this is where our grain of rice lands. At start-up this bed was cow dung: sixty kilos, mixed by hand. It holds the tank’s stock of methanogens. When and how a household takes this sludge out, no source we have seen says, and we invent no interval."
+    },
+    {
+      "id": "part-food-particle",
+      "scope": "part:food-particle",
+      "title": "Food particle",
+      "scene": "slurry",
+      "text": "[[flows:on]] Here is what remains of our grain, and the carbon’s route starts here. People often quote five hundred grams of methane from two kilos: that holds for dry matter. On the thesis’s real wet scraps, it is about a hundred and five grams. [[flows:off]] The difference is not in the tank: it is in the water those two kilos already held."
+    },
+    {
+      "id": "part-hydrolysers",
+      "scope": "part:hydrolysers",
+      "title": "Hydrolysers",
+      "scene": "slurry",
+      "text": "How do you eat something bigger than yourself? Without swallowing it. These organisms release enzymes, which cut our grain up outside. The book calls this stage usually the slowest; the thesis quotes an author for whom the slowest are the last. We have no means to settle it. Our model takes half the gas of a cooked meal in two days."
+    },
+    {
+      "id": "part-acid-makers",
+      "scope": "part:acid-makers",
+      "title": "Acid-makers",
+      "scene": "slurry",
+      "text": "Quick, undemanding, always at work. When a shock hits the tank, too much food, a change of temperature, they are not the ones who suffer. They carry on, making more acid. That is how a tank is lost. The scenario Too much, at once shows them bustling while the methanogens fade."
+    },
+    {
+      "id": "part-acetogens",
+      "scope": "part:acetogens",
+      "title": "Acetogens",
+      "scene": "slurry",
+      "text": "These organisms make acetate and hydrogen, on one condition, says the book: that hydrogen stays scarce. So they need neighbours who use it up. This chain is no series of pipes: it is a neighbourhood! [[isolate:on]] Here they are, alone. They exist only in the drawing: our model counts all acid as acetate. [[isolate:off]]"
+    },
+    {
+      "id": "part-methanogens",
+      "scope": "part:methanogens",
+      "title": "Methanogens",
+      "scene": "slurry",
+      "text": "The only ones that make methane, and they are not bacteria! In the late nineteen seventies, science placed them in a line of their own: the archaea. What was our grain reaches them as acetate and hydrogen, and they turn it into gas. But they multiply slowly, and bear acid badly. A tank only holds once this population has had time to grow. Its limit lies there, not in the plumbing."
+    },
+    {
+      "id": "part-sulphate-reducers",
+      "scope": "part:sulphate-reducers",
+      "title": "Sulphate reducers",
+      "scene": "slurry",
+      "text": "These do not make the gas we want. Hydrogen sulphide comes from the sulphur in food: that is the smell of the slurry. They are in this world because of that gas, not because our model knows them: it has no sulphur. How much is there? The filter’s sheet, on the gas line, will tell you what we do not know."
+    },
+    {
+      "id": "part-fatty-acid-pool",
+      "scope": "part:fatty-acid-pool",
+      "title": "Fatty-acid pool",
+      "scene": "slurry",
+      "text": "Here is the trap. If food arrives faster than the methanogens multiply, this stock grows and eats the buffer. They stop: it grows more. No switch in our model, it comes by itself. The scenario Too much, at once: for three days the gas triples, then nothing. And this model is hopeful. In the field, the thesis marks a stopped, very sour plant as overfed. If our reading is right, that is the one still sour five weeks later, with gas that would not burn."
+    },
+    {
+      "id": "part-bicarbonate-buffer",
+      "scope": "part:bicarbonate-buffer",
+      "title": "Bicarbonate buffer",
+      "scene": "slurry",
+      "text": "Those small grains are not rice. They count the buffer, which takes up acid while hardly changing the acidity. In our model, stop feeding at six point four on the acidity scale: the tank survives. A few hours later, at six point three five, it no longer comes back by itself."
+    },
+    {
+      "id": "part-ammonium",
+      "scope": "part:ammonium",
+      "title": "Ammonium",
+      "scene": "slurry",
+      "text": "Here is what the gas does not take away. The nitrogen of the proteins stays here, and makes the effluent a fertiliser. Too much of it, says the book, would hinder the methanogens. Our model has no nitrogen, and would not see that limit."
+    },
+    {
+      "id": "part-gas-bubble",
+      "scope": "part:gas-bubble",
+      "title": "Gas bubble",
+      "scene": "slurry",
+      "text": "There it is! What was a grain of rice leaves the liquid. A riddle: why does the gas from peelings, the leaner gas, carry more methane? If both foods make as much carbon dioxide as methane, the liquid keeps about the same volume of it. In a small flow, that weighs more. But a richer gas is not more energy: leftovers give nearly twice as much."
+    },
+    {
+      "id": "part-surviving-germs",
+      "scope": "part:surviving-germs",
+      "title": "Surviving germs",
+      "scene": "slurry",
+      "text": "A cleaner drop is not a drop without germs. At these temperatures, says the book, digestion cannot ensure that viruses, bacteria and parasites are inactivated. Our model has no germs: on this point there are only texts. So for this effluent: gloves, washed hands, no raw leaves."
+    },
+    {
+      "id": "part-mincer",
+      "scope": "part:mincer",
+      "title": "Mincer",
+      "scene": "gas-line",
+      "text": "[[flows:on]] Back to the bench. Our grain of rice has nothing to fear: in the canteen’s leftovers, only meat, fish and fruit went through here. [[flows:off]] But on market waste, the fibres blunted its blades, again and again. In the end it was a knife, then a blender. A detail that weighs heavily, when the gesture comes back every day."
+    },
+    {
+      "id": "part-dilution-bucket",
+      "scope": "part:dilution-bucket",
+      "title": "Dilution bucket",
+      "scene": "gas-line",
+      "text": "At first the thesis poured in the food, then ten litres of water behind it. To block less, it changed: everything into the bucket, up to the mark, stir, pour. Our grain of rice takes its last bath here. A mark on a bucket stands in for scales and an instruction."
+    },
+    {
+      "id": "part-bell-hose",
+      "scope": "part:bell-hose",
+      "title": "Bell hose",
+      "scene": "gas-line",
+      "text": "The only movement in this line. At each filling it follows the bell over sixty-nine centimetres, without pulling, or it rips the tap off. What was our grain passes through it. But water gathers where it bends, and a leak here cannot be seen. A rigid pipe would last longer, and would not follow: flexibility is paid for in faults."
+    },
+    {
+      "id": "part-condensate-trap",
+      "scope": "part:condensate-trap",
+      "title": "Condensate trap",
+      "scene": "gas-line",
+      "text": "A few grams of water, and there is a machine stopped. Our model counts about two and a half grams a day. That is little, but the bell pushes at only two centimetres. Once full, this becomes a plug: it is drained, gas shut off, with no flame nearby."
+    },
+    {
+      "id": "part-hydraulic-relief",
+      "scope": "part:hydraulic-relief",
+      "title": "Hydraulic relief",
+      "scene": "gas-line",
+      "text": "A water bottle, and a pipe dipping into it. The true relief of this machine is the rim of its bell. This bottle shows the principle: the level in the pipe follows the pressure, a centimetre per millibar. And so low a pressure is no reason for less attention: the gas is still gas."
+    },
+    {
+      "id": "part-h2s-filter",
+      "scope": "part:h2s-filter",
+      "title": "H₂S filter",
+      "scene": "gas-line",
+      "text": "The most dangerous gas in the machine, and the nose is not enough. Hydrogen sulphide smells of rotten eggs at tiny doses. Then the smell fades, and disappears at about a hundred parts per million. At about five hundred, it kills at once, by the French guide. So the smell is no alarm. And in this gas, how much is there? Unknown: the thesis’s sensor hit its ceiling of a hundred, almost everywhere. And of this filter, we promise nothing."
+    },
+    {
+      "id": "part-flame-arrester",
+      "scope": "part:flame-arrester",
+      "title": "Flame arrester",
+      "scene": "gas-line",
+      "text": "A ball of steel or copper wool, and that is all. [[explode:0.6]] The tutorial sets it where a flashback is feared: it lowers the temperature, and smothers the burning. [[explode:0]] We found no test saying what it stops at these flows. This drawing gives it a shape: it proves nothing about how well it works."
+    },
+    {
+      "id": "part-pressure-gauge",
+      "scope": "part:pressure-gauge",
+      "title": "Pressure gauge",
+      "scene": "gas-line",
+      "text": "A dial marked up to sixty millibars, for a pressure of two: the needle hardly moves. It showed two at each of ten tests, and four at each of five with the half-brick. Can so wide an instrument really tell such gaps? Here the needle follows our model, on its true scale: two graduations, at best!"
+    },
+    {
+      "id": "part-wall-sleeve",
+      "scope": "part:wall-sleeve",
+      "title": "Wall sleeve",
+      "scene": "gas-line",
+      "text": "A hole in a wall, and yet, it is a border. No source describes this crossing: this sleeve is our reading. See: the yard on one side, the kitchen on the other. This is where the machine enters a living space. A leak outside thins out. In a closed room, it gathers."
+    },
+    {
+      "id": "part-kitchen-valve",
+      "scope": "part:kitchen-valve",
+      "title": "Kitchen valve",
+      "scene": "gas-line",
+      "text": "A valve within reach, for what cannot be seen. The neighbouring study finds it likely that flames went out with the cooks not seeing. The gas goes on coming out. Nothing automates this: a flame gone missing is first dealt with by shutting. The scenario The flame goes out shuts it for you, and its alarm says why."
+    },
+    {
+      "id": "part-biogas-burner",
+      "scope": "part:biogas-burner",
+      "title": "Biogas burner",
+      "scene": "gas-line",
+      "text": "Not a butane burner: this gas holds less energy per litre. It is small: a hundred litres in twenty-two minutes. A kilo of leftovers gives about thirty-two minutes on it, a kilo of peelings fourteen. And in the neighbouring study, stoves already showed damage after a year."
+    },
+    {
+      "id": "part-primary-air-sleeve",
+      "scope": "part:primary-air-sleeve",
+      "title": "Primary-air sleeve",
+      "scene": "gas-line",
+      "text": "A simple ring, and it decides the colour. A long, yellowish flame, says the book, means incomplete burning: carbon monoxide in the kitchen. It has no smell, and that is the danger of this setting. For this burner we found no figure. The eye does the work, at each lighting, with the window open."
+    },
+    {
+      "id": "part-blue-flame",
+      "scope": "part:blue-flame",
+      "title": "Blue flame",
+      "scene": "gas-line",
+      "text": "[[isolate:on]] Here it is, what all the rest is for. And our grain of rice? A cooked grain weighs a few hundredths of a gram. At thirty-two minutes a kilo, do the sum: about a tenth of a second of flame. All that way, for this! [[isolate:off]] So it takes a great many: two kilos, mixed, give about forty-five minutes, by the thesis. Its height here is not measured. The tutorial warns: these flames show less than butane’s, and people get burnt without having seen them. The button on this sheet lights the burner."
+    },
+    {
+      "id": "part-pot-stand",
+      "scope": "part:pot-stand",
+      "title": "Pot stand",
+      "scene": "gas-line",
+      "text": "[[explode:0.6]] Three parts and one distance: the burner, the stand, the pot. [[explode:0]] The neighbouring study notes that the distance from burner to pot bottom counts for much. Here, a dish too small loses what passes beside it. The kitchen’s efficiency also comes down to a few centimetres of air."
+    },
+    {
+      "id": "part-cooking-pot",
+      "scope": "part:cooking-pot",
+      "title": "Cooking pot",
+      "scene": "gas-line",
+      "text": "End of the journey. The day’s two kilos, at fifty-five per cent efficiency, bring about six litres of water to the boil. The thesis says a third of the cooking of a household in the city. This lab does not promise a dinner: the neighbouring study sees it finished on charcoal. So, a lid. And if a grain of rice stays at the bottom of the plate? It knows the way."
+    },
+    {
+      "id": "part-vent-opening",
+      "scope": "part:vent-opening",
+      "title": "Vent opening",
+      "scene": "gas-line",
+      "text": "An opening, high on the wall. The thesis relies on open houses, which a European kitchen is not. Methane, lighter than air, rises: this helps it. Carbon dioxide and hydrogen sulphide, heavier, stay low. And no vent stands in for a shut tap."
+    },
+    {
+      "id": "part-gas-detector",
+      "scope": "part:gas-detector",
+      "title": "Gas detector",
+      "scene": "gas-line",
+      "text": "No household plant in our sources has one. It comes, by analogy, from a French rule for other plants. A methane detector reads neither carbon monoxide nor hydrogen sulphide. It opens no window and shuts no tap: when it sounds, the gesture is still to be made, from outside."
+    }
+  ]
+}

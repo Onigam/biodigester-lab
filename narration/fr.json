@@ -1,0 +1,456 @@
+{
+  "lang": "fr",
+  "voiceLabel": {
+    "fr": "Voix de synthèse",
+    "en": "Synthetic voice"
+  },
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8,
+    "style": 0.35,
+    "speed": 0.95
+  },
+  "segments": [
+    {
+      "id": "intro",
+      "scope": "intro",
+      "title": "Présentation du labo",
+      "scene": "yard",
+      "text": "[[home]] Imaginez la fin d’un repas. Au fond d’une assiette, un grain de riz, oublié. Personne n’en veut… et pourtant, il y a une flamme là-dedans. [[frame:scrap-caddy]] Suivons-le. Le voici dans le seau à déchets, avec les restes de la journée. [[scene:gas-line]] Sur un établi, sans la moindre cérémonie, [[frame:dilution-bucket]] on le noie dans un seau d’eau, jusqu’à la marque des dix litres. [[scene:digester]] Il plonge dans un entonnoir, et un long tube l’emporte, [[frame:inner-feed-pipe]] tout au fond d’une cuve noire, sans une bulle d’air. [[scene:slurry]] Entrons avec lui dans une seule goutte. [[frame:hydrolysers]] De tout petits êtres le découpent, d’autres en font des acides. [[frame:methanogens]] Et les derniers, lents et fragiles, en font du méthane. [[frame:gas-bubble]] Voilà notre grain de riz devenu bulle ! [[scene:digester]] Elle remonte, et se glisse sous une autre cuve, retournée, qui flotte et monte avec le gaz. [[scene:gas-line]] Le soir venu, le gaz part par un tuyau, poussé par presque rien : deux centimètres d’eau. [[frame:biogas-burner,cooking-pot]] Et sous une casserole, le moment venu, une petite flamme bleue, qu’on voit à peine. [[scene:yard]] Ce qui reste de la cuve n’est pas perdu : [[frame:vegetable-bed]] il retourne au potager. Voilà toute l’histoire : un grain de riz, une goutte, une bulle, une cloche… et un dixième de seconde de flamme. [[home]] Quelques repères : quatre vues, la cour, la cuve, la goutte et la ligne de gaz. Cliquez sur une pièce : sa fiche s’ouvre, et vous pouvez écouter son histoire. [[mode:assembly]] Un guide raconte comment les deux cuves s’emboîtent, [[mode:install]] un autre va du terrain au repas quotidien. [[mode:sim]] La simulation change le repas, le lieu, le mois, et lance douze scénarios. [[mode:lessons]] Sept leçons, avec des quiz, expliquent la vie de la cuve. [[mode:plans]] Dix planches réunissent les dessins. [[mode:explore]] Une dernière chose : ce laboratoire est une reconstitution pédagogique. Il suit une vraie installation, d’après une thèse : une seule, quatre mois, à Dar es Salaam. Ce n’est ni un plan à suivre, ni un produit de ses concepteurs. Il ne prouve rien sur la sécurité d’une installation chez vous. Et avant de construire quoi que ce soit, renseignez-vous auprès de votre autorité locale. Les chiffres viennent de la thèse et d’autres documents, ou de notre simulation et de nos estimations. Le panneau Sources dit qui a dit quoi. Reste l’hiver à Genève : une cuve nue le passe-t-elle ? Notre modèle ne peut pas trancher. Tout tient à un seul chiffre, l’énergie d’activation. Et nous n’avons trouvé aucune mesure de ce genre d’installation sous vingt-cinq degrés environ. [[scene:yard]] Le scénario Un hiver à Genève vous met ce curseur sous la main. [[select:none]] Allez, le repas est fini, et notre grain n’attend que vous !"
+    },
+    {
+      "id": "scene-yard",
+      "scope": "scene:yard",
+      "title": "Des restes de cuisine à la flamme",
+      "scene": "yard",
+      "text": "[[home]] Une cour, en climat chaud, et tout le cercle d’un coup d’œil. [[frame:scrap-caddy]] Le seau à déchets : c’est là que notre grain attend. [[frame:biogas-plant]] L’installation : deux cuves à eau, l’une retournée dans l’autre. [[flows:on]] [[frame:hose-run]] Le gaz part par ce tuyau, à travers la cour, [[frame:kitchen-house]] jusqu’à la cuisine, à quelques mètres seulement. [[frame:overflow-bucket]] Ce qui entre dans la cuve en pousse autant dans ce seau, [[frame:vegetable-bed]] et le seau finit au potager, le cercle est fermé. [[flows:off]] [[frame:shade-tree]] Et cet arbre ? À Dar es Salaam, trois ont été coupés, car une cuve noire veut le soleil. [[home]] Dans la simulation, le soleil et les chiffres suivent le lieu. Cette cour, elle, ne change pas : ses manguiers ne montrent pas Genève. Et si la nuit tombe pendant qu’on en parle, c’est normal : ici, les journées sont très courtes."
+    },
+    {
+      "id": "scene-digester",
+      "scope": "scene:digester",
+      "title": "Deux cuves, une cloche qui monte",
+      "scene": "digester",
+      "text": "[[home]] La machine seule, et elle s’ouvre déjà coupée. [[frame:inner-feed-pipe]] Notre grain arrive par ce tube, qui le livre bas, [[frame:sludge-bed]] dans les boues, tout au fond de la cuve. [[frame:clear-liquor]] Au-dessus, un grand volume de liquide presque clair, [[frame:scum-layer]] puis ce qui flotte : on l’appelle la croûte. [[frame:gas-space]] Et voici le gaz, sous la cloche qui flotte. [[home]] [[flows:on]] Les points gris, c’est le gaz perdu, dans la proportion de notre modèle. [[flows:off]] [[frame:rim-gap]] [[cutaway:on]] Vu d’en haut, le voici. L’outil Coupe tranche donc dans l’autre sens, à l’horizontale : voici l’anneau ouvert. [[cutaway:off]] [[home]] À l’horloge d’ouverture, une heure par seconde, la cloche monte à vue d’œil. Sa vraie vitesse, environ cinquante centimètres par jour, ne se verrait pas. Et quelle que soit la taille choisie dans la simulation, cette vue reste celle de la cuve de mille litres."
+    },
+    {
+      "id": "scene-slurry",
+      "scope": "scene:slurry",
+      "title": "Une goutte, et ce qui y vit",
+      "scene": "slurry",
+      "text": "[[home]] La vraie machine est vivante. Voici une seule goutte, et disons-le tout de suite : ce monde est stylisé, rien n’y est à l’échelle. [[frame:food-particle]] À gauche, ce qui reste de notre grain de riz. [[frame:hydrolysers]] Les hydrolyseurs le découpent, par le dehors. [[frame:acid-makers]] Les acidogènes, très rapides, en font des acides. [[frame:acetogens]] Les acétogènes raccourcissent ces acides-là. [[frame:methanogens]] Tout au bout, les méthanogènes, seuls à faire le méthane. [[home]] [[flows:on]] Le carbone voyage ainsi, de stade en stade, jusqu’à la bulle. [[flows:off]] [[explode:0.7]] Écartons la chaîne : chaque stade prend sa place. [[explode:0]] La couleur de la goutte et la lueur des méthanogènes suivent notre modèle. Lancez le scénario Trop, d’un coup : les acides grimpent, le tampon fond, et les méthanogènes s’éteignent."
+    },
+    {
+      "id": "scene-gas-line",
+      "scope": "scene:gas-line",
+      "title": "Là où va l’énergie",
+      "scene": "gas-line",
+      "text": "[[home]] De gauche à droite, dans l’ordre du gaz : notre grain n’est plus qu’un souffle. [[frame:bell-hose]] Il quitte la cloche par ce tuyau souple, [[frame:condensate-trap]] passe un piège à eau, au point le plus bas. [[frame:hydraulic-relief,h2s-filter]] Puis une soupape et un filtre, l’un après l’autre. [[frame:flame-arrester,pressure-gauge]] Voici un arrête-flamme, un manomètre, [[frame:wall-sleeve]] et il traverse le mur de la cuisine. [[frame:biogas-burner,cooking-pot]] Enfin le brûleur, sous sa casserole. [[home]] Attention à ce que vous regardez. L’installation mesurée n’avait qu’un robinet, un tuyau et un réchaud, plus un manomètre. Le piège, la soupape, le filtre, l’arrête-flamme et le détecteur viennent d’ailleurs. Leurs tailles sont les nôtres. [[flows:on]] Les points suivent les restes, depuis l’établi, et le gaz à sa vraie vitesse, tant que le brûleur brûle. [[flows:off]] Puis lancez le scénario De l’eau dans le tuyau : la panne la plus bête du monde !"
+    },
+    {
+      "id": "part-biogas-plant",
+      "scope": "part:biogas-plant",
+      "title": "Installation",
+      "scene": "yard",
+      "text": "Des restes entrent, une flamme sort. La thèse en a tiré deux cent quatre-vingt-neuf litres de gaz par jour. Notre modèle en trouve environ deux cent quatre-vingts. Ne l’applaudissons pas : quoi qu’on change à ses vitesses, il reste là. Le verdict est ailleurs : sur douze installations visitées, quatre tournaient. Dix, après cinq semaines de réparations."
+    },
+    {
+      "id": "part-kitchen-house",
+      "scope": "part:kitchen-house",
+      "title": "Maison et cuisine",
+      "scene": "yard",
+      "text": "Le début et la fin du cercle : notre grain est parti de cette cuisine, et il y revient en gaz. Ce qui compte, c’est sa distance : à cette pression, le gaz ne se conduit pas bien loin. D’où ce mur, à portée de cinq mètres de tuyau."
+    },
+    {
+      "id": "part-yard-pad",
+      "scope": "part:yard-pad",
+      "title": "Dalle",
+      "scene": "yard",
+      "text": "Une dalle, ça n’a l’air de rien, et elle porte environ neuf cents kilos. Son seul travail : rester plane. Et regardez ce qui manque : ni drain, ni cuvette. Une vraie dalle se demande où irait une fuite de huit cent cinquante litres."
+    },
+    {
+      "id": "part-water-butt",
+      "scope": "part:water-butt",
+      "title": "Réserve d’eau",
+      "scene": "yard",
+      "text": "Un fût, à côté de la cuve. Pourquoi à côté ? Pour que l’eau arrive à sa température. Et dans un mois à dix degrés, la porter à trente degrés coûte environ un tiers de l’énergie du gaz du jour ! La paille n’y change rien : elle garde la cuve, pas l’eau qui arrive. Le scénario Genève, emballée et chauffée le compte."
+    },
+    {
+      "id": "part-overflow-bucket",
+      "scope": "part:overflow-bucket",
+      "title": "Seau de trop-plein",
+      "scene": "yard",
+      "text": "Voici tout le mouvement de cette machine : à chaque repas, dix litres en poussent dix dehors. Sans pompe, sans vanne. Ce qui tombe ici a l’air d’eau, et n’en est pas. C’est un engrais, encore chargé de matière organique. Ni ruisseau, ni égout. Et un seau vide après un repas dit que quelque chose bloque."
+    },
+    {
+      "id": "part-vegetable-bed",
+      "scope": "part:vegetable-bed",
+      "title": "Potager",
+      "scene": "yard",
+      "text": "[[flows:on]] Où finit le cercle. Ce qui part en gaz, c’est le carbone : l’azote et le phosphore restent pour la terre. [[flows:off]] Le tutoriel écarte cet effluent de ce qu’on mange cru dès qu’il y a des produits animaux. La thèse, elle, nourrissait sa cuve de viande et de poisson. Les sources ne s’accordent pas, et nous ne tranchons pas."
+    },
+    {
+      "id": "part-shade-tree",
+      "scope": "part:shade-tree",
+      "title": "Arbre d’ombre",
+      "scene": "yard",
+      "text": "Un arbre, dans un labo d’énergie ? À Dar es Salaam, trois ont été abattus, pour sept heures et demie de soleil direct. La cuve y tournait plus chaude que l’air. La paille qui retient la chaleur arrêterait aussi ce soleil. Un arbre coupé a un coût, que ces chiffres ne comptent pas."
+    },
+    {
+      "id": "part-compost-heap",
+      "scope": "part:compost-heap",
+      "title": "Compost",
+      "scene": "yard",
+      "text": "La cuve n’avale pas tout. Les fibres, le bois, ce qui est dur bouche le passage ou se dépose pour rien. Dans les restes de cantine, la thèse retirait même des capsules et des cure-dents ! Tout cela vient ici. Ce tas est notre lecture. Il dit qu’une cuve à déchets demande un tri, donc une habitude."
+    },
+    {
+      "id": "part-scrap-caddy",
+      "scope": "part:scrap-caddy",
+      "title": "Seau à déchets",
+      "scene": "yard",
+      "text": "Et voici notre grain de riz, dans son seau fermé. Pourquoi deux kilos ? C’est, d’après la thèse, ce qu’un ménage moyen de la ville produit en un jour. Mêmes kilos, deux recettes. Les restes de cantine, où dort notre grain : deux cent quatre-vingt-neuf litres de gaz. Les invendus du marché : cent vingt-six, et notre modèle n’en trouve que soixante-quatre à soixante-seize. Il ne force pas le chiffre."
+    },
+    {
+      "id": "part-hose-run",
+      "scope": "part:hose-run",
+      "title": "Conduite de gaz",
+      "scene": "yard",
+      "text": "[[flows:on]] Le gaz sort chargé de vapeur, se refroidit, et l’eau se dépose. D’où la règle : une descente régulière, jusqu’à un seul point bas. Car la cloche ne pousse qu’à deux centimètres d’eau : elle ne chasse pas un bouchon bien long. [[flows:off]] Une petite flamme et une cloche haute : c’est le signe de l’eau."
+    },
+    {
+      "id": "part-digester-tank",
+      "scope": "part:digester-tank",
+      "title": "Cuve",
+      "scene": "digester",
+      "text": "[[isolate:on]] Une cuve à eau ordinaire, dont on a retiré le dessus. C’est tout ! Noire, elle prend le soleil par tout son flanc. [[isolate:off]] Une règle, sans exception : personne ne descend ici, ni dans une fosse de ce genre, même vidée. Le méthane et le gaz carbonique y prennent la place de l’oxygène. Et qui descend au secours du premier est pris à son tour."
+    },
+    {
+      "id": "part-gas-bell",
+      "scope": "part:gas-bell",
+      "title": "Cloche",
+      "scene": "digester",
+      "text": "Voici la trouvaille de cette machine, et ce n’est même pas une pièce : une cuve retournée, qui flotte. Notre bulle arrive dessous, et la soulève. Sans un seul mécanisme, la voilà réservoir, compteur et régulateur ! Sa pression change pourtant avec sa hauteur, d’un virgule trois à trois millibars pour notre modèle. Et elle est plus haute que le liquide n’est profond. Posée, il reste environ deux cent trente litres dessous, que rien ne peut tirer."
+    },
+    {
+      "id": "part-gas-space",
+      "scope": "part:gas-space",
+      "title": "Volume de gaz",
+      "scene": "digester",
+      "text": "La réserve elle-même : quatre cents litres utilisables. Sur ce brûleur, cela dure à peine une heure et demie : on sert le soir ce qui a été fait le jour. Un danger ici : l’air. Quand on remplit la cloche ou qu’on ouvre la cuve, il se mêle au gaz, et ce mélange peut exploser. Le premier gaz ne se brûle donc pas : la thèse l’a relâché dix jours."
+    },
+    {
+      "id": "part-rim-gap",
+      "scope": "part:rim-gap",
+      "title": "Anneau ouvert",
+      "scene": "digester",
+      "text": "[[cutaway:on]] Vu d’en haut, le défaut de cette machine. Deux tailles du commerce ne s’emboîtent pas exactement : il reste un anneau à l’air libre, vingt-deux pour cent de la surface. Notre modèle en fait la part de bulles qui manque la cloche. Espérons que notre bulle passe du bon côté ! [[cutaway:off]] [[flows:on]] Les points gris, c’est ce gaz-là. [[flows:off]] Le défaut et la soupape sont le même trou. L’eau immobile accueille aussi des larves : la thèse conseille de la remuer chaque semaine, avec un bâton."
+    },
+    {
+      "id": "part-scale-marks",
+      "scope": "part:scale-marks",
+      "title": "Graduations",
+      "scene": "digester",
+      "text": "Aucun compteur ne convenait en marche. Alors la thèse a retourné le problème. Elle a relâché le gaz vingt litres par vingt litres, en traçant chaque fois un trait de correcteur blanc. Tous les chiffres de gaz de ce labo passent par ces traits de correcteur !"
+    },
+    {
+      "id": "part-half-brick",
+      "scope": "part:half-brick",
+      "title": "Demi-parpaing",
+      "scene": "digester",
+      "text": "Des clients se plaignaient d’une flamme faible. La recette de l’installateur : un demi-parpaing sur la cloche. Douze kilos, deux virgule zéro trois millibars de plus : le chiffre le plus net de ce labo. La pression double. Le débit, lui, est multiplié par un virgule quatre-vingt-quatre, là où un simple orifice donne un virgule quatre. Nous n’avons trouvé aucune explication. Attention : une cloche penche, et ce bloc peut glisser, à hauteur de tête."
+    },
+    {
+      "id": "part-feed-funnel",
+      "scope": "part:feed-funnel",
+      "title": "Entonnoir",
+      "scene": "digester",
+      "text": "[[flows:on]] La bouche de la cuve. Sur l’installation mesurée, c’était une bouteille d’eau coupée ! C’est ici que notre grain plonge. [[flows:off]] Et il n’est pas le seul client : des escargots géants viennent boucher l’entrée. La thèse demande donc de la garder couverte."
+    },
+    {
+      "id": "part-feed-riser",
+      "scope": "part:feed-riser",
+      "title": "Colonne d’alimentation",
+      "scene": "digester",
+      "text": "Cette colonne et l’anneau sont à l’air libre, et se rejoignent sous la cloche : ils se tiennent au même niveau. Pas de vanne, pas de clapet : c’est le niveau qui ferme la cuve, tant que le bout du tube reste sous la bouillie. Et elle dépasse : dans l’enquête, l’une d’elles a été renversée par des chiens !"
+    },
+    {
+      "id": "part-feed-tee",
+      "scope": "part:feed-tee",
+      "title": "Té d’alimentation",
+      "scene": "digester",
+      "text": "Une pièce de plombier, utilisée telle quelle. [[explode:0.6]] Ce qui descend change ici de direction, et si un bouchon doit se former, c’est là. D’où ce troisième côté : on atteint le tube sans rien démonter. [[explode:0]] Le passage de trois pouces commande la taille des morceaux, moins d’un centimètre. Notre grain passe sans frapper."
+    },
+    {
+      "id": "part-clean-out-plug",
+      "scope": "part:clean-out-plug",
+      "title": "Bouchon de curage",
+      "scene": "digester",
+      "text": "Un bouchon de rien du tout, au pied de plus d’un mètre de bouillie. Il sert à déboucher le tube, ou à vider la cuve. Et quand une entrée bouchée est parmi les pannes, pouvoir l’atteindre n’est plus un détail. Mais l’ouvrir libère d’un coup ce que la colonne pousse, à hauteur de genou : à l’air, et loin de toute flamme."
+    },
+    {
+      "id": "part-inner-feed-pipe",
+      "scope": "part:inner-feed-pipe",
+      "title": "Tube intérieur",
+      "scene": "digester",
+      "text": "[[flows:on]] Notre grain y descend, cinquante et un centimètres à l’intérieur. Pourquoi si loin ? Pour tomber dans les boues, et s’éloigner du trop-plein : sinon, il ressortirait aussitôt. [[flows:off]] C’est aussi là que la cuve s’acidifie d’abord. Notre modèle n’a qu’un seul volume, et ne voit pas cet écart."
+    },
+    {
+      "id": "part-tank-connector",
+      "scope": "part:tank-connector",
+      "title": "Traversée de paroi",
+      "scene": "digester",
+      "text": "Voici la seule vraie difficulté de plomberie de la machine : faire traverser un tube dans une paroi souple, sous le niveau. Des rondelles de caoutchouc de chaque côté, dit le manuel de construction, de la silicone, du ruban. Car une fuite ici ne se répare pas cuve pleine : y revenir, c’est tout vider."
+    },
+    {
+      "id": "part-overflow-pipe",
+      "scope": "part:overflow-pipe",
+      "title": "Trop-plein",
+      "scene": "digester",
+      "text": "[[flows:on]] Un tube, une pente, et rien d’autre : le seul régulateur de niveau de la machine, et il ne peut pas s’user. Il prend le liquide clair, pas les boues : les solides restent donc bien plus longtemps que l’eau. Notre grain ne sortira pas par là, ou pas entier. [[flows:off]]"
+    },
+    {
+      "id": "part-gas-tap",
+      "scope": "part:gas-tap",
+      "title": "Robinet de gaz",
+      "scene": "digester",
+      "text": "Un seul robinet, et c’est toute la commande de la machine. La thèse nomme ce que cela suppose : une personne qui comprend ce qu’elle voit. Et collé, il peut coûter toute la cloche : la thèse préfère le ruban, pour pouvoir dévisser."
+    },
+    {
+      "id": "part-bottom-valve",
+      "scope": "part:bottom-valve",
+      "title": "Vanne de fond",
+      "scene": "digester",
+      "text": "Celle-ci n’est pas sur la liste d’un ménage : c’est la vanne de la recherche. Pour suivre une cuve que rien ne brasse, la thèse a prélevé à trois hauteurs. C’est ainsi qu’elle a vu le fond plus acide que le haut. Beaucoup de chiffres de ce labo sont sortis par ce trou."
+    },
+    {
+      "id": "part-pallet",
+      "scope": "part:pallet",
+      "title": "Palette",
+      "scene": "digester",
+      "text": "Rien n’a été calculé ici. La thèse posait sa cuve sur une palette, et ce dessin la reprend telle quelle. [[explode:0.6]] Écartons les pièces : la palette reste, et la cuve s’en détache. [[explode:0]] Combien de temps a-t-elle tenu ? La thèse ne le dit pas, et quatre mois ne le diraient pas."
+    },
+    {
+      "id": "part-float-limiter",
+      "scope": "part:float-limiter",
+      "title": "Limiteur de course",
+      "scene": "digester",
+      "text": "Regardez ces deux arceaux, au-dessus de la machine. Ils n’étaient pas sur l’installation mesurée : ils viennent du manuel de construction, mis à l’échelle par ce dessin. La thèse juge faible le risque qu’une cloche pleine bascule, sans essai à l’appui. Nous ne reprenons pas ce jugement."
+    },
+    {
+      "id": "part-scum-layer",
+      "scope": "part:scum-layer",
+      "title": "Croûte",
+      "scene": "digester",
+      "text": "[[explode:0.6]] La thèse a prélevé sa cuve couche par couche. Soixante-quatorze grammes de matière sèche par litre en surface, un peu plus de trois au milieu, quarante et un au fond. Une cuve bien rangée, que rien ne brasse ! [[explode:0]] La croûte n’est pas un déchet : avec les boues, c’est le stock de la cuve, et ce qui amortit trois jours sans repas."
+    },
+    {
+      "id": "part-clear-liquor",
+      "scope": "part:clear-liquor",
+      "title": "Liquide clair",
+      "scene": "digester",
+      "text": "Environ six cents litres, presque de l’eau. Le liquide y passe en quarante-deux jours et demi. Les solides, eux, restent environ trois cents jours : voilà ce qui permet de digérer sur place. Et le bouton de cette fiche plonge dans une de ses gouttes, sur les traces de notre grain."
+    },
+    {
+      "id": "part-sludge-bed",
+      "scope": "part:sludge-bed",
+      "title": "Boues",
+      "scene": "digester",
+      "text": "Tout au fond : c’est ici que notre grain atterrit. À la mise en route, ce lit était de la bouse de vache : soixante kilos, mélangés à la main. Il porte le stock de méthanogènes. Quand et comment un ménage retire ces boues, aucune source lue ne le dit, et nous n’inventons pas de fréquence."
+    },
+    {
+      "id": "part-food-particle",
+      "scope": "part:food-particle",
+      "title": "Particule de nourriture",
+      "scene": "slurry",
+      "text": "[[flows:on]] Voici ce qui reste de notre grain, et le chemin du carbone part d’ici. On cite souvent cinq cents grammes de méthane pour deux kilos : c’est vrai de la matière sèche. Sur les vrais déchets humides de la thèse, c’est environ cent cinq grammes. [[flows:off]] La différence n’est pas dans la cuve : elle est dans l’eau que ces deux kilos contenaient déjà."
+    },
+    {
+      "id": "part-hydrolysers",
+      "scope": "part:hydrolysers",
+      "title": "Hydrolyseurs",
+      "scene": "slurry",
+      "text": "Comment manger plus gros que soi ? Sans l’avaler. Ces organismes relâchent des enzymes, qui découpent notre grain dehors. Le livre dit ce stade d’ordinaire le plus lent ; la thèse cite un auteur pour qui ce sont les derniers. Nous n’avons pas de quoi trancher. Notre modèle tire d’un repas cuit la moitié de son gaz en deux jours."
+    },
+    {
+      "id": "part-acid-makers",
+      "scope": "part:acid-makers",
+      "title": "Acidogènes",
+      "scene": "slurry",
+      "text": "Rapides, peu difficiles, toujours à l’ouvrage. Quand un choc touche la cuve, trop de nourriture, un changement de température, ce ne sont pas eux qui souffrent. Ils continuent, et font encore de l’acide. C’est ainsi qu’on perd une cuve. Le scénario Trop, d’un coup les montre s’agiter pendant que les méthanogènes pâlissent."
+    },
+    {
+      "id": "part-acetogens",
+      "scope": "part:acetogens",
+      "title": "Acétogènes",
+      "scene": "slurry",
+      "text": "Ces organismes font de l’acétate et de l’hydrogène, à une condition, dit le livre : que l’hydrogène reste rare. Il leur faut donc des voisins qui le consomment. Cette chaîne n’est pas une suite de tuyaux : c’est un voisinage ! [[isolate:on]] Les voici seuls. Ils n’existent ici qu’au dessin : notre modèle compte tout acide comme de l’acétate. [[isolate:off]]"
+    },
+    {
+      "id": "part-methanogens",
+      "scope": "part:methanogens",
+      "title": "Méthanogènes",
+      "scene": "slurry",
+      "text": "Les seuls à faire le méthane, et ce ne sont pas des bactéries ! À la fin des années soixante-dix, la science les a rangés dans une lignée à part : les archées. Ce qui fut notre grain leur arrive en acétate et en hydrogène, et ils en font du gaz. Mais ils se multiplient lentement, et supportent mal l’acidité. Une cuve ne tient que si cette population a eu le temps de monter. Sa limite est là, pas dans la plomberie."
+    },
+    {
+      "id": "part-sulphate-reducers",
+      "scope": "part:sulphate-reducers",
+      "title": "Sulfato-réducteurs",
+      "scene": "slurry",
+      "text": "Ceux-ci ne font pas le gaz qu’on veut. L’hydrogène sulfuré vient du soufre de la nourriture : c’est lui, l’odeur de la bouillie. Ils sont dans ce monde à cause de ce gaz, et non parce que notre modèle les connaît : il n’a pas de soufre. Combien y en a-t-il ? La fiche du filtre, sur la ligne de gaz, vous dira ce que nous n’en savons pas."
+    },
+    {
+      "id": "part-fatty-acid-pool",
+      "scope": "part:fatty-acid-pool",
+      "title": "Acides gras",
+      "scene": "slurry",
+      "text": "Voici le piège. Si la nourriture arrive plus vite que les méthanogènes ne se multiplient, cette réserve grossit et mange le tampon. Ils s’arrêtent : elle grossit encore. Aucun interrupteur dans notre modèle, cela vient tout seul. Le scénario Trop, d’un coup : trois jours, le gaz triple, puis plus rien. Et ce modèle est optimiste. Sur le terrain, la thèse marque comme suralimentée une installation à l’arrêt, très acide. Si notre lecture est bonne, c’est elle qui restait acide cinq semaines plus tard, avec un gaz qui ne brûlait pas."
+    },
+    {
+      "id": "part-bicarbonate-buffer",
+      "scope": "part:bicarbonate-buffer",
+      "title": "Tampon bicarbonate",
+      "scene": "slurry",
+      "text": "Ces petits grains-là ne sont pas du riz. Ils comptent le tampon, qui fixe l’acide sans presque changer l’acidité. Dans notre modèle, on coupe les repas à six virgule quatre sur l’échelle d’acidité : la cuve survit. Quelques heures plus tard, à six virgule trente-cinq, elle ne revient plus seule."
+    },
+    {
+      "id": "part-ammonium",
+      "scope": "part:ammonium",
+      "title": "Ammonium",
+      "scene": "slurry",
+      "text": "Voici ce que le gaz n’emporte pas. L’azote des protéines reste ici, et fait de l’effluent un engrais. À trop forte dose, dit le livre, il gênerait les méthanogènes. Notre modèle n’a pas d’azote, et ne verrait pas cette limite."
+    },
+    {
+      "id": "part-gas-bubble",
+      "scope": "part:gas-bubble",
+      "title": "Bulle",
+      "scene": "slurry",
+      "text": "La voilà ! Ce qui fut un grain de riz quitte le liquide. Une énigme : pourquoi le gaz des épluchures, plus maigre, a-t-il plus de méthane ? Si les deux nourritures font autant de gaz carbonique que de méthane, le liquide en garde à peu près le même volume. Dans un petit débit, cela pèse plus lourd. Mais un gaz plus riche n’est pas plus d’énergie : les restes en donnent près du double."
+    },
+    {
+      "id": "part-surviving-germs",
+      "scope": "part:surviving-germs",
+      "title": "Germes survivants",
+      "scene": "slurry",
+      "text": "Une goutte plus propre n’est pas une goutte sans germes. À ces températures, dit le livre, la digestion ne peut pas assurer que virus, bactéries et parasites soient inactivés. Notre modèle n’a pas de germes : sur ce point, il n’y a que des textes. Pour cet effluent, donc : des gants, des mains lavées, pas de feuilles crues."
+    },
+    {
+      "id": "part-mincer",
+      "scope": "part:mincer",
+      "title": "Hachoir",
+      "scene": "gas-line",
+      "text": "[[flows:on]] Retour à l’établi. Notre grain n’a rien à craindre : sur les restes de cantine, seuls la viande, le poisson et les fruits y passaient. [[flows:off]] Mais sur les déchets de marché, les fibres ont émoussé ses lames, encore et encore. On a fini au couteau, puis au mixeur. Un détail qui pèse lourd, quand le geste revient chaque jour."
+    },
+    {
+      "id": "part-dilution-bucket",
+      "scope": "part:dilution-bucket",
+      "title": "Seau de dilution",
+      "scene": "gas-line",
+      "text": "Au début, la thèse versait la nourriture, puis dix litres d’eau derrière. Pour moins boucher, elle a changé : tout dans le seau, jusqu’à la marque, on remue, on verse. Notre grain y prend son dernier bain. Une marque sur un seau remplace une balance et une consigne."
+    },
+    {
+      "id": "part-bell-hose",
+      "scope": "part:bell-hose",
+      "title": "Tuyau souple",
+      "scene": "gas-line",
+      "text": "Le seul mouvement de cette ligne. À chaque remplissage, il suit la cloche sur soixante-neuf centimètres, sans tirer, ou il arrache le robinet. Ce qui fut notre grain passe par lui. Mais l’eau s’amasse là où il plie, et une fuite ne s’y voit pas. Un tube rigide durerait plus longtemps, et ne suivrait pas : la souplesse se paie en pannes."
+    },
+    {
+      "id": "part-condensate-trap",
+      "scope": "part:condensate-trap",
+      "title": "Piège à condensats",
+      "scene": "gas-line",
+      "text": "Quelques grammes d’eau, et voilà une machine à l’arrêt. Notre modèle en compte environ deux grammes et demi par jour. C’est peu, mais la cloche ne pousse qu’à deux centimètres. Plein, il redevient un bouchon : on le purge, gaz fermé, sans flamme à côté."
+    },
+    {
+      "id": "part-hydraulic-relief",
+      "scope": "part:hydraulic-relief",
+      "title": "Soupape hydraulique",
+      "scene": "gas-line",
+      "text": "Une bouteille d’eau, et un tube qui plonge. La vraie soupape de cette machine, c’est le bord de sa cloche. Cette bouteille montre le principe : le niveau dans le tube suit la pression, un centimètre par millibar. Et une pression si basse n’est pas une raison d’être moins attentif : le gaz reste du gaz."
+    },
+    {
+      "id": "part-h2s-filter",
+      "scope": "part:h2s-filter",
+      "title": "Filtre à H₂S",
+      "scene": "gas-line",
+      "text": "Le gaz le plus dangereux de la machine, et le nez ne suffit pas. L’hydrogène sulfuré sent l’œuf pourri à des doses infimes. Puis l’odeur faiblit, et disparaît vers cent parties par million. Vers cinq cents, il tue d’un coup, selon le guide français. L’odeur n’est donc pas une alarme. Et dans ce gaz-ci, combien y en a-t-il ? Inconnu : le capteur de la thèse plafonnait à cent, presque partout. Et de ce filtre, nous ne promettons rien."
+    },
+    {
+      "id": "part-flame-arrester",
+      "scope": "part:flame-arrester",
+      "title": "Arrête-flamme",
+      "scene": "gas-line",
+      "text": "Une boule de paille d’acier ou de cuivre, et c’est tout. [[explode:0.6]] Le tutoriel la place là où l’on craint un retour de flamme : elle abaisse la température, et étouffe la combustion. [[explode:0]] Nous n’avons lu aucun essai qui dise ce qu’elle arrête à ces débits. Ce dessin lui donne une forme : il ne prouve rien sur son efficacité."
+    },
+    {
+      "id": "part-pressure-gauge",
+      "scope": "part:pressure-gauge",
+      "title": "Manomètre",
+      "scene": "gas-line",
+      "text": "Un cadran gradué jusqu’à soixante millibars, pour une pression de deux : l’aiguille bouge à peine. Il a lu deux à chacun de dix essais, quatre à chacun de cinq avec le demi-parpaing. Un instrument si large lit-il vraiment ces écarts ? Ici, l’aiguille suit notre modèle, sur sa vraie échelle : deux graduations, au mieux !"
+    },
+    {
+      "id": "part-wall-sleeve",
+      "scope": "part:wall-sleeve",
+      "title": "Fourreau de traversée",
+      "scene": "gas-line",
+      "text": "Un trou dans un mur, et pourtant, c’est une frontière. Aucune source ne décrit cette traversée : ce fourreau est notre lecture. Voyez : la cour d’un côté, la cuisine de l’autre. C’est ici que la machine entre dans un espace de vie. Une fuite dehors se dilue. Dans une pièce fermée, elle s’accumule."
+    },
+    {
+      "id": "part-kitchen-valve",
+      "scope": "part:kitchen-valve",
+      "title": "Vanne de cuisine",
+      "scene": "gas-line",
+      "text": "Une vanne à portée de main, pour ce qu’on ne voit pas. L’étude voisine juge probable que des flammes se soient éteintes sans que les cuisiniers le voient. Le gaz, lui, continue de sortir. Rien ne l’automatise : une flamme qui manque à l’appel se traite d’abord en fermant. Le scénario La flamme s’éteint ferme pour vous, et son alarme dit pourquoi."
+    },
+    {
+      "id": "part-biogas-burner",
+      "scope": "part:biogas-burner",
+      "title": "Brûleur à biogaz",
+      "scene": "gas-line",
+      "text": "Pas un brûleur à butane : ce gaz contient moins d’énergie par litre. Il est petit : cent litres en vingt-deux minutes. Un kilo de restes y donne environ trente-deux minutes, un kilo d’épluchures quatorze. Et dans l’étude voisine, les réchauds montraient déjà des dégâts au bout d’un an."
+    },
+    {
+      "id": "part-primary-air-sleeve",
+      "scope": "part:primary-air-sleeve",
+      "title": "Virole d’air primaire",
+      "scene": "gas-line",
+      "text": "Une simple bague, et c’est elle qui décide de la couleur. Une flamme longue et jaunâtre, dit le livre, c’est une combustion incomplète : du monoxyde de carbone dans la cuisine. Il n’a pas d’odeur, c’est le danger de ce réglage. Pour ce brûleur, nous n’avons trouvé aucun chiffre. C’est l’œil qui travaille, à chaque allumage, fenêtre ouverte."
+    },
+    {
+      "id": "part-blue-flame",
+      "scope": "part:blue-flame",
+      "title": "Flamme",
+      "scene": "gas-line",
+      "text": "[[isolate:on]] La voici, ce pour quoi tout le reste existe. Et notre grain ? Un grain cuit pèse quelques centièmes de gramme. À trente-deux minutes le kilo, faites le compte : environ un dixième de seconde de flamme. Tout ce voyage, pour cela ! [[isolate:off]] Il en faut donc beaucoup : deux kilos mélangés donnent environ quarante-cinq minutes, d’après la thèse. Sa hauteur, ici, n’est pas mesurée. Le tutoriel prévient : ces flammes se voient moins que celles du butane, on se brûle sans les avoir vues. Le bouton de cette fiche allume le brûleur."
+    },
+    {
+      "id": "part-pot-stand",
+      "scope": "part:pot-stand",
+      "title": "Support de casserole",
+      "scene": "gas-line",
+      "text": "[[explode:0.6]] Trois pièces et une distance : le brûleur, le support, la casserole. [[explode:0]] L’étude voisine note que la distance entre le brûleur et le fond compte beaucoup. Ici, un plat trop petit perd ce qui passe à côté. Le rendement de la cuisine se joue aussi à quelques centimètres d’air."
+    },
+    {
+      "id": "part-cooking-pot",
+      "scope": "part:cooking-pot",
+      "title": "Casserole",
+      "scene": "gas-line",
+      "text": "Fin du voyage. Les deux kilos du jour, à cinquante-cinq pour cent de rendement, portent environ six litres d’eau à ébullition. La thèse dit un tiers de la cuisson d’un ménage de la ville. Ce labo ne promet pas un dîner : l’étude voisine le voit finir au charbon de bois. Alors, un couvercle. Et s’il reste un grain de riz, au fond de l’assiette ? Il connaît le chemin."
+    },
+    {
+      "id": "part-vent-opening",
+      "scope": "part:vent-opening",
+      "title": "Aération",
+      "scene": "gas-line",
+      "text": "Une ouverture, en haut du mur. La thèse compte sur des maisons ouvertes, ce qu’une cuisine européenne n’est pas. Le méthane, plus léger que l’air, monte : elle l’aide. Le gaz carbonique et l’hydrogène sulfuré, plus lourds, restent en bas. Et aucune aération ne remplace un robinet fermé."
+    },
+    {
+      "id": "part-gas-detector",
+      "scope": "part:gas-detector",
+      "title": "Détecteur",
+      "scene": "gas-line",
+      "text": "Aucune installation domestique de nos sources n’en a. Il vient, par analogie, d’une règle française pour d’autres installations. Un détecteur de méthane ne lit ni le monoxyde de carbone, ni l’hydrogène sulfuré. Il n’ouvre aucune fenêtre, il ne ferme aucun robinet : quand il sonne, le geste reste à faire, et de dehors."
+    }
+  ]
+}
