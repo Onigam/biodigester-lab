@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { BiodigesterSim, MEASURED_T_MIN, STEP } from './engine';
-import { DRAWN_MACHINE, FITTINGS, MACHINES, PLANT_1000, trappedVolume } from './machine';
+import { DRAWN_MACHINE, FITTINGS, MACHINES, MODEL, PLANT_1000, trappedVolume } from './machine';
 import { Plant } from './plant';
 import { PRESET_IDS, presetParams, RANGES, scenarioSetup, SCENARIO_IDS, SPEEDS } from './presets';
 import { stripAlarms, stripClock, stripValues } from './strip';
@@ -440,6 +440,37 @@ describe('what the state is honest about', () => {
     sim.set({ site: 'marseille', fixedT: 30 });
     run(sim, 0.01);
     expect(sim.state.figureTag).toBe('*');
+  });
+  it('a size nobody measured is a model too, at Dar es Salaam as well', () => {
+    for (const id of PRESET_IDS) {
+      const sim = new BiodigesterSim();
+      sim.applyPreset(id);
+      sim.set({ fixedT: 30 });
+      run(sim, 0.01);
+      expect(sim.state.figureTag, id).toBe(id === 'plant-1000' || id === 'school-4000' ? '†' : '*');
+    }
+  });
+  it('the flame button lights a burner set to closed, and it stays lit', () => {
+    const sim = new BiodigesterSim();
+    sim.set({ burner: 'off', timeScale: 60 });
+    run(sim, 0.01);
+    expect(sim.state.flameOn).toBe(false);
+    sim.lightBurner();
+    run(sim, 0.005);
+    expect(sim.state.flameOn).toBe(true);
+    expect(sim.params.burner).toBe('meals');
+  });
+  it('a scenario can be asked again from another setting, in the plant’s whole history, and knows what it is', () => {
+    const sim = new BiodigesterSim();
+    expect(sim.scenarioNow).toBeNull();
+    sim.applyScenario('geneva-january', { Ea: 45000 });
+    expect(sim.scenarioNow).toBe('geneva-january');
+    expect(sim.params.Ea).toBe(45000);
+    expect(sim.params.site).toBe('geneva');
+    sim.reset();
+    expect(sim.params.Ea).toBe(MODEL.Ea);
+    sim.applyPreset('plant-1000');
+    expect(sim.scenarioNow).toBeNull();
   });
   it('every key of the state has its word', () => {
     const s = new BiodigesterSim().state;

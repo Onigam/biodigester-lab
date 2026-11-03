@@ -52,14 +52,11 @@ export const ALARM_TEXTS: Record<AlarmKey, { text: Pair; severe: boolean }> = {
 };
 
 export const PRESET_TEXTS: Record<PresetId, Pair> = {
-  'plant-1000': [
-    '1 000 et 750 L, mesurée à Dar es Salaam (le lab)',
-    '1,000 and 750 L, measured at Dar es Salaam (the lab)',
-  ],
+  'plant-1000': ['1 000 et 750 L, la mesurée', '1,000 and 750 L, the one measured'],
   'plant-1500': ['1 500 et 1 000 L, la taille choisie ensuite', '1,500 and 1,000 L, the size chosen later'],
   'plant-1100': ['1 100 et 750 L, une construction au Guatemala', '1,100 and 750 L, a build in Guatemala'],
   'school-4000': ['4 000 et 3 000 L, l’installation d’une école', '4,000 and 3,000 L, a school’s plant'],
-  'drum-60': ['Bidon de 60 L et poche de 150 L, à 38 °C', 'A 60 L drum and a 150 L bag, at 38 °C'],
+  'drum-60': ['Bidon de 60 L et poche de 150 L', 'A 60 L drum and a 150 L bag'],
 };
 
 export const SCENARIO_TEXTS: Record<ScenarioId, { name: Pair; lesson: Pair }> = {
@@ -172,6 +169,6 @@ export const SITE_TEXTS: Record<SiteId, Pair> = {
 
 /** Said once, in the panel, beside the two marks. */
 export const TAG_NOTE: Pair = [
-  '† résultat du modèle, là où une installation a été mesurée. * le même modèle là où aucune ne l’a été : sous 25 °C environ, ou ailleurs qu’à Dar es Salaam. Le H₂S réel de ce gaz reste inconnu : le seul instrument qui l’a lu plafonnait à 100 ppm.',
-  '† a model result, where a plant has been measured. * the same model where none has: below about 25 °C, or anywhere but Dar es Salaam. The real H₂S in this gas stays unknown: the only instrument that read it stopped at 100 ppm.',
+  '† résultat du modèle, là où une installation a été mesurée. * le même modèle là où aucune ne l’a été : sous 25 °C environ, ailleurs qu’à Dar es Salaam, ou sur une taille que personne n’a mesurée. Le H₂S réel de ce gaz reste inconnu : le seul instrument qui l’a lu plafonnait à 100 ppm.',
+  '† a model result, where a plant has been measured. * the same model where none has: below about 25 °C, anywhere but Dar es Salaam, or on a size nobody measured. The real H₂S in this gas stays unknown: the only instrument that read it stopped at 100 ppm.',
 ];

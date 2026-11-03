@@ -258,7 +258,7 @@ export interface BioState {
   regime: Regime;
   /** The place is the one where a plant was measured. */
   siteMeasured: boolean;
-  /** † a model result on conditions a plant was measured in; * the same model where no plant was measured: below about 25 °C, or anywhere but Dar es Salaam. */
+  /** † a model result on conditions a plant was measured in; * the same model where no plant was measured: below about 25 °C, anywhere but Dar es Salaam, or on a size nobody measured. */
   figureTag: '†' | '*';
   /** The drawn machine, or one that runs in the charts only. */
   onDrawnMachine: boolean;

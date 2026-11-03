@@ -33,6 +33,8 @@ const SCOPE_LENGTH = 1440;
 export const MEASURED_T_MIN = 25;
 /** The one place a plant of this kind was measured by a source read. */
 export const MEASURED_SITE: SiteId = 'dar-es-salaam';
+/** The sizes a source measured at that place (K19, K35): the other presets are the same model with no plant behind them. */
+export const MEASURED_MACHINES: readonly MachineId[] = ['plant-1000', 'school-4000'];
 /** S8's limit for unstirred plants, kg VS/m³·d (K15). */
 export const LOAD_LIMIT = 2;
 /** Acids against the buffer past which S7 calls a plant overfed (0.3), and S5's pH to avoid (6). */
@@ -246,10 +248,17 @@ export class BiodigesterSim implements LabSim {
     this.load({ params: presetParams(id as PresetId), spinUp: RUN_IN_DAYS, bellFill: 0.3, startHour: 6, events: [] });
   }
 
-  applyScenario(id: string): void {
+  /** `from`: what differs from the scenario's own settings, in the plant's whole history too: the panel's Ea slider asks how the same plant would have lived at another Ea. */
+  applyScenario(id: string, from: Partial<BioParams> = {}): void {
     this.lastKind = 'scenario';
     this.lastId = id as ScenarioId;
-    this.load(scenarioSetup(id as ScenarioId));
+    const setup = scenarioSetup(id as ScenarioId);
+    this.load({ ...setup, params: { ...setup.params, ...from } });
+  }
+
+  /** The scenario the plant is running, if it came from one: its lesson stays in the panel while the visitor tries things. */
+  get scenarioNow(): ScenarioId | null {
+    return this.lastKind === 'scenario' ? (this.lastId as ScenarioId) : null;
   }
 
   /** Start again from the last preset or scenario. */
@@ -265,8 +274,9 @@ export class BiodigesterSim implements LabSim {
     this.emit();
   }
 
-  /** A gesture: light the burner, whatever the hour. It holds for the machine's meal, or until it goes out. */
+  /** A gesture: light the burner, whatever the hour. It holds for the machine's meal, or until it goes out. A burner set to closed opens to its meals, or the next step would shut it again. */
   lightBurner(): void {
+    if (this.params.burner === 'off') this.params.burner = 'meals';
     this.plant.mealLeft = Math.max(this.plant.mealLeft, (this.params.cookMinutes / 2) * 60);
     this.plant.light();
     this.refreshState();
@@ -479,7 +489,7 @@ export class BiodigesterSim implements LabSim {
 
     s.regime = T < MEASURED_T_MIN ? 'below-measurements' : 'inside-measurements';
     s.siteMeasured = p.site === MEASURED_SITE;
-    s.figureTag = s.regime === 'inside-measurements' && s.siteMeasured ? '†' : '*';
+    s.figureTag = s.regime === 'inside-measurements' && s.siteMeasured && MEASURED_MACHINES.includes(m.id) ? '†' : '*';
 
     s.feedCount = pl.feedCount;
     s.flameLitCount = pl.flameLitCount;
