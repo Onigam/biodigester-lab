@@ -208,6 +208,15 @@ describe('the figures in the lessons are the model’s', () => {
       expect(firstWinter('geneva', { Ea: 80000 }).find((r) => r.month === 10)!.gasL).toBeLessThan(
         firstWinter('geneva').find((r) => r.month === 10)!.gasL,
       );
+      // it opens on what the model cannot decide, and those two figures are the model's
+      expect(fr).toMatch(/^Sur deux kilos par jour.*Le modèle ne peut pas trancher/);
+      expect(en).toMatch(/^On two kilos a day.*The model cannot decide/);
+      const holds = read(en, /holds up to (\d+) kJ\/mol \*/)[0]!;
+      const fails = read(en, /sours from (\d+) \*/)[0]!;
+      expect(read(fr, /jusqu’à (\d+) kJ\/mol \*/)[0]).toBe(holds);
+      expect(read(fr, /tourne dès (\d+) \*/)[0]).toBe(fails);
+      expect(lowest(holds * 1000)).toBeGreaterThan(6);
+      expect(lowest(fails * 1000)).toBeLessThan(5.5);
     },
     LONG,
   );
