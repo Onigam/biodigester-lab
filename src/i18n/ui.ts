@@ -49,7 +49,7 @@ export const LAB_STRINGS = {
   toggleTrap: ['Piège à condensats', 'Condensate trap'],
   // the hint beside that slider, in the Geneva scenario: the model cannot decide the winter
   eaHint: figs(
-    'Le chiffre qui décide de l’hiver : sur 2 kg par jour à Genève, une cuve nue tient jusqu’à {eaHolds} et tourne dès {eaFails}. Le seul indice que nous ayons trouvé tombe vers {eaClue}. Le modèle ne tranche donc pas. La bascule bouge aussi avec l’histoire de la cuve : celle-ci, qui vit à Genève depuis avril, tient encore à {eaLiveHolds} et tourne dès {eaLiveFails}. Chaque réglage reprend en septembre.',
+    'Le chiffre qui décide de l’hiver : sur 2 kg par jour à Genève, une cuve nue tient jusqu’à {eaHolds} et tourne à l’acide dès {eaFails}. Le seul indice que nous ayons trouvé tombe vers {eaClue}. Le modèle ne tranche donc pas. La bascule bouge aussi avec l’histoire de la cuve : celle-ci, qui vit à Genève depuis avril, tient encore à {eaLiveHolds} et tourne à l’acide dès {eaLiveFails}. Chaque réglage reprend en septembre.',
     'The figure that decides the winter: on 2 kg a day at Geneva, a bare tank holds up to {eaHolds} and sours from {eaFails}. The one clue we found stands near {eaClue}. So the model does not decide. The switch also moves with the tank’s history: this one, at Geneva since April, still holds at {eaLiveHolds} and sours from {eaLiveFails}. Each setting starts again in September.',
   ),
   // the hint under the starting points, shown when the machine is not the drawn one (`state.onDrawnMachine`)

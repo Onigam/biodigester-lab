@@ -222,8 +222,8 @@ export const GAS_LINE_PARTS: PartInfo[] = [
     category: 'hydraulic',
     name: l('Filtre à H₂S', 'H₂S filter'),
     short: l(
-      'De la paille de fer ou de l’argile, pour le gaz le plus dangereux de la machine : essayé, et jamais prouvé sur cette installation.',
-      'Iron wool or clay, for the most dangerous gas in the machine: tried, and never proven on this plant.',
+      'De la paille de fer ou de l’argile, pour le gaz le plus dangereux de la machine. Ce filtre n’était pas sur l’installation mesurée.',
+      'Iron wool or clay, for the most dangerous gas in the machine. This filter was not on the measured plant.',
     ),
     description: lf(
       'L’hydrogène sulfuré se sent à 0,008 ppm : c’est l’odeur d’œuf pourri. Il devient plus discret, puis disparaît au nez vers 100 ppm, et il tue d’un coup vers 500 ppm, d’après le guide français des installations agricoles. Dans cette machine, sa teneur n’est pas connue : le capteur de la thèse plafonnait à 100 ppm presque partout. L’odeur n’est donc pas une alarme. La thèse a essayé un petit piège à soufre sur son installation, sans pouvoir en mesurer l’effet avec ce capteur. Le Low-tech Lab fait passer le gaz sur du fer ou de l’argile. Ce filtre n’était pas sur l’installation mesurée, et sa forme et ses tailles sont les nôtres.',
@@ -553,8 +553,8 @@ export const GAS_LINE_PARTS: PartInfo[] = [
       'When the model has the burner off, there is nothing to outline. The button on this sheet lights it, and Isolate shows it alone, lit or not.',
     ),
     design: lf(
-      'Elle ne double pas avec le demi-parpaing : la pression double, le débit fait {orificeRatio} à {flowRatio} selon qu’on suit l’orifice ou la mesure, et aucune de nos sources ne mesure sa hauteur. Une flamme à environ {powerIn} n’est pas celle d’un feu de gaz de ville. Elle cuit un repas, à condition de ne pas le faire bouillir une heure.',
-      'It does not double with the half-brick: the pressure doubles, the flow goes up {orificeRatio} to {flowRatio} depending on whether one follows the orifice or the measurement, and none of our sources measured its height. A flame of about {powerIn} is no city-gas ring. It cooks a meal, as long as it is not left boiling for an hour.',
+      'Elle ne double pas avec le demi-parpaing : la pression double, le débit fait {orificeRatio} à {flowRatio} selon qu’on suit l’orifice ou la mesure, et aucune de nos sources ne mesure sa hauteur. Une flamme à environ {powerIn} n’est pas celle d’un feu de gaz de ville. Elle peut cuire un plat, s’il ne bout pas longtemps.',
+      'It does not double with the half-brick: the pressure doubles, the flow goes up {orificeRatio} to {flowRatio} depending on whether one follows the orifice or the measurement, and none of our sources measured its height. A flame of about {powerIn} is no city-gas ring. It can cook a dish that does not boil for long.',
     ),
   },
   {

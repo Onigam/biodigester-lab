@@ -98,8 +98,8 @@ export const SCENARIO_TEXTS: Record<ScenarioId, { name: Pair; lesson: Pair }> = 
   'half-brick': {
     name: ['Le demi-parpaing', 'The half-brick'],
     lesson: [
-      'Douze kilos posés sur la cloche : 2,03 mbar † de plus, ce que la thèse a lu sur son manomètre. La flamme grandit, le gaz part plus vite. Un simple orifice donne alors 1,4 fois † le débit ; la thèse a mesuré 1,84 fois †. L’écart n’est pas expliqué.',
-      'Twelve kilos laid on the bell: 2.03 mbar † more, what the thesis read on its gauge. The flame grows, the gas goes faster. A plain orifice then gives 1.4 times † the flow; the thesis measured 1.84 times †. The gap is not explained.',
+      'Douze kilos posés sur la cloche : 2,03 mbar † de plus, ce que la thèse a lu sur son manomètre. Le gaz part plus vite. Un simple orifice donne alors 1,4 fois † le débit ; la thèse a mesuré 1,84 fois †. L’écart n’est pas expliqué.',
+      'Twelve kilos laid on the bell: 2.03 mbar † more, what the thesis read on its gauge. The gas goes faster. A plain orifice then gives 1.4 times † the flow; the thesis measured 1.84 times †. The gap is not explained.',
     ],
   },
   'full-bell': {
@@ -112,7 +112,7 @@ export const SCENARIO_TEXTS: Record<ScenarioId, { name: Pair; lesson: Pair }> = 
   'geneva-january': {
     name: ['Un hiver à Genève', 'A winter at Geneva'],
     lesson: [
-      'Sur deux kilos par jour, une cuve nue passe-t-elle l’hiver à Genève ? Le modèle ne peut pas trancher : elle tient jusqu’à 43 kJ/mol *, tourne dès 44 *, et le seul indice que nous ayons trouvé sur cette énergie d’activation tombe vers 44 *. Déplacez son curseur. Au réglage d’ouverture, 60 *, la cuve suit l’air depuis septembre, le gaz baisse de mois en mois. Début décembre, vers 6 °C *, les méthanogènes ne mangent plus ce qu’on leur donne : le pH s’effondre, et le gaz ne revient pas au printemps *. Sans nourriture de novembre à mars, il revient seul en avril *. Aux extrêmes : à 40 kJ/mol la cuve passe l’hiver *, à 80 elle cède plus tôt *. Nous n’avons trouvé aucune mesure de ce genre d’installation sous 25 °C environ : ce scénario n’est qu’un modèle.',
+      'Sur deux kilos par jour, une cuve nue passe-t-elle l’hiver à Genève ? Le modèle ne peut pas trancher : elle tient jusqu’à 43 kJ/mol *, tourne à l’acide dès 44 *, et le seul indice que nous ayons trouvé sur cette énergie d’activation tombe vers 44 *. Déplacez son curseur. Au réglage d’ouverture, 60 *, la cuve suit l’air depuis septembre, le gaz baisse de mois en mois. Début décembre, vers 6 °C *, les méthanogènes ne mangent plus ce qu’on leur donne : le pH s’effondre, et le gaz ne revient pas au printemps *. Sans nourriture de novembre à mars, il revient seul en avril *. Aux extrêmes : à 40 kJ/mol la cuve passe l’hiver *, à 80 elle cède plus tôt *. Nous n’avons trouvé aucune mesure de ce genre d’installation sous 25 °C environ : ce scénario n’est qu’un modèle.',
       'On two kilos a day, does a bare tank last the winter at Geneva? The model cannot decide: it holds up to 43 kJ/mol *, sours from 44 *, and the one clue we found to this activation energy stands near 44 *. Move its slider. At the opening setting, 60 *, the tank follows the air from September, the gas falling month by month. In early December, near 6 °C *, the methanogens no longer eat what they are given: the pH collapses, and the gas does not return in spring *. With no food from November to March, it returns by itself in April *. At the extremes: at 40 kJ/mol the tank comes through the winter *, at 80 it gives way sooner *. We found no measurement of a plant of this kind below about 25 °C: this scenario is only a model.',
     ],
   },

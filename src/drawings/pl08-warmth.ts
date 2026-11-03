@@ -84,7 +84,7 @@ export const warmthSheet: DrawingSheet = {
   group: 'limits',
   title: l('La chaleur et le temps', 'Warmth and time'),
   description: lf(
-    'Une question que le modèle ne tranche pas : sur 2 kg par jour, une cuve nue à Genève tient jusqu’à {eaHolds} et tourne dès {eaFails}, et le seul indice trouvé tombe vers {eaClue}. À gauche, la vitesse selon la température pour quatre énergies d’activation, en zone ombrée sous 25 °C, où nous n’avons trouvé aucune mesure. À droite, les quatre climats, sourcés, puis une année à Genève et le bilan de chaleur, tous deux du modèle seul.',
+    'Une question que le modèle ne tranche pas : sur 2 kg par jour, une cuve nue à Genève tient jusqu’à {eaHolds} et tourne à l’acide dès {eaFails}, et le seul indice trouvé tombe vers {eaClue}. À gauche, la vitesse selon la température pour quatre énergies d’activation, en zone ombrée sous 25 °C, où nous n’avons trouvé aucune mesure. À droite, les quatre climats, sourcés, puis une année à Genève et le bilan de chaleur, tous deux du modèle seul.',
     'A question the model does not decide: on 2 kg a day, a bare tank at Geneva holds up to {eaHolds} and sours from {eaFails}, and the one clue found stands near {eaClue}. On the left, the rate against temperature for four activation energies, shaded below 25 °C, where we found no measurement. On the right, the four climates, sourced, then a year at Geneva and the heat budget, both from the model alone.',
   ),
   scene: 'digester',
@@ -180,7 +180,7 @@ export const warmthSheet: DrawingSheet = {
       116,
       230,
       lf(
-        'Tous ces chiffres sont le modèle seul, chacun avec son étoile : {heatStraw} demandés en paille, contre {gasEnergyCold} dans le gaz et environ {gasUsefulCold} au sortir d’un brûleur. Il paie donc sa chaleur de juin à septembre, en paille, et jamais à nu. Le départ à chaud en juillet, ici, fait tourner la cuve un mois plus tôt que dans le scénario de la Simulation, qui a vécu depuis avril sous ce climat : la date dépend de son histoire. En dessous d’environ 10 °C, même la loi de vitesse est une extrapolation.',
+        'Tous ces chiffres sont le modèle seul, chacun avec son étoile : {heatStraw} demandés en paille, contre {gasEnergyCold} dans le gaz et environ {gasUsefulCold} au sortir d’un brûleur. Il paie donc sa chaleur de juin à septembre, en paille, et jamais à nu. Le départ à chaud en juillet, ici, fait tourner la cuve à l’acide un mois plus tôt que dans le scénario de la Simulation, qui a vécu depuis avril sous ce climat : la date dépend de son histoire. En dessous d’environ 10 °C, même la loi de vitesse est une extrapolation.',
         'All these figures are the model alone, each with its star: {heatStraw} asked in straw, against {gasEnergyCold} in the gas and about {gasUsefulCold} out of a burner. So it pays for its warmth from June to September, in straw, and never bare. The warm start in July here sours the tank a month sooner than in the Simulation’s scenario, which has lived on this climate since April: the date depends on its history. Below about 10 °C even the law of the rate is an extrapolation.',
       ),
       { size: 1.85 },
@@ -198,7 +198,7 @@ export const warmthSheet: DrawingSheet = {
       ],
       [
         [
-          l('Un saut tourne dès, par jour', 'A jump sours from, a day'),
+          l('Un saut l’acidifie dès, par jour', 'A jump sours from, a day'),
           lf('{jump32}', '{jump32}'),
           lf('{jump25}', '{jump25}'),
           lf('{jump20}', '{jump20}'),

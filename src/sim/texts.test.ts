@@ -214,7 +214,7 @@ describe('the figures in the lessons are the model’s', () => {
       const holds = read(en, /holds up to (\d+) kJ\/mol \*/)[0]!;
       const fails = read(en, /sours from (\d+) \*/)[0]!;
       expect(read(fr, /jusqu’à (\d+) kJ\/mol \*/)[0]).toBe(holds);
-      expect(read(fr, /tourne dès (\d+) \*/)[0]).toBe(fails);
+      expect(read(fr, /tourne à l’acide dès (\d+) \*/)[0]).toBe(fails);
       expect(lowest(holds * 1000)).toBeGreaterThan(6);
       expect(lowest(fails * 1000)).toBeLessThan(5.5);
     },

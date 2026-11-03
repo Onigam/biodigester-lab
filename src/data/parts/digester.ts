@@ -91,8 +91,8 @@ export const DIGESTER_PARTS: PartInfo[] = [
       'At the opening clock, an hour a second, it plainly climbs, and comes down at each meal. Its true speed is far too slow to see.',
     ),
     design: lf(
-      'Une cloche flottante fait deux choses sans mécanisme : elle dit combien il reste, et elle garde une pression à peu près constante. Sa limite est dans ses proportions : elle est plus haute (1,30 m) que le liquide n’est profond (1,04 m). Posée, il reste environ {trappedL} sous elle, que rien ne peut tirer. La taille suivante, plus courte, peut couler entièrement.',
-      'A floating bell does two things with no mechanism: it shows how much is left, and it keeps the pressure roughly steady. Its limit lies in its proportions: it is taller (1.30 m) than the liquid is deep (1.04 m). Once resting, about {trappedL} stay under it, which nothing can draw. The next size up, shorter, can sink all the way.',
+      'Une cloche flottante fait deux choses sans mécanisme : elle dit combien il reste, et elle met le gaz sous pression. Sa limite est dans ses proportions : elle est plus haute (1,30 m) que le liquide n’est profond (1,04 m). Posée, il reste environ {trappedL} sous elle, que rien ne peut tirer. La taille suivante, plus courte, peut couler entièrement.',
+      'A floating bell does two things with no mechanism: it shows how much is left, and it puts the gas under pressure. Its limit lies in its proportions: it is taller (1.30 m) than the liquid is deep (1.04 m). Once resting, about {trappedL} stay under it, which nothing can draw. The next size up, shorter, can sink all the way.',
     ),
   },
   {

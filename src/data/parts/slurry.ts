@@ -277,7 +277,7 @@ export const SLURRY_PARTS: PartInfo[] = [
     category: 'hydraulic',
     name: l('Acides gras', 'Fatty-acid pool'),
     short: l(
-      'La réserve d’acides entre ceux qui les font et ceux qui les mangent : c’est elle qui fait tourner une cuve.',
+      'La réserve d’acides entre ceux qui les font et ceux qui les mangent : c’est elle qui fait tourner une cuve à l’acide.',
       'The stock of acids between those who make and those who eat them: it is what sours a tank.',
     ),
     description: lf(
@@ -296,7 +296,7 @@ export const SLURRY_PARTS: PartInfo[] = [
     maintenance: maint(
       {
         failure:
-          'Une cuve qui tourne : le modèle garde un pH presque normal, {pHNoReturn}, jusqu’au moment où plus rien ne revient seul.',
+          'Une cuve qui tourne à l’acide : le modèle garde un pH presque normal, {pHNoReturn}, jusqu’au moment où plus rien ne revient seul.',
         check: 'La thèse a suivi ce rapport par titrage : c’est une analyse de laboratoire, pas le geste d’un ménage.',
         care: 'Une montée lente, et le geste le plus simple : s’arrêter tôt. Après coup, le modèle demande environ {rescue100} à 100 L d’eau par jour pour la ramener.',
       },

@@ -235,7 +235,7 @@ export const LESSONS: Lesson[] = [
         'On 2 kg a day, does a bare tank last the winter at Geneva? **The model cannot decide.** It holds up to {eaHolds} of activation energy, sours from {eaFails}, and the one clue found stands near {eaClue}, in the summary of a study. Run “A winter at Geneva” and move the **Activation energy** slider: at {eaDefault}, the gas stops near {genevaT} in early December; at {eaLow}, the tank comes through. We found no measurement of a plant of this kind below about 25 °C.',
       ),
       lf(
-        'À {eaDefault}, 15 °C vaut {k15} de la vitesse à 30 °C, 37 °C en vaut {k37}. Le gaz baisse pourtant à peine : à 15 °C, avec des solides gardés 300 jours, il reste {steady15}. Le froid se paie autrement : moins de capacité, autant de nourriture. Tenue au froid, une cuve tourne entre {soursColdLow} et {soursColdHigh} sur 2 kg. Sous une moyenne de 15 °C, dit le livre, elle « ne marche pas de façon satisfaisante » ; le concepteur écrit « au-dessus de 30 °C ».',
+        'À {eaDefault}, 15 °C vaut {k15} de la vitesse à 30 °C, 37 °C en vaut {k37}. Le gaz baisse pourtant à peine : à 15 °C, avec des solides gardés 300 jours, il reste {steady15}. Le froid se paie autrement : moins de capacité, autant de nourriture. Tenue au froid, une cuve tourne à l’acide entre {soursColdLow} et {soursColdHigh} sur 2 kg. Sous une moyenne de 15 °C, dit le livre, elle « ne marche pas de façon satisfaisante » ; le concepteur écrit « au-dessus de 30 °C ».',
         'At {eaDefault}, 15 °C is worth {k15} of the rate at 30 °C, 37 °C is worth {k37}. Yet the gas hardly falls: with solids held 300 days, at 15 °C the model still gives {steady15}. Cold is paid for another way: the methanogens have less capacity, while the food keeps coming. A tank held cold sours between {soursColdLow} and {soursColdHigh} on 2 kg. The book says that below a mean of 15 °C it “does not work satisfactorily”; the designer writes “above 30 °C”.',
       ),
       lf(
@@ -250,7 +250,11 @@ export const LESSONS: Lesson[] = [
     formula: 'k(T) = k₃₀ · exp[(Ea/R) · (1/303 − 1/T)]',
     figures: [
       chip('Genève, cuve nue, 2 kg par jour', 'Geneva, bare tank, 2 kg a day', l('non tranché', 'not decided')),
-      chip('Tient jusqu’à, tourne dès', 'Holds up to, sours from', lf('{eaHolds}, {eaFails}', '{eaHolds}, {eaFails}')),
+      chip(
+        'Tient jusqu’à, tourne à l’acide dès',
+        'Holds up to, sours from',
+        lf('{eaHolds}, {eaFails}', '{eaHolds}, {eaFails}'),
+      ),
       chip('Le seul indice', 'The one clue', lf('vers {eaClue}', 'near {eaClue}')),
     ],
     focus: { scene: 'digester', part: 'clear-liquor', scenario: 'geneva-january' },
@@ -261,13 +265,13 @@ export const LESSONS: Lesson[] = [
           'What does the model say of a Geneva winter on 2 kg a day, bare tank?',
         ),
         choices: [
-          l('La cuve tourne forcément en décembre', 'The tank is bound to sour in December'),
+          l('La cuve tourne forcément à l’acide en décembre', 'The tank is bound to sour in December'),
           l('Sa cuve noire passe l’hiver sans peine', 'Its black tank gets through with ease'),
           l('Il ne peut pas trancher : tout tient à un chiffre', 'It cannot decide: it all rests on one figure'),
         ],
         answer: 2,
         explain: lf(
-          '**Il ne tranche pas.** Elle tient jusqu’à {eaHolds} et tourne dès {eaFails}, et le seul indice trouvé tombe là, vers {eaClue}. Décembre, c’est le réglage d’ouverture, {eaDefault}, et ce n’est pas une prévision.',
+          '**Il ne tranche pas.** Elle tient jusqu’à {eaHolds} et tourne à l’acide dès {eaFails}, et le seul indice trouvé tombe là, vers {eaClue}. Décembre, c’est le réglage d’ouverture, {eaDefault}, et ce n’est pas une prévision.',
           '**It does not decide.** It holds up to {eaHolds} and sours from {eaFails}, and the one clue found stands right there, near {eaClue}. December is the opening setting, {eaDefault}, and not a forecast.',
         ),
       },
@@ -298,7 +302,7 @@ export const LESSONS: Lesson[] = [
   // ------------------------------------------------------------------------------------------------ 5
   {
     id: 'feed-or-sour',
-    title: l('Nourrir ou faire tourner', 'Feed or sour'),
+    title: l('Nourrir ou acidifier', 'Feed or sour'),
     summary: l(
       'La panne de cette machine : on la nourrit davantage, elle donne plus de gaz, puis plus rien du tout.',
       'This machine’s failure: feed it more, it gives more gas, and then nothing at all.',
@@ -317,8 +321,8 @@ export const LESSONS: Lesson[] = [
         'The thesis climbed to 5 kg a day, over several weeks: 670 L a day, 150 minutes of flame, a pH down to 6.2, no failure. “The ramp to five kilos” finds about {rampLitres} and {rampMinutes}, but its pH stays above {rampPH}, and that gap is unresolved. Here the model is hopeful: its threshold, {soursAt32}, passes the book’s {bookLimit}. It has one volume, whereas a real unstirred tank turns sour first near its inlet. Its {rampAt32} after a ramp is not to be believed.',
       ),
       lf(
-        'L’enquête de terrain a trouvé une installation à l’arrêt à pH 4,15, que la thèse marque comme suralimentée. Cinq semaines plus tard, malgré l’arrêt des repas, elle restait acide et son gaz ne brûlait pas. Le modèle passe par ce pH en environ {sourWeeks} et finit de {sourEndLow} à {sourEndHigh}. Coupé de nourriture, rien n’y revient seul : il lui faut environ {rescue100} à 100 L d’eau par jour, {rescue50} à 50 L. Une vraie cuve peut garder des poches vivantes que ce modèle ne voit pas.',
-        'The field survey found a stopped plant at pH 4.15, which the thesis marks as overfed. Five weeks later, though feeding had stopped, it was still sour and its gas would not burn. The model passes that pH in about {sourWeeks} and ends at {sourEndLow} to {sourEndHigh}. Cut off from food, nothing comes back by itself: it takes about {rescue100} at 100 L of water a day, {rescue50} at 50 L. A real tank may hold living pockets this model cannot see.',
+        'L’enquête de terrain a trouvé une installation à l’arrêt à pH 4,15, que la thèse marque comme suralimentée. Cinq semaines plus tard, si notre lecture est bonne, malgré l’arrêt des repas, elle restait acide et son gaz ne brûlait pas. Le modèle passe par ce pH en environ {sourWeeks} et finit de {sourEndLow} à {sourEndHigh}. Coupé de nourriture, rien n’y revient seul : il lui faut environ {rescue100} à 100 L d’eau par jour, {rescue50} à 50 L. Une vraie cuve peut garder des poches vivantes que ce modèle ne voit pas.',
+        'The field survey found a stopped plant at pH 4.15, which the thesis marks as overfed. Five weeks later, if our reading is right, though feeding had stopped, it was still sour and its gas would not burn. The model passes that pH in about {sourWeeks} and ends at {sourEndLow} to {sourEndHigh}. Cut off from food, nothing comes back by itself: it takes about {rescue100} at 100 L of water a day, {rescue50} at 50 L. A real tank may hold living pockets this model cannot see.',
       ),
     ],
     formula: 'k_m(T) · m(pH) · X',
@@ -483,8 +487,8 @@ export const LESSONS: Lesson[] = [
         ],
         answer: 2,
         explain: l(
-          '**Dix.** Cela dit où est le problème : pas tant dans la machine que dans la formation et le suivi, comme la thèse le conclut. Deux restaient à l’arrêt, dont celle qu’on avait suralimentée.',
-          '**Ten.** That says where the trouble lies: not so much in the machine as in training and follow-up, as the thesis concludes. Two stayed stopped, one of them the overfed plant.',
+          '**Dix.** Cela dit où est le problème : pas tant dans la machine que dans la formation et le suivi, comme la thèse le conclut. Deux restaient à l’arrêt, dont, si notre lecture est bonne, celle qu’on avait suralimentée.',
+          '**Ten.** That says where the trouble lies: not so much in the machine as in training and follow-up, as the thesis concludes. Two stayed stopped, one of them, if our reading is right, the overfed plant.',
         ),
       },
       {
