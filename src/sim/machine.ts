@@ -311,7 +311,7 @@ export const MODEL = {
   // ---- the gas leaving the liquid
   /** Mass transfer through the open ring, m/day. estimate: still water takes up to about 1 m/d, a scum holds it back. */
   ringTransfer: 0.5,
-  /** Below this share of methane a flame does not hold, estimate. */
+  /** Below this share of methane a flame does not hold. reported: S5 p. 13 and S8 p. 25 say biogas above 45 % methane burns, both after Deublein. That a lit flame goes out under it is this model's reading of them. */
   leanFlame: 0.45,
   /** Pressure at the burner below which the flame goes out, Pa. estimate: half the lowest pressure at which anyone timed a flame (2 mbar, K22). */
   flameMinPressure: 100,

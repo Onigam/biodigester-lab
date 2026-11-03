@@ -1,6 +1,6 @@
 # Physics of the Biodigester lab
 
-The simulation in `src/sim` (pure TypeScript, no DOM, no three.js, runs in Node under vitest). It models the machine of research §0.1: a 1,000 L tank with about 850 L of slurry and a 750 L tank upside down inside it, floating on the slurry, rising as gas collects, fed kitchen scraps and water twice a day. The machine is not formally chosen yet: this is the research's recommendation, and every number of it lives in one place, `src/sim/machine.ts`.
+The simulation in `src/sim` (pure TypeScript, no DOM, no three.js, runs in Node under vitest). It models the machine of research §0.1: a 1,000 L tank with about 850 L of slurry and a 750 L tank upside down inside it, floating on the slurry, rising as gas collects, fed kitchen scraps and water twice a day. The machine is the research's recommendation, which the owner accepted on 2026-11-03 (research §8, Q1), and every number of it lives in one place, `src/sim/machine.ts`.
 
 The gas, the pH, the bell, the collapse of an overfed tank and the death of a cold one are **outcomes** of these equations, not curves drawn.
 
@@ -112,7 +112,7 @@ S5's 400 L does not count it: its scale was marked « until all biogas (400 l) w
 Q = Q_ref·((P − P_water − R_hose·Q)/P_ref)^n     solved by bisection, only while lit
 ```
 
-`Q_ref` is **an input**, 269 L/h at 2 mbar (K22). `n` is 0.5, an orifice, and a slider. `R_hose` is laminar, 0.03 Pa per L/h on 5 m of ½", from the kit's tube law and equal to Poiseuille: 0.08 mbar at 269 L/h. The flame goes out if the pressure at the burner falls under 1 mbar (`flameMinPressure`, **an estimate**: half the lowest pressure at which anyone timed a flame), if the bell rests, if the gas is under 45 % methane (estimate), and the tap is then closed: S7 warns of what follows if it is not.
+`Q_ref` is **an input**, 269 L/h at 2 mbar (K22). `n` is 0.5, an orifice, and a slider. `R_hose` is laminar, 0.03 Pa per L/h on 5 m of ½", from the kit's tube law and equal to Poiseuille: 0.08 mbar at 269 L/h. The flame goes out if the pressure at the burner falls under 1 mbar (`flameMinPressure`, **an estimate**: half the lowest pressure at which anyone timed a flame), if the bell rests, if the gas is under 45 % methane (reported: S5 p. 13 and S8 p. 25 both say biogas above 45 % burns, after Deublein. That a lit flame goes out under it is this model's reading. **Tagged an estimate until 2026-11-03**, when the lead read both), and the tap is then closed: S7 warns of what follows if it is not.
 
 **Water.** The gas leaves saturated, at the slurry's temperature, and cools to the air in the hose: `condensatePerMole`, about 2.5 g a day on an hour of flame. With no trap, it gathers at the low point and stands as high on both sides: `P_water = ρ·g·(V/A_hose)/2·slope`, the slope an estimate of 2 %. The bell's whole push is about 2 cm of water.
 
@@ -157,7 +157,7 @@ The air: K47's monthly means, straight between mid-months, ±4 K over a day (ass
 | `Ea`                             | 60 kJ/mol              | 40–80              | **estimate**, the one that decides §4.3                                  |
 | `solidsRetention`                | 7.06                   | 1–15               | derived, K29, and Table 17                                               |
 
-**In `MODEL`, not sliders:** `km` 5.3 /d, `Ks` 0.15 kg/m³, `yieldX` 0.05, `decay` 0.02 /d, the pH windows (ADM1's acetoclastic methanogens and acidogens; 8 /d at 35 °C brought to 30 °C at Ea 60; **from memory, not read here**), `ringTransfer`, `leanFlame`, `flameMinPressure`, `gasViscosity`, `metabolicShare`, `absorptance`, `outerFilm`, `groundReflection`, `airSwing`, `waterCharge`, `waterSolids`: all **estimates**, each with its reason beside it in `machine.ts`. Each can be moved by a `PlantOptions` for a run.
+**In `MODEL`, not sliders:** `km` 5.3 /d, `Ks` 0.15 kg/m³, `yieldX` 0.05, `decay` 0.02 /d, the pH windows (ADM1's acetoclastic methanogens and acidogens; 8 /d at 35 °C brought to 30 °C at Ea 60; **from memory, not read here**), `ringTransfer`, `flameMinPressure`, `gasViscosity`, `metabolicShare`, `absorptance`, `outerFilm`, `groundReflection`, `airSwing`, `waterCharge`, `waterSolids`: all **estimates**, each with its reason beside it in `machine.ts`. `leanFlame`, 45 %, was on this list: it is reported (§1.5). Each can be moved by a `PlantOptions` for a run.
 
 **What is not a number here: H₂S.** The model has no sulphur. S5's instrument stopped at 100 ppm on nearly every plant (K32), so the true value in this gas is **unknown**. `state.h2sPpm` is always `null`, `state.h2sTag` is `'unknown'`.
 
@@ -208,7 +208,7 @@ The break-even **ignores what the scraps would have emitted anyway, and charcoal
 | K28 | NH₄-N 74, 85 mg/L, P                                    | no nitrogen. 5.3 meq/L is a part of the 22.6 of the input                                                       | Context                                                                                                                                                                          |
 | K29 | layers; SRT about 300 d                                 | **10.1 kg** of VS in the tank on day 107, against 9.0 by Table 17                                               | Retrieved, +12 %, with the dung counted. Layers at S5's shares                                                                                                                   |
 | K30 | 4 of 12 running, 10 after repairs                       | —                                                                                                               | Context: what breaks a tap is not in it                                                                                                                                          |
-| K31 | a stopped plant, pH 4.15                                | a soured tank passes it in about three weeks, ends at 3.6 to 4                                                  | Retrieved as a place. S5 gives no cause                                                                                                                                          |
+| K31 | a stopped plant, pH 4.15                                | a soured tank passes it in about three weeks, ends at 3.6 to 4                                                  | Retrieved as a place. **Corrected 2026-11-03:** this line said S5 gives no cause. Table 25 remarks « Overfed » on that row (research §11)                                        |
 | K32 | H₂S above 100 ppm                                       | **null, tagged unknown**                                                                                        | **Not modelled**                                                                                                                                                                 |
 | K33 | about 17.5 %, 426 and 516                               | input of the school's plant; 17.4 % by the arithmetic                                                           | Input                                                                                                                                                                            |
 | K34 | 500 L left of 2,300 L, 2.25 mbar                        | **777 L on ½" hose**, 617 on 5 m, 520 on ¾"; 2.0 mbar at mid-range                                              | Sign retrieved, size rests on estimates, §3.3                                                                                                                                    |
@@ -381,7 +381,7 @@ Each row moves one thing: the steady plant on 2 kg/d of leftovers.
 4. **The flame's limit, 1 mbar.** It decides K34, and nothing on the lab's own plant, whose pressure never falls that low.
 5. **Well-mixed.** It decides §4.1's numbers, in the hopeful direction.
 6. **The potential of peelings,** all of Table 20's COD. It cannot be more without going past its measurement.
-7. **The machine itself** is not formally chosen (research Q1). To change it, change `machine.ts`: the bell, the heat, the sheets follow; the substrates and the climate do not depend on it.
+7. **The machine itself**, accepted on 2026-11-03 (research Q1). To change it, change `machine.ts`: the bell, the heat, the sheets follow; the substrates and the climate do not depend on it.
 
 ## 9. For the 3D, the data role and the film
 
