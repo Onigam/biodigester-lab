@@ -329,7 +329,8 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   const jarR = 0.05;
   const jarY0 = 0.06;
   const jarH = 0.135;
-  const trapBody = group('trap-body');
+  // switched as a whole with the model's `trap`: `dynamic`, or its brass would be baked into the part and stay behind
+  const trapBody = dynamic(group('trap-body'));
   trap.add(trapBody);
   put(
     trapBody,
@@ -382,10 +383,31 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   const trapShadow = contactShadow(0.22, 0.22, 0.05, 0.3);
   trapShadow.position.set(trapX, 0.0015, bz);
   fixtures.add(trapShadow);
-  // what stands in the hose when there is no trap: the plug of water at the low point, standing as high on both sides (physics §1.5)
-  const plugN = 16;
+  // with no trap the hose runs on through its low point, in a short loop where the jar's stubs were
+  const bridgePath = hoseCurve(inlet, V(0, -1, 0), hoseOut, V(0, -1, 0), 0.05, 0, 12, []);
+  const hoseBridge = dynamic(put(parts['bell-hose'], tubeThrough(bridgePath, HOSE.r, 10), look.hose));
+  hoseBridge.name = 'hose-bridge';
+  hoseBridge.visible = false;
+  hoseBridge.userData.keep = true;
+  // what stands in the hose when there is no trap: the plug of water at the low point, as long on each side of it as the bore says, along the hose and not across the air (physics §1.5)
+  const plugN = 40;
   const plugPath: THREE.Vector3[] = [];
-  for (let i = 0; i < plugN; i++) plugPath.push(V(trapX - 0.2 + (0.4 * i) / (plugN - 1), trapY, bz));
+  for (let i = 0; i < plugN; i++) plugPath.push(V(trapX, trapY, bz));
+  /** The point `d` metres along a path of the hose. */
+  const along = (path: readonly THREE.Vector3[], d: number, out: THREE.Vector3): void => {
+    let left = d;
+    for (let i = 1; i < path.length; i++) {
+      const step = path[i]!.distanceTo(path[i - 1]!);
+      if (left <= step) {
+        out.lerpVectors(path[i - 1]!, path[i]!, step > 0 ? left / step : 0);
+        return;
+      }
+      left -= step;
+    }
+    out.copy(path[path.length - 1]!);
+  };
+  const bellSide: THREE.Vector3[] = [];
+  const lineSide: THREE.Vector3[] = [];
   const plugMat = new THREE.MeshStandardMaterial({ color: 0x4f90b4, roughness: 0.2, name: 'hose-water' });
   plugMat.userData.noShare = true;
   const plug = new THREE.Mesh(tubeThrough(plugPath, HOSE.r + 0.0012, 10), plugMat);
@@ -1220,12 +1242,25 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
       // the trap: its water is the model's, and with no trap the jar is gone and the water stands in the hose
       const hasTrap = p.trap;
       trapBody.visible = hasTrap;
+      hoseBridge.visible = !hasTrap && registry.get('bell-hose')!.display !== 'hidden';
       const tw = Math.max(0, s.trapWaterMl) / 1e6 / (Math.PI * (jarR - 0.004) ** 2);
       trapWater.scale.set(1, Math.max(1e-4, tw), 1);
       plug.visible = !hasTrap && s.hoseWaterMl > 1 && registry.get('condensate-trap')!.display !== 'hidden';
       if (plug.visible) {
         const side = Math.min(0.7, s.hoseWaterMl / 1e6 / (Math.PI * (HOSE.bore / 2) ** 2) / 2);
-        for (let i = 0; i < plugN; i++) plugPath[i].set(trapX - side + (2 * side * i) / (plugN - 1), trapY, bz);
+        // from the low point out along each side: the hose as it hangs now on the bell's side, the fixed run on the other
+        const half = Math.floor(bridgePath.length / 2);
+        bellSide.length = 0;
+        for (let i = half; i >= 0; i--) bellSide.push(bridgePath[i]!);
+        for (let i = curve.length - 2; i >= 0; i--) bellSide.push(curve[i]!);
+        lineSide.length = 0;
+        for (let i = half; i < bridgePath.length; i++) lineSide.push(bridgePath[i]!);
+        for (let i = 1; i < upPath.length; i++) lineSide.push(upPath[i]!);
+        const mid = (plugN - 1) / 2;
+        for (let i = 0; i < plugN; i++) {
+          const d = (side * Math.abs(i - mid)) / mid;
+          along(i < mid ? bellSide : lineSide, d, plugPath[i]!);
+        }
         rewriteTube(plug.geometry, plugPath, HOSE.r + 0.0012, 10);
       }
 

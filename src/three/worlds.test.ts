@@ -401,6 +401,43 @@ describe('the drop', () => {
 });
 
 describe('the gas line', () => {
+  it('with the trap off, nothing of it stays behind, the hose runs on, and the water stands along the hose', () => {
+    const off = createGasLineScene(() => ({ addedWeight: 0, trap: false }));
+    const s = stateWith({ trap: false, hoseWater: 200 });
+    run(off, s);
+    const seen = (m: THREE.Object3D): boolean => {
+      for (let p: THREE.Object3D | null = m; p; p = p.parent) if (!p.visible) return false;
+      return true;
+    };
+    const drawn = off.registry.get('condensate-trap')!.meshes.filter(seen);
+    expect(drawn.map((m) => m.name)).toEqual(['hose-plug']);
+    const bridge = off.scene.getObjectByName('hose-bridge')!;
+    expect(seen(bridge)).toBe(true);
+    // every point of the plug lies on the hose, not across the air
+    const hose = ['hose-flex', 'hose-up', 'hose-bridge'].map((n) => off.scene.getObjectByName(n) as THREE.Mesh);
+    const points: THREE.Vector3[] = [];
+    for (const h of hose) {
+      h.updateWorldMatrix(true, false);
+      const pos = h.geometry.getAttribute('position');
+      for (let i = 0; i < pos.count; i++)
+        points.push(new THREE.Vector3().fromBufferAttribute(pos, i).applyMatrix4(h.matrixWorld));
+    }
+    const plug = drawn[0] as THREE.Mesh;
+    plug.updateWorldMatrix(true, false);
+    const pos = plug.geometry.getAttribute('position');
+    const p = new THREE.Vector3();
+    let worst = 0;
+    for (let i = 0; i < pos.count; i += 37) {
+      p.fromBufferAttribute(pos, i).applyMatrix4(plug.matrixWorld);
+      worst = Math.max(worst, Math.min(...points.map((q) => q.distanceTo(p))));
+    }
+    expect(worst).toBeLessThan(0.06);
+    // and with the trap on, the jar is back and the loop gone
+    const on = createGasLineScene(() => ({ addedWeight: 0, trap: true }));
+    run(on, stateWith());
+    expect(on.scene.getObjectByName('trap-jar')!.parent!.visible).toBe(true);
+    expect(seen(on.scene.getObjectByName('hose-bridge')!)).toBe(false);
+  });
   it('runs about K7’s 5 m from the tap to the burner', () => {
     run(line, bellAt(0.5));
     const L = line.lineLength();
