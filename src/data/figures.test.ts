@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { arrhenius } from '../sim/bio';
+import { BiodigesterSim } from '../sim/engine';
 import { bellArea, bellMass, bellPressure, DRUM_60, MODEL, PLANT_1000, weightPressure } from '../sim/machine';
 import {
   carriedFeed,
@@ -163,6 +164,19 @@ describe('the figures of the texts: the model', () => {
       const lowest = (Ea: number): number => Math.min(...firstWinter('geneva', { Ea }).map((r) => r.pH));
       expect(lowest(FIG.eaHolds.v * 1000)).toBeGreaterThan(6.3);
       expect(lowest(FIG.eaFails.v * 1000)).toBeLessThan(5);
+      // the same switch in the live scenario, one kJ higher: the hint beside the slider says so, or a visitor at 44 would see the words proved wrong
+      const live = (kJ: number): number => {
+        const sim = new BiodigesterSim();
+        sim.applyScenario('geneva-january', { Ea: kJ * 1000 });
+        let least = 14;
+        while (sim.state.dayNumber < 230) {
+          sim.step(0.25);
+          least = Math.min(least, sim.state.pH);
+        }
+        return least;
+      };
+      expect(live(FIG.eaLiveHolds.v)).toBeGreaterThan(6.3);
+      expect(live(FIG.eaLiveFails.v)).toBeLessThan(5);
       const half = firstWinter('geneva', { feedKg: 1 });
       close('halfFood', Math.min(...half.map((r) => r.gasL)), 1);
       const year = siteYear('marseille');

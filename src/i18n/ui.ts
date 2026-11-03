@@ -45,10 +45,12 @@ export const LAB_STRINGS = {
   sliderRim: ['Perte à l’anneau', 'Loss at the ring'],
   sliderSun: ['Heures de soleil', 'Hours of sun'],
   sliderEa: ['Énergie d’activation', 'Activation energy'],
+  // the `condensate-trap` tip asks to switch it off
+  toggleTrap: ['Piège à condensats', 'Condensate trap'],
   // the hint beside that slider, in the Geneva scenario: the model cannot decide the winter
   eaHint: figs(
-    'Le chiffre qui décide de l’hiver : sur 2 kg par jour à Genève, une cuve nue tient jusqu’à {eaHolds} et tourne dès {eaFails}. Le seul indice que nous ayons trouvé tombe vers {eaClue}. Le modèle ne tranche donc pas.',
-    'The figure that decides the winter: on 2 kg a day at Geneva, a bare tank holds up to {eaHolds} and sours from {eaFails}. The one clue we found stands near {eaClue}. So the model does not decide.',
+    'Le chiffre qui décide de l’hiver : sur 2 kg par jour à Genève, une cuve nue tient jusqu’à {eaHolds} et tourne dès {eaFails}. Le seul indice que nous ayons trouvé tombe vers {eaClue}. Le modèle ne tranche donc pas. La bascule bouge aussi avec l’histoire de la cuve : celle-ci, qui vit à Genève depuis avril, tient encore à {eaLiveHolds} et tourne dès {eaLiveFails}. Chaque réglage reprend en septembre.',
+    'The figure that decides the winter: on 2 kg a day at Geneva, a bare tank holds up to {eaHolds} and sours from {eaFails}. The one clue we found stands near {eaClue}. So the model does not decide. The switch also moves with the tank’s history: this one, at Geneva since April, still holds at {eaLiveHolds} and sours from {eaLiveFails}. Each setting starts again in September.',
   ),
   // the hint under the starting points, shown when the machine is not the drawn one (`state.onDrawnMachine`)
   drawnHint: [
@@ -85,12 +87,6 @@ export const LAB_STRINGS = {
     'Aucune image, séquence ni transcription de ces vidéos ou de ces documents n’est reprise ici : le lab n’en retient que des faits, rédigés avec ses propres mots, et ses dessins sont refaits à partir des chiffres. Plusieurs documents n’ont pas pu être lus (l’article du concepteur en 2005, la version revue de la thèse, les annexes de celle-ci) : le lab le dit là où cela compte.',
     'No image, footage or transcript from these videos or documents is reused here: the lab keeps only facts from them, in its own words, and its drawings are made anew from the figures. Several documents could not be read (the designer’s 2005 paper, the peer-reviewed form of the thesis, its appendices): the lab says so where it matters.',
   ],
-  // ---- the template's, still read by src/lab.ts and src/panels/sim.ts until the lead wires the lab
-  sceneDevice: ['Dispositif', 'Device'],
-  simTitle: ['Simulation', 'Simulation'],
-  targetRpm: ['Vitesse cible', 'Target speed'],
-  liveRpm: ['Vitesse', 'Speed'],
-  groupDevice: ['Dispositif', 'Device'],
 } as const satisfies Record<string, readonly [string, string]>;
 
 registerStrings(LAB_STRINGS);

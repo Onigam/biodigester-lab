@@ -27,6 +27,7 @@ import assemblySource from './assembly.ts?raw';
 import installSource from './install.ts?raw';
 import overviewsSource from './overviews.ts?raw';
 import lessonsSource from './lessons.ts?raw';
+import uiSource from '../i18n/ui.ts?raw';
 
 // Content checks: the catalogue and the guides against the ids of src/three/part-ids.ts, FR/EN parity, the rules of the visitor's texts (no research code, no internal word, ARTI named in the Sources only, British spelling, no wording that promises safety, no build instruction), the marks on the numbers, and what must be said once.
 
@@ -630,6 +631,7 @@ describe('the visitor’s texts', () => {
       installSource,
       overviewsSource,
       lessonsSource,
+      uiSource,
       ...Object.values(SHEET_SOURCES),
     ].join(' ');
     const unused = Object.keys(FIG).filter((k) => !used.includes(`{${k}}`) && !used.includes(`'${k}'`));

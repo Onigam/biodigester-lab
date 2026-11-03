@@ -160,6 +160,9 @@ export const FIG = {
   // ---- the same model where no plant was measured: below about 25 °C, or anywhere but Dar es Salaam
   eaHolds: w(43, 0, ' kJ/mol'),
   eaFails: w(44, 0, ' kJ/mol'),
+  // the same switch in the live scenario, whose plant has lived at Geneva since April and not since a warm July (docs/physics.md §4.3)
+  eaLiveHolds: w(44, 0, ' kJ/mol'),
+  eaLiveFails: w(45, 0, ' kJ/mol'),
   genevaT: w(6, 0, ' °C'),
   steady15: w(94, 0, pct),
   soursColdLow: w(12, 0, ' °C'),

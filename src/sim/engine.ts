@@ -14,8 +14,6 @@ import {
 } from './presets';
 import type { AlarmKey, BioParams, BioState, PresetId, ScenarioId, Scope } from './types';
 
-export { DemoSim, TAU, type DemoParams, type DemoState } from './demo';
-
 // BiodigesterSim: the whole machine as the kit's `LabSim`. One clock: the day moves on `dt × timeScale`, in fixed steps of 30 s, so that the same inputs give the same state on any machine (tested) and a week per
 // second stays cheap. The flame's flicker, the bubbles' speed and the like are the 3D's, on `view.slowMo`, from the rates in the state. Deterministic: nothing is drawn at random, nothing reads a wall clock.
 
