@@ -121,7 +121,7 @@
       "scope": "part:digester-tank",
       "title": "Digester tank",
       "scene": "digester",
-      "text": "[[isolate:on]] An ordinary water tank, with its top taken off. That is all! Black, it takes the sun along its whole side. [[isolate:off]] One rule, with no exception: nobody goes down here, nor into a pit of the kind, even emptied. Methane and carbon dioxide take the oxygen’s place. And whoever goes down to help the first is overcome in turn."
+      "text": "[[isolate:on]] An ordinary water tank, with its top taken off. That is all! It is black, and takes the sun along its whole side. [[isolate:off]] One rule, with no exception: nobody goes down here, nor into a pit of the kind, even emptied. Methane and carbon dioxide take the oxygen’s place. And whoever goes down to help the first is overcome in turn."
     },
     {
       "id": "part-gas-bell",

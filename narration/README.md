@@ -1,6 +1,6 @@
 # Narration scripts (French and English)
 
-`fr.json` and `en.json` follow `lab-kit/docs/narration.md`: **63 segments each** (`intro`, 4 worlds, 58 parts: yard 10, digester 20, slurry 11, gas line 17), ids `intro`, `scene-<world>`, `part-<id>`, no lesson segments. **No audio exists yet.** This lab uses the local voice (`--engine voicebox`, profiles `Onigam narrateur FR` and `EN`, 0 credit, the Voicebox application open); the session that orchestrates the lab generates it after these checks, and the agent that writes this script never does.
+`fr.json` and `en.json` follow `lab-kit/docs/narration.md`: **63 segments each** (`intro`, 4 worlds, 58 parts: yard 10, digester 20, slurry 11, gas line 17), ids `intro`, `scene-<world>`, `part-<id>`, no lesson segments. **The audio exists in both languages, in the local voice, checked by transcription and not yet by a human ear.** This lab uses the local voice (`--engine voicebox`, profiles `Onigam narrateur FR` and `EN`, 0 credit, the Voicebox application open); the session that orchestrates the lab generates it after these checks, and the agent that writes this script never does.
 
 Check the length without generating anything (`HOME=<empty dir>` keeps the tool from even opening a key file):
 
@@ -14,7 +14,7 @@ HOME=$(mktemp -d) node ~/Dev/lab-kit/tools/narration/generate.mjs --src narratio
 | Language | Total  | Intro | Worlds                                             | Parts  | Longest parts                                                            |
 | -------- | ------ | ----- | -------------------------------------------------- | ------ | ------------------------------------------------------------------------ |
 | French   | 23,947 | 2,391 | 2,847 (yard 700, digester 724, drop 669, line 754) | 18,709 | `fatty-acid-pool` 536, `blue-flame` 519, `rim-gap` 458, `half-brick` 451 |
-| English  | 22,451 | 2,286 | 2,713 (yard 662, digester 672, drop 654, line 725) | 17,452 | `blue-flame` 484, `fatty-acid-pool` 454, `h2s-filter` 438, `rim-gap` 431 |
+| English  | 22,458 | 2,286 | 2,713 (yard 662, digester 672, drop 654, line 725) | 17,459 | `blue-flame` 484, `fatty-acid-pool` 454, `h2s-filter` 438, `rim-gap` 431 |
 
 The ceiling is 30,000 per language; the research said about 22,000, the series aims for 17,000 to 24,000 (`src/narration.test.ts` holds 19,000 to 24,000). `generate.mjs` refuses a segment over 2,500 characters. The median part is 313 characters in French, 286 in English. The French is at the top of the aim: 58 parts is the most in the series, and it took three passes of cuts to get under 24,000 from a first draft of 35,000. What the cuts took stays on the sheets.
 
@@ -88,7 +88,7 @@ Pelton Lab's tone (`lab-kit/docs/narration-style.md`). The thread is **one grain
 
 ## Checked
 
-`npx vitest run src/narration.test.ts`: the contract, ids, scopes, titles (a part's from `part-ids.ts`, a world's from its overview) and starting worlds, known cues on real ids, frames in the current world, what is switched on is switched off, tools per world, tools named per world, no camera cue in a part, 35 characters between camera moves, the hops and counts of the intro, each of 35 truths once in its place, the winter's order, what is refused everywhere, hydrogen sulphide's four segments, **23 rows of spoken figures held to today's `src/data/figures.ts`** and **22 rows of reported figures held to what the sheets print** (so a change names the segments to rewrite), the voice's own sums, the hedges, the scenarios and the slider against the panel's own words, the flame's isolate, the grain of rice, no name, the six source words, spoken text only, the words the voice misreads, sentences at most 135 characters, exclamations and questions, no « tu », British English, the budget, the same cues in the same order within a tenth of the segment between languages, and the manifests once they exist, in the local voice. **Skipped, two:** the manifest's wiring (no audio yet), and the seven-word run against private transcripts: **none exists for this lab** (`~/.cache/lab-review/research/biodigester-lab/` is absent, S1 and S2 unwatched). A one-off count against the series' scripts on this Mac finds seven-word runs only in the intro's shared sentences (« cliquez sur une pièce : sa fiche s’ouvre… », « une dernière chose : ce laboratoire est une reconstitution pédagogique », « ni un plan à suivre ») and, in English, « from left to right in the order of the » in `scene-gas-line`.
+`npx vitest run src/narration.test.ts`: the contract, ids, scopes, titles (a part's from `part-ids.ts`, a world's from its overview) and starting worlds, known cues on real ids, frames in the current world, what is switched on is switched off, tools per world, tools named per world, no camera cue in a part, 35 characters between camera moves, the hops and counts of the intro, each of 35 truths once in its place, the winter's order, what is refused everywhere, hydrogen sulphide's four segments, **23 rows of spoken figures held to today's `src/data/figures.ts`** and **22 rows of reported figures held to what the sheets print** (so a change names the segments to rewrite), the voice's own sums, the hedges, the scenarios and the slider against the panel's own words, the flame's isolate, the grain of rice, no name, the six source words, spoken text only, the words the voice misreads, sentences at most 135 characters, exclamations and questions, no « tu », British English, the budget, the same cues in the same order within a tenth of the segment between languages, and the manifests, in the local voice. **Skipped, one:** the seven-word run against private transcripts: **none exists for this lab** (`~/.cache/lab-review/research/biodigester-lab/` is absent, S1 and S2 unwatched). A one-off count against the series' scripts on this Mac finds seven-word runs only in the intro's shared sentences (« cliquez sur une pièce : sa fiche s’ouvre… », « une dernière chose : ce laboratoire est une reconstitution pédagogique », « ni un plan à suivre ») and, in English, « from left to right in the order of the » in `scene-gas-line`.
 
 **Rays (`the voice points at what can be seen`):** the solar and gravity labs' method. Each cue flown as `Stage.frameParts` flies it, on the default machine in the opening state; each framed part reached by at least half the rays, from no farther than home; each of the 58 parts seen from its own framing with what its segment switches on at its start. What is transparent stands in nothing's way, as in the lab's `raysToPart`, so the drop's surface does not count. Exceptions, each named in the test: `gas-bell`, `gas-space`, `rim-gap`, `scum-layer`, `biogas-burner`, `blue-flame` at 0.4 (closed solids show at most half their surface to one eye; each measured 0.42 to 0.48), `shade-tree` framed up to 1.1 × home (7.4 m tall).
 
@@ -106,9 +106,9 @@ Pelton Lab's tone (`lab-kit/docs/narration-style.md`). The thread is **one grain
 
 The rays say a part can be reached, not that it reads. To look at: `part-blue-flame` under isolate, a flame alone in the air, with no burner under it; `part-gas-bell` and `part-digester-tank`, framed from behind the machine (their `viewDir`), where « notre bulle arrive dessous » cannot be seen and the tank's open top is at 18°; `scene-digester`'s section from `rim-gap`'s framing; the drop's parts under `isolate` and `explode`; `scene-gas-line`'s pair frames, `hydraulic-relief,h2s-filter` and `flame-arrester,pressure-gauge`; the yard at night, where the voice can land on any part, since the clock does not stop for it.
 
-## To listen for in the sample (not measured, a script cannot tell)
+## To listen for (not measured, a script cannot tell)
 
-The sample should hold at least `intro`, `part-methanogens`, `part-h2s-filter`, `part-half-brick`. **Not in the script at all,** so no risk: biodigesteur, digestat, kilojoules par mole, pH, Low-tech Lab, H₂S and CO₂ as letters (titles only: `Filtre à H₂S` is not spoken).
+Start with `fr/intro`, `fr/scene-slurry` and `en/part-rim-gap` (below, under « After generation »), then `part-methanogens`, `part-h2s-filter`, `part-half-brick`. **Not in the script at all,** so no risk: biodigesteur, digestat, kilojoules par mole, pH, Low-tech Lab, H₂S and CO₂ as letters (titles only: `Filtre à H₂S` is not spoken).
 
 French: méthanogènes, acidogènes, acétogènes, hydrolyseurs (`scene-slurry` says all four in a row); archées (the « ch » of « chat »); **effluent** (the final « -ent » is sounded here, and silent on a verb); parpaing, demi-parpaing; manomètre; millibars; bouillie; acétate; hydrogène sulfuré; monoxyde de carbone; « œuf pourri » (singular, the « f » sounded); « parties par million »; « un virgule quatre-vingt-quatre », « deux virgule zéro trois », « six virgule trente-cinq »; **plus** (« plus rien », « plus lourds », « plus d’énergie »: said or not said /s/); « dix litres », « six litres » (silent final consonant), « cent vingt-six », « huit »; Dar es Salaam; énergie d’activation; cure-dents. **Avoided on purpose, a test refuses them:** fils, couvent, content, portions, président.
 
@@ -118,4 +118,31 @@ Whether « Notre grain passe sans frapper », « Ne l’applaudissons pas » and
 
 ## After generation
 
-`src/lab.ts` already asks for `audio/{lang}/manifest.json` and `scripts/check-narration.mjs` is in the build (it exits 0 with no audio). Then back-transcription, rate and subtitles, as `lab-narrator` says. **For the back-transcription:** « trop-plein », « parpaing » and the number words will come back in other spellings: read each gap before calling it a defect. The test holds that the manifest's `model` is `qwen3-tts-1.7B`.
+`src/lab.ts` asks for `audio/{lang}/manifest.json` and `scripts/check-narration.mjs` is in the build. The test holds that the manifest's `model` is `qwen3-tts-1.7B`.
+
+**Checked on 2026-11-04 by measure and transcription, not by ear.** No credit was involved: 126 clips in the local voice, 23 minutes in French, 22 in English.
+
+| Measure                                      | French                            | English                                  |
+| -------------------------------------------- | --------------------------------- | ---------------------------------------- |
+| Whisper `small` against the script, mean     | 0.966                             | 0.992                                    |
+| Lowest, none under 0.85                      | 0.891 `part-biogas-burner`        | 0.901 `part-rim-gap`                     |
+| Level, all clips                             | −27.5 to −27.4 LUFS, peak −7.7 dB | −27.5 to −27.4 LUFS, peak −7.8 dB        |
+| Rate, median, none 25 % away                 | 17.33 characters a second         | 17.00; widest `part-vent-opening`, −17 % |
+| Longest silence inside a clip                | 0.61 s                            | 0.98 s, `scene-yard`                     |
+| Subtitle gaps, disorder, cues outside a clip | 0                                 | 0                                        |
+| Clip ends harder than the voice's own pauses | 0                                 | 0                                        |
+
+**Redone, because the first take ended badly.** On seed 43: `fr/part-methanogens` and `en/part-methanogens` (the file stops while the voice still sounds), `en/intro` and `en/part-scum-layer` (a hard stop). On seed 45: `en/part-yard-pad` (« would go », a hard stop on 42, 43 and 44).
+
+**One sentence reworded, `en/part-digester-tank`.** « That is all! Black, it takes the sun » came back as « that is all black » on eight seeds of nine, the joke gone. It now says « That is all! It is black, and takes the sun », heard with its pause, on seed 44.
+
+**Every gap was read, and each doubt heard again** on `medium`, then on `large-v3-turbo` where those two left it open. No spoken figure comes back as another figure. What remains are homophones and Whisper's own habits. « Thanks for watching » and « Thank you very much » at the ends of `en/part-rim-gap` and `en/part-hydraulic-relief`, and a second « peace » in `en/part-overflow-pipe`, are gone on `medium`. A « that » in `en/intro` lies in a silence at −70 dB.
+
+**The words to watch.** Heard as written, or respelled with the same sound (« méthanojènes »): méthanogènes, acidogènes, acétogènes, hydrolyseurs, millibars, « un dixième de seconde », « six virgule trente-cinq », and their English. Heard as a homophone, which says the sound is right: archées as « archers » (the « ch » of « chat »), effluent as « effluant » (the final « -ent » sounded), parpaing as « parpin ».
+
+**What only an ear can settle:**
+
+- `fr/intro`: « Dar es Salaam » comes back as « Dar et Salam » on two models, and likewise in `scene-yard` and `part-shade-tree`. It may be the usual French sound of it. « Sept leçons » comes back as « cette leçon »: a true homophone, which no measure can separate.
+- `fr/scene-slurry`: the four names in a row. A model that spells them right says nothing of the stress or the rhythm.
+- `en/part-rim-gap`: « flaw » comes back as « floor », twice on `small`, once on `medium`, once on `large-v3-turbo`. Without a sounded « r » they are one word, and only the subtitle tells them apart. Left as it is.
+- Heteronyms, which a transcript cannot see: « plus » with or without its /s/; « estimates » and « leaves » in English. And the tone, the pauses, whether « Ne l’applaudissons pas » lands.

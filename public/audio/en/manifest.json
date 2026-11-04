@@ -1,0 +1,3398 @@
+{
+  "lang": "en",
+  "model": "qwen3-tts-1.7B",
+  "generatedAt": "2026-11-04T05:28:11.358Z",
+  "voiceLabel": {
+    "fr": "Voix de synthèse",
+    "en": "Synthetic voice"
+  },
+  "totalSeconds": 1331.77,
+  "segments": [
+    {
+      "id": "intro",
+      "scope": "intro",
+      "title": "Introducing the lab",
+      "scene": "yard",
+      "file": "intro.mp3",
+      "duration": 135.21,
+      "chars": 2286,
+      "hash": "e81b2594f70e93a2",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.32,
+          "text": "Picture the end of a meal."
+        },
+        {
+          "t0": 1.32,
+          "t1": 4.28,
+          "text": "At the bottom of a plate, a grain of rice, forgotten."
+        },
+        {
+          "t0": 4.28,
+          "t1": 5.08,
+          "text": "Nobody wants it…"
+        },
+        {
+          "t0": 5.08,
+          "t1": 7.28,
+          "text": "and yet, there is a flame in there."
+        },
+        {
+          "t0": 7.28,
+          "t1": 8.3,
+          "text": "Let us follow it."
+        },
+        {
+          "t0": 8.3,
+          "t1": 11.88,
+          "text": "Here it is in the scrap caddy, with the day’s leftovers."
+        },
+        {
+          "t0": 11.88,
+          "t1": 17.7,
+          "text": "On a bench, with no ceremony at all, it is drowned in a bucket of water, up to the ten-litre mark."
+        },
+        {
+          "t0": 17.7,
+          "t1": 20.5,
+          "text": "It dives into a funnel, and a long pipe carries it off,"
+        },
+        {
+          "t0": 20.5,
+          "t1": 23.82,
+          "text": "right to the bottom of a black tank, without a bubble of air."
+        },
+        {
+          "t0": 23.82,
+          "t1": 26.52,
+          "text": "Let us go in with it, into one single drop."
+        },
+        {
+          "t0": 26.52,
+          "t1": 29.76,
+          "text": "Tiny creatures cut it up, and others turn it into acids."
+        },
+        {
+          "t0": 29.76,
+          "t1": 34.52,
+          "text": "And the last of them, slow and fragile, turn it into methane."
+        },
+        {
+          "t0": 34.52,
+          "t1": 36.92,
+          "text": "There: our grain of rice has become a bubble!"
+        },
+        {
+          "t0": 36.92,
+          "t1": 42.08,
+          "text": "Up it comes, and slips under another tank, turned over, which floats and rises with the gas."
+        },
+        {
+          "t0": 42.08,
+          "t1": 47.46,
+          "text": "Come evening, the gas leaves through a hose, pushed by next to nothing: two centimetres of water."
+        },
+        {
+          "t0": 47.46,
+          "t1": 53.02,
+          "text": "And under a pot, when the time comes, a small blue flame you can hardly see."
+        },
+        {
+          "t0": 53.02,
+          "t1": 57.76,
+          "text": "What is left in the tank is not lost: it goes back to the vegetable bed."
+        },
+        {
+          "t0": 57.76,
+          "t1": 62.12,
+          "text": "That is the whole story: a grain of rice, a drop, a bubble, a bell…"
+        },
+        {
+          "t0": 62.12,
+          "t1": 64.58,
+          "text": "and a tenth of a second of flame."
+        },
+        {
+          "t0": 64.58,
+          "t1": 68.88,
+          "text": "A few landmarks: four views, the yard, the tank, the drop and the gas line."
+        },
+        {
+          "t0": 68.88,
+          "t1": 72.28,
+          "text": "Click a part: its sheet opens, and you can hear its story."
+        },
+        {
+          "t0": 72.28,
+          "t1": 77.76,
+          "text": "One guide tells how the two tanks go together, another runs from the plot to the daily feed."
+        },
+        {
+          "t0": 77.76,
+          "t1": 83.28,
+          "text": "The simulation changes the meal, the place, the month, and runs twelve scenarios."
+        },
+        {
+          "t0": 83.28,
+          "t1": 86.36,
+          "text": "Seven lessons, with quizzes, explain the life of the tank."
+        },
+        {
+          "t0": 86.36,
+          "t1": 87.82,
+          "text": "Ten sheets gather the drawings."
+        },
+        {
+          "t0": 87.82,
+          "t1": 91.82,
+          "text": "One last thing: this lab is an educational reconstruction."
+        },
+        {
+          "t0": 91.82,
+          "t1": 97.3,
+          "text": "It follows a real plant, from a thesis: just one, four months, at Dar es Salaam."
+        },
+        {
+          "t0": 97.3,
+          "t1": 100.72,
+          "text": "It is neither a plan to follow nor a product of its designers."
+        },
+        {
+          "t0": 100.72,
+          "t1": 103.44,
+          "text": "It proves nothing about the safety of a plant in your home."
+        },
+        {
+          "t0": 103.44,
+          "t1": 107.02,
+          "text": "And before you build anything, ask your local authority."
+        },
+        {
+          "t0": 107.02,
+          "t1": 112.34,
+          "text": "The figures come from the thesis and other documents, or from our simulation and our estimates."
+        },
+        {
+          "t0": 112.34,
+          "t1": 115.02,
+          "text": "The Sources panel says who said what."
+        },
+        {
+          "t0": 115.02,
+          "t1": 118.44,
+          "text": "That leaves the winter at Geneva: does a bare tank last it?"
+        },
+        {
+          "t0": 118.44,
+          "t1": 120.08,
+          "text": "Our model cannot decide."
+        },
+        {
+          "t0": 120.08,
+          "t1": 123.14,
+          "text": "It all rests on one figure, the activation energy."
+        },
+        {
+          "t0": 123.14,
+          "t1": 128.02,
+          "text": "And we found no measurement of a plant of this kind below about twenty-five degrees."
+        },
+        {
+          "t0": 128.02,
+          "t1": 131.24,
+          "text": "The scenario A winter at Geneva puts that slider in your hands."
+        },
+        {
+          "t0": 131.24,
+          "t1": 135.21,
+          "text": "Come on, the meal is over, and our grain of rice is waiting for you!"
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 7.28,
+          "do": {
+            "frame": [
+              "scrap-caddy"
+            ]
+          }
+        },
+        {
+          "t": 11.88,
+          "do": {
+            "scene": "gas-line"
+          }
+        },
+        {
+          "t": 14,
+          "do": {
+            "frame": [
+              "dilution-bucket"
+            ]
+          }
+        },
+        {
+          "t": 17.7,
+          "do": {
+            "scene": "digester"
+          }
+        },
+        {
+          "t": 20.5,
+          "do": {
+            "frame": [
+              "inner-feed-pipe"
+            ]
+          }
+        },
+        {
+          "t": 23.82,
+          "do": {
+            "scene": "slurry"
+          }
+        },
+        {
+          "t": 26.52,
+          "do": {
+            "frame": [
+              "hydrolysers"
+            ]
+          }
+        },
+        {
+          "t": 29.76,
+          "do": {
+            "frame": [
+              "methanogens"
+            ]
+          }
+        },
+        {
+          "t": 34.52,
+          "do": {
+            "frame": [
+              "gas-bubble"
+            ]
+          }
+        },
+        {
+          "t": 36.92,
+          "do": {
+            "scene": "digester"
+          }
+        },
+        {
+          "t": 42.08,
+          "do": {
+            "scene": "gas-line"
+          }
+        },
+        {
+          "t": 47.46,
+          "do": {
+            "frame": [
+              "biogas-burner",
+              "cooking-pot"
+            ]
+          }
+        },
+        {
+          "t": 53.02,
+          "do": {
+            "scene": "yard"
+          }
+        },
+        {
+          "t": 55.16,
+          "do": {
+            "frame": [
+              "vegetable-bed"
+            ]
+          }
+        },
+        {
+          "t": 64.58,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 72.28,
+          "do": {
+            "mode": "assembly"
+          }
+        },
+        {
+          "t": 75.02,
+          "do": {
+            "mode": "install"
+          }
+        },
+        {
+          "t": 77.76,
+          "do": {
+            "mode": "sim"
+          }
+        },
+        {
+          "t": 83.28,
+          "do": {
+            "mode": "lessons"
+          }
+        },
+        {
+          "t": 86.36,
+          "do": {
+            "mode": "plans"
+          }
+        },
+        {
+          "t": 87.82,
+          "do": {
+            "mode": "explore"
+          }
+        },
+        {
+          "t": 128.02,
+          "do": {
+            "scene": "yard"
+          }
+        },
+        {
+          "t": 131.24,
+          "do": {
+            "select": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-yard",
+      "scope": "scene:yard",
+      "title": "From kitchen scraps to a flame",
+      "scene": "yard",
+      "file": "scene-yard.mp3",
+      "duration": 39.76,
+      "chars": 662,
+      "hash": "bf3ba186b4f6f98b",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.14,
+          "text": "A yard, in a warm climate, and the whole circle at a glance."
+        },
+        {
+          "t0": 4.14,
+          "t1": 7.44,
+          "text": "The scrap caddy: that is where our grain of rice waits."
+        },
+        {
+          "t0": 7.44,
+          "t1": 11.7,
+          "text": "The plant: two water tanks, one turned over inside the other."
+        },
+        {
+          "t0": 11.7,
+          "t1": 16.8,
+          "text": "The gas leaves by this hose, across the yard, to the kitchen, only a few metres away."
+        },
+        {
+          "t0": 16.8,
+          "t1": 22.46,
+          "text": "What goes into the tank pushes as much into this bucket, and the bucket ends at the bed: the circle is shut."
+        },
+        {
+          "t0": 22.46,
+          "t1": 23.78,
+          "text": "And this tree?"
+        },
+        {
+          "t0": 23.78,
+          "t1": 27.64,
+          "text": "At Dar es Salaam three were cut down, because a black tank wants the sun."
+        },
+        {
+          "t0": 27.64,
+          "t1": 31.4,
+          "text": "In the simulation, the sun and the figures follow the place."
+        },
+        {
+          "t0": 31.4,
+          "t1": 35.32,
+          "text": "This yard does not change: its mango trees do not show Geneva."
+        },
+        {
+          "t0": 35.32,
+          "t1": 39.76,
+          "text": "And if night falls while we talk, that is normal: days are very short here."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 4.14,
+          "do": {
+            "frame": [
+              "scrap-caddy"
+            ]
+          }
+        },
+        {
+          "t": 7.44,
+          "do": {
+            "frame": [
+              "biogas-plant"
+            ]
+          }
+        },
+        {
+          "t": 11.7,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 11.7,
+          "do": {
+            "frame": [
+              "hose-run"
+            ]
+          }
+        },
+        {
+          "t": 13.8,
+          "do": {
+            "frame": [
+              "kitchen-house"
+            ]
+          }
+        },
+        {
+          "t": 16.8,
+          "do": {
+            "frame": [
+              "overflow-bucket"
+            ]
+          }
+        },
+        {
+          "t": 19.24,
+          "do": {
+            "frame": [
+              "vegetable-bed"
+            ]
+          }
+        },
+        {
+          "t": 22.46,
+          "do": {
+            "flows": false
+          }
+        },
+        {
+          "t": 22.46,
+          "do": {
+            "frame": [
+              "shade-tree"
+            ]
+          }
+        },
+        {
+          "t": 27.64,
+          "do": {
+            "home": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-digester",
+      "scope": "scene:digester",
+      "title": "Two tanks, a bell that rises",
+      "scene": "digester",
+      "file": "scene-digester.mp3",
+      "duration": 38.72,
+      "chars": 672,
+      "hash": "efb13cc3cb0a652a",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.94,
+          "text": "The machine alone, and it opens already cut."
+        },
+        {
+          "t0": 2.94,
+          "t1": 8.56,
+          "text": "Our grain arrives by this pipe, which delivers it low, into the sludge, right at the bottom of the tank."
+        },
+        {
+          "t0": 8.56,
+          "t1": 14.06,
+          "text": "Above it, a large volume of almost clear liquid, then what floats, which is called the scum."
+        },
+        {
+          "t0": 14.06,
+          "t1": 17.36,
+          "text": "And here is the gas, under the floating bell."
+        },
+        {
+          "t0": 17.36,
+          "t1": 20.3,
+          "text": "The grey dots are the gas lost, in our model’s proportion."
+        },
+        {
+          "t0": 20.3,
+          "t1": 22.2,
+          "text": "Seen from above, here it is."
+        },
+        {
+          "t0": 22.2,
+          "t1": 26.3,
+          "text": "So the Section tool cuts the other way, across: here is the open ring."
+        },
+        {
+          "t0": 26.3,
+          "t1": 30.35,
+          "text": "At the opening clock, an hour a second, the bell plainly climbs."
+        },
+        {
+          "t0": 30.35,
+          "t1": 33.94,
+          "text": "Its true speed, about fifty centimetres a day, would not show."
+        },
+        {
+          "t0": 33.94,
+          "t1": 38.72,
+          "text": "And whatever size you choose in the simulation, this view stays that of the thousand-litre tank."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 2.94,
+          "do": {
+            "frame": [
+              "inner-feed-pipe"
+            ]
+          }
+        },
+        {
+          "t": 5.72,
+          "do": {
+            "frame": [
+              "sludge-bed"
+            ]
+          }
+        },
+        {
+          "t": 8.56,
+          "do": {
+            "frame": [
+              "clear-liquor"
+            ]
+          }
+        },
+        {
+          "t": 11.4,
+          "do": {
+            "frame": [
+              "scum-layer"
+            ]
+          }
+        },
+        {
+          "t": 14.06,
+          "do": {
+            "frame": [
+              "gas-space"
+            ]
+          }
+        },
+        {
+          "t": 17.36,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 17.36,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 20.3,
+          "do": {
+            "flows": false
+          }
+        },
+        {
+          "t": 20.3,
+          "do": {
+            "frame": [
+              "rim-gap"
+            ]
+          }
+        },
+        {
+          "t": 20.3,
+          "do": {
+            "cutaway": true
+          }
+        },
+        {
+          "t": 26.3,
+          "do": {
+            "cutaway": false
+          }
+        },
+        {
+          "t": 26.3,
+          "do": {
+            "home": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-slurry",
+      "scope": "scene:slurry",
+      "title": "One drop, and what lives in it",
+      "scene": "slurry",
+      "file": "scene-slurry.mp3",
+      "duration": 38,
+      "chars": 654,
+      "hash": "b3ed46097e54bd7f",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.96,
+          "text": "The real machine is alive."
+        },
+        {
+          "t0": 1.96,
+          "t1": 9.36,
+          "text": "Here is one single drop, and let us say it at once: this world is stylised, nothing in it is to scale."
+        },
+        {
+          "t0": 9.36,
+          "t1": 12.02,
+          "text": "On the left, all that remains of our grain of rice."
+        },
+        {
+          "t0": 12.02,
+          "t1": 14.94,
+          "text": "The hydrolysers cut it up, from the outside."
+        },
+        {
+          "t0": 14.94,
+          "t1": 18.02,
+          "text": "The acid-makers, very quick, turn it into acids."
+        },
+        {
+          "t0": 18.02,
+          "t1": 20.34,
+          "text": "The acetogens shorten those same acids."
+        },
+        {
+          "t0": 20.34,
+          "t1": 24.02,
+          "text": "At the far end, the methanogens, the only ones making methane."
+        },
+        {
+          "t0": 24.02,
+          "t1": 27.1,
+          "text": "So the carbon travels, stage by stage, as far as the bubble."
+        },
+        {
+          "t0": 27.1,
+          "t1": 29.48,
+          "text": "Let us spread the chain: each stage takes its place."
+        },
+        {
+          "t0": 29.48,
+          "t1": 32.88,
+          "text": "The drop’s colour and the methanogens’ glow follow our model."
+        },
+        {
+          "t0": 32.88,
+          "t1": 38,
+          "text": "Run the scenario Too much, at once: the acids climb, the buffer melts, and the methanogens go dark."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 9.36,
+          "do": {
+            "frame": [
+              "food-particle"
+            ]
+          }
+        },
+        {
+          "t": 12.02,
+          "do": {
+            "frame": [
+              "hydrolysers"
+            ]
+          }
+        },
+        {
+          "t": 14.94,
+          "do": {
+            "frame": [
+              "acid-makers"
+            ]
+          }
+        },
+        {
+          "t": 18.02,
+          "do": {
+            "frame": [
+              "acetogens"
+            ]
+          }
+        },
+        {
+          "t": 20.34,
+          "do": {
+            "frame": [
+              "methanogens"
+            ]
+          }
+        },
+        {
+          "t": 24.02,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 24.02,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 27.1,
+          "do": {
+            "flows": false
+          }
+        },
+        {
+          "t": 27.1,
+          "do": {
+            "explode": 0.7
+          }
+        },
+        {
+          "t": 29.48,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-gas-line",
+      "scope": "scene:gas-line",
+      "title": "Where the energy goes",
+      "scene": "gas-line",
+      "file": "scene-gas-line.mp3",
+      "duration": 41.04,
+      "chars": 725,
+      "hash": "29b0f1b3dd87f9bc",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.96,
+          "text": "From left to right, in the order of the gas: our grain is now no more than a breath."
+        },
+        {
+          "t0": 4.96,
+          "t1": 9.92,
+          "text": "It leaves the bell by this flexible hose, passes a water trap, at the very lowest point."
+        },
+        {
+          "t0": 9.92,
+          "t1": 12.86,
+          "text": "Then a relief and a filter, one after the other."
+        },
+        {
+          "t0": 12.86,
+          "t1": 17.26,
+          "text": "And here, a flame arrester and a gauge, and through the kitchen wall it goes."
+        },
+        {
+          "t0": 17.26,
+          "t1": 19.74,
+          "text": "And at last the burner, under its pot."
+        },
+        {
+          "t0": 19.74,
+          "t1": 21.2,
+          "text": "Mind what you are looking at."
+        },
+        {
+          "t0": 21.2,
+          "t1": 25.62,
+          "text": "The measured plant had only a tap, a hose and a stove, plus a gauge."
+        },
+        {
+          "t0": 25.62,
+          "t1": 29.64,
+          "text": "The trap, the relief, the filter, the arrester and the detector come from elsewhere."
+        },
+        {
+          "t0": 29.64,
+          "t1": 31.52,
+          "text": "Their sizes are ours."
+        },
+        {
+          "t0": 31.52,
+          "t1": 37.26,
+          "text": "The dots follow the scraps, from the bench, and the gas at its true speed, as long as the burner burns."
+        },
+        {
+          "t0": 37.26,
+          "t1": 41.04,
+          "text": "Then run the scenario Water in the hose: the silliest failure in the world!"
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 4.96,
+          "do": {
+            "frame": [
+              "bell-hose"
+            ]
+          }
+        },
+        {
+          "t": 7.22,
+          "do": {
+            "frame": [
+              "condensate-trap"
+            ]
+          }
+        },
+        {
+          "t": 9.92,
+          "do": {
+            "frame": [
+              "hydraulic-relief",
+              "h2s-filter"
+            ]
+          }
+        },
+        {
+          "t": 12.86,
+          "do": {
+            "frame": [
+              "flame-arrester",
+              "pressure-gauge"
+            ]
+          }
+        },
+        {
+          "t": 15.44,
+          "do": {
+            "frame": [
+              "wall-sleeve"
+            ]
+          }
+        },
+        {
+          "t": 17.26,
+          "do": {
+            "frame": [
+              "biogas-burner",
+              "cooking-pot"
+            ]
+          }
+        },
+        {
+          "t": 19.74,
+          "do": {
+            "home": true
+          }
+        },
+        {
+          "t": 31.52,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 37.26,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-biogas-plant",
+      "scope": "part:biogas-plant",
+      "title": "Biogas plant",
+      "scene": "yard",
+      "file": "part-biogas-plant.mp3",
+      "duration": 18.08,
+      "chars": 324,
+      "hash": "543ad17d151fdb7e",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.4,
+          "text": "Scraps go in, a flame comes out."
+        },
+        {
+          "t0": 2.4,
+          "t1": 6.14,
+          "text": "The thesis got two hundred and eighty-nine litres of gas a day from it."
+        },
+        {
+          "t0": 6.14,
+          "t1": 8.22,
+          "text": "Our model finds about two hundred and eighty."
+        },
+        {
+          "t0": 8.22,
+          "t1": 11.76,
+          "text": "Let us not applaud: whatever is done to its rates, it stays there."
+        },
+        {
+          "t0": 11.76,
+          "t1": 15.69,
+          "text": "The verdict lies elsewhere: of twelve plants visited, four were running."
+        },
+        {
+          "t0": 15.69,
+          "t1": 18.08,
+          "text": "Ten, after five weeks of repairs."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-kitchen-house",
+      "scope": "part:kitchen-house",
+      "title": "House and kitchen",
+      "scene": "yard",
+      "file": "part-kitchen-house.mp3",
+      "duration": 13.84,
+      "chars": 230,
+      "hash": "5add99baa00c4560",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 6.1,
+          "text": "The start and the end of the circle: our grain of rice left this kitchen, and comes back to it as gas."
+        },
+        {
+          "t0": 6.1,
+          "t1": 10.8,
+          "text": "What counts is its distance: at this pressure, gas cannot be carried far."
+        },
+        {
+          "t0": 10.8,
+          "t1": 13.84,
+          "text": "Hence this wall, within reach of five metres of hose."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-yard-pad",
+      "scope": "part:yard-pad",
+      "title": "Yard pad",
+      "scene": "yard",
+      "file": "part-yard-pad.mp3",
+      "duration": 13.68,
+      "chars": 220,
+      "hash": "e1d177e6db69e1de",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.71,
+          "text": "A pad looks like nothing, and it carries about nine hundred kilos."
+        },
+        {
+          "t0": 3.71,
+          "t1": 6.28,
+          "text": "Its one job: staying flat."
+        },
+        {
+          "t0": 6.28,
+          "t1": 9.78,
+          "text": "And look at what is missing: no drain, no bund."
+        },
+        {
+          "t0": 9.78,
+          "t1": 13.68,
+          "text": "A real pad has to ask where a leak of eight hundred and fifty litres would go."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-water-butt",
+      "scope": "part:water-butt",
+      "title": "Water butt",
+      "scene": "yard",
+      "file": "part-water-butt.mp3",
+      "duration": 19.28,
+      "chars": 323,
+      "hash": "01bd66cb92ccf496",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.28,
+          "text": "A water butt, beside the tank."
+        },
+        {
+          "t0": 2.28,
+          "t1": 3.44,
+          "text": "Why beside it?"
+        },
+        {
+          "t0": 3.44,
+          "t1": 5.28,
+          "text": "So that the water arrives at its temperature."
+        },
+        {
+          "t0": 5.28,
+          "t1": 11.76,
+          "text": "And in a ten-degree month, bringing it to thirty degrees costs about a third of the energy in the day’s gas!"
+        },
+        {
+          "t0": 11.76,
+          "t1": 16.34,
+          "text": "Straw changes nothing: it keeps the tank warm, not the water coming in."
+        },
+        {
+          "t0": 16.34,
+          "t1": 19.28,
+          "text": "The scenario Geneva, wrapped and heated counts it."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-overflow-bucket",
+      "scope": "part:overflow-bucket",
+      "title": "Overflow bucket",
+      "scene": "yard",
+      "file": "part-overflow-bucket.mp3",
+      "duration": 20.64,
+      "chars": 302,
+      "hash": "619455a0a5fc63a7",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 5.62,
+          "text": "Here is all the movement this machine has: at each feed, ten litres push ten litres out."
+        },
+        {
+          "t0": 5.62,
+          "t1": 7.48,
+          "text": "No pump, no valve."
+        },
+        {
+          "t0": 7.48,
+          "t1": 10.78,
+          "text": "What falls here looks like water, and is not."
+        },
+        {
+          "t0": 10.78,
+          "t1": 14.24,
+          "text": "It is a fertiliser, still laden with organic matter."
+        },
+        {
+          "t0": 14.24,
+          "t1": 16.56,
+          "text": "Not for a stream, not for a drain."
+        },
+        {
+          "t0": 16.56,
+          "t1": 20.64,
+          "text": "And an empty bucket after a feed says something is blocking."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-vegetable-bed",
+      "scope": "part:vegetable-bed",
+      "title": "Vegetable bed",
+      "scene": "yard",
+      "file": "part-vegetable-bed.mp3",
+      "duration": 16.96,
+      "chars": 296,
+      "hash": "2d673a16f7bcffbc",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.24,
+          "text": "Where the circle ends."
+        },
+        {
+          "t0": 1.24,
+          "t1": 6.26,
+          "text": "What leaves as gas is the carbon: the nitrogen and phosphorus stay for the soil."
+        },
+        {
+          "t0": 6.26,
+          "t1": 11.3,
+          "text": "The tutorial keeps this effluent off what is eaten raw once animal products are in the tank."
+        },
+        {
+          "t0": 11.3,
+          "t1": 14.48,
+          "text": "The thesis, for its part, fed its tank meat and fish."
+        },
+        {
+          "t0": 14.48,
+          "t1": 16.96,
+          "text": "The sources do not agree, and we do not rule."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 6.26,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-shade-tree",
+      "scope": "part:shade-tree",
+      "title": "Shade tree",
+      "scene": "yard",
+      "file": "part-shade-tree.mp3",
+      "duration": 15.44,
+      "chars": 261,
+      "hash": "f425f80276ce43cb",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.8,
+          "text": "A tree, in an energy lab?"
+        },
+        {
+          "t0": 1.8,
+          "t1": 6.7,
+          "text": "At Dar es Salaam three were cut down, for seven and a half hours of direct sun."
+        },
+        {
+          "t0": 6.7,
+          "t1": 9.1,
+          "text": "The tank there ran warmer than the air."
+        },
+        {
+          "t0": 9.1,
+          "t1": 12.54,
+          "text": "Straw that holds heat in would also keep that sun out."
+        },
+        {
+          "t0": 12.54,
+          "t1": 15.44,
+          "text": "A felled tree has a cost, and these figures do not count it."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-compost-heap",
+      "scope": "part:compost-heap",
+      "title": "Compost heap",
+      "scene": "yard",
+      "file": "part-compost-heap.mp3",
+      "duration": 17.92,
+      "chars": 297,
+      "hash": "c351188d2416c235",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.96,
+          "text": "The tank does not swallow everything."
+        },
+        {
+          "t0": 1.96,
+          "t1": 6.54,
+          "text": "Fibre, wood, anything hard blocks the way or settles for nothing."
+        },
+        {
+          "t0": 6.54,
+          "t1": 11.24,
+          "text": "In the canteen’s leftovers, the thesis even picked out bottle caps and toothpicks!"
+        },
+        {
+          "t0": 11.24,
+          "t1": 12.58,
+          "text": "All that comes here."
+        },
+        {
+          "t0": 12.58,
+          "t1": 14.36,
+          "text": "This heap is our reading."
+        },
+        {
+          "t0": 14.36,
+          "t1": 17.92,
+          "text": "It says that a scrap tank asks for sorting, and so for a habit."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-scrap-caddy",
+      "scope": "part:scrap-caddy",
+      "title": "Scrap caddy",
+      "scene": "yard",
+      "file": "part-scrap-caddy.mp3",
+      "duration": 23.28,
+      "chars": 400,
+      "hash": "a8ec11a61bff7bd3",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.28,
+          "text": "And here is our grain of rice, in its covered caddy."
+        },
+        {
+          "t0": 3.28,
+          "t1": 4.2,
+          "text": "Why two kilos?"
+        },
+        {
+          "t0": 4.2,
+          "t1": 9.08,
+          "text": "By the thesis, that is what an average household of the city makes in a day."
+        },
+        {
+          "t0": 9.08,
+          "t1": 11.04,
+          "text": "The same kilos, two recipes."
+        },
+        {
+          "t0": 11.04,
+          "t1": 16.08,
+          "text": "The canteen’s leftovers, where our grain sleeps: two hundred and eighty-nine litres of gas."
+        },
+        {
+          "t0": 16.08,
+          "t1": 21.78,
+          "text": "The market’s unsold goods: a hundred and twenty-six, and our model finds only sixty-four to seventy-six."
+        },
+        {
+          "t0": 21.78,
+          "t1": 23.28,
+          "text": "It does not force the figure."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-hose-run",
+      "scope": "part:hose-run",
+      "title": "Gas hose run",
+      "scene": "yard",
+      "file": "part-hose-run.mp3",
+      "duration": 16.48,
+      "chars": 270,
+      "hash": "8fdc715640efd426",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.62,
+          "text": "The gas leaves laden with vapour, cools, and water settles out."
+        },
+        {
+          "t0": 4.62,
+          "t1": 8.28,
+          "text": "Hence the rule: a steady fall, to a single low point."
+        },
+        {
+          "t0": 8.28,
+          "t1": 13.18,
+          "text": "For the bell pushes at only two centimetres of water: it will not shift a plug of any length."
+        },
+        {
+          "t0": 13.18,
+          "t1": 16.48,
+          "text": "A small flame with a high bell: that is the sign of water."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 13.18,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-digester-tank",
+      "scope": "part:digester-tank",
+      "title": "Digester tank",
+      "scene": "digester",
+      "file": "part-digester-tank.mp3",
+      "duration": 19.92,
+      "chars": 320,
+      "hash": "9a1a6d4597be9dfe",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.12,
+          "text": "An ordinary water tank, with its top taken off."
+        },
+        {
+          "t0": 3.12,
+          "t1": 4.12,
+          "text": "That is all!"
+        },
+        {
+          "t0": 4.12,
+          "t1": 7.52,
+          "text": "It is black, and takes the sun along its whole side."
+        },
+        {
+          "t0": 7.52,
+          "t1": 13.8,
+          "text": "One rule, with no exception: nobody goes down here, nor into a pit of the kind, even emptied."
+        },
+        {
+          "t0": 13.8,
+          "t1": 16.6,
+          "text": "Methane and carbon dioxide take the oxygen’s place."
+        },
+        {
+          "t0": 16.6,
+          "t1": 19.92,
+          "text": "And whoever goes down to help the first is overcome in turn."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "isolate": true
+          }
+        },
+        {
+          "t": 7.52,
+          "do": {
+            "isolate": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-gas-bell",
+      "scope": "part:gas-bell",
+      "title": "Gas bell",
+      "scene": "digester",
+      "file": "part-gas-bell.mp3",
+      "duration": 24.48,
+      "chars": 427,
+      "hash": "8cccdcf6a0013448",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 5.82,
+          "text": "Here is this machine’s great find, and it is not even a part: a tank turned over, floating."
+        },
+        {
+          "t0": 5.82,
+          "t1": 8.14,
+          "text": "Our bubble arrives beneath and lifts it."
+        },
+        {
+          "t0": 8.14,
+          "t1": 12.24,
+          "text": "With no mechanism at all, it is store, gauge and regulator in one!"
+        },
+        {
+          "t0": 12.24,
+          "t1": 17.72,
+          "text": "Yet its pressure changes with its height, from one point three to three millibars in our model."
+        },
+        {
+          "t0": 17.72,
+          "t1": 19.98,
+          "text": "And it is taller than the liquid is deep."
+        },
+        {
+          "t0": 19.98,
+          "t1": 24.48,
+          "text": "Once it rests, about two hundred and thirty litres stay under it, which nothing can draw."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-gas-space",
+      "scope": "part:gas-space",
+      "title": "Gas space",
+      "scene": "digester",
+      "file": "part-gas-space.mp3",
+      "duration": 20.32,
+      "chars": 323,
+      "hash": "a15800a1394c24c0",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.48,
+          "text": "The store itself: four hundred usable litres."
+        },
+        {
+          "t0": 3.48,
+          "t1": 8.96,
+          "text": "On this burner that lasts barely an hour and a half: the evening is served what the day has made."
+        },
+        {
+          "t0": 8.96,
+          "t1": 11.06,
+          "text": "One danger here: air."
+        },
+        {
+          "t0": 11.06,
+          "t1": 16.28,
+          "text": "When the bell fills or the tank is opened, it mixes with the gas, and that mix can explode."
+        },
+        {
+          "t0": 16.28,
+          "t1": 20.32,
+          "text": "So the first gas is not burnt: the thesis let it go for ten days."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-rim-gap",
+      "scope": "part:rim-gap",
+      "title": "Open rim",
+      "scene": "digester",
+      "file": "part-rim-gap.mp3",
+      "duration": 27.28,
+      "chars": 431,
+      "hash": "82a2c62acdc9a79e",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.96,
+          "text": "Seen from above, this machine’s flaw."
+        },
+        {
+          "t0": 2.96,
+          "t1": 8.01,
+          "text": "Two sizes off the shelf do not nest exactly: that leaves a ring open to the air,"
+        },
+        {
+          "t0": 8.07,
+          "t1": 10.94,
+          "text": "twenty-two per cent of the surface."
+        },
+        {
+          "t0": 10.94,
+          "t1": 14.66,
+          "text": "Our model takes it as the share of bubbles that misses the bell."
+        },
+        {
+          "t0": 14.66,
+          "t1": 17.56,
+          "text": "Let us hope our bubble comes up on the right side!"
+        },
+        {
+          "t0": 17.56,
+          "t1": 19.54,
+          "text": "The grey dots are that gas."
+        },
+        {
+          "t0": 19.54,
+          "t1": 22.12,
+          "text": "The flaw and the relief are the same gap."
+        },
+        {
+          "t0": 22.12,
+          "t1": 27.28,
+          "text": "The still water also takes in larvae: the thesis advises stirring it weekly, with a stick."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "cutaway": true
+          }
+        },
+        {
+          "t": 17.56,
+          "do": {
+            "cutaway": false
+          }
+        },
+        {
+          "t": 17.56,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 19.54,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-scale-marks",
+      "scope": "part:scale-marks",
+      "title": "Scale marks",
+      "scene": "digester",
+      "file": "part-scale-marks.mp3",
+      "duration": 13.28,
+      "chars": 240,
+      "hash": "286adeef97f199cd",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.6,
+          "text": "No meter would do in running."
+        },
+        {
+          "t0": 1.6,
+          "t1": 3.76,
+          "text": "So the thesis turned the problem round."
+        },
+        {
+          "t0": 3.76,
+          "t1": 9.54,
+          "text": "It let the gas out twenty litres at a time, drawing a line of white correction fluid each time."
+        },
+        {
+          "t0": 9.54,
+          "t1": 13.28,
+          "text": "Every gas figure in this lab goes through those lines of correction fluid!"
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-half-brick",
+      "scope": "part:half-brick",
+      "title": "Half brick",
+      "scene": "digester",
+      "file": "part-half-brick.mp3",
+      "duration": 22.08,
+      "chars": 376,
+      "hash": "90fce03a333594b1",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.46,
+          "text": "Customers complained of a weak flame."
+        },
+        {
+          "t0": 2.46,
+          "t1": 5.12,
+          "text": "The installer’s recipe: half a brick on the bell."
+        },
+        {
+          "t0": 5.12,
+          "t1": 10.2,
+          "text": "Twelve kilos, two point zero three millibars more: the cleanest figure in this lab."
+        },
+        {
+          "t0": 10.2,
+          "t1": 11.38,
+          "text": "The pressure doubles."
+        },
+        {
+          "t0": 11.38,
+          "t1": 16.34,
+          "text": "The flow goes up one point eight four times, where a plain orifice gives one point four."
+        },
+        {
+          "t0": 16.34,
+          "t1": 18.08,
+          "text": "We found no explanation."
+        },
+        {
+          "t0": 18.08,
+          "t1": 22.08,
+          "text": "Careful: a bell leans, and this block can slide off, at head height."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-feed-funnel",
+      "scope": "part:feed-funnel",
+      "title": "Feed funnel",
+      "scene": "digester",
+      "file": "part-feed-funnel.mp3",
+      "duration": 14,
+      "chars": 231,
+      "hash": "edc6d14d96626e47",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.14,
+          "text": "The tank’s mouth."
+        },
+        {
+          "t0": 1.14,
+          "t1": 4.28,
+          "text": "On the measured plant, it was a cut-up water bottle!"
+        },
+        {
+          "t0": 4.28,
+          "t1": 6.64,
+          "text": "This is where our grain of rice dives in."
+        },
+        {
+          "t0": 6.64,
+          "t1": 11.04,
+          "text": "And it is not the only customer: giant snails come and block the way in."
+        },
+        {
+          "t0": 11.04,
+          "t1": 14,
+          "text": "So the thesis asks for it to be kept covered."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 6.64,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-feed-riser",
+      "scope": "part:feed-riser",
+      "title": "Feed riser",
+      "scene": "digester",
+      "file": "part-feed-riser.mp3",
+      "duration": 15.68,
+      "chars": 269,
+      "hash": "ba797eac368b0c4e",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 5.06,
+          "text": "This riser and the ring are open to the air, and join under the bell: they stand level."
+        },
+        {
+          "t0": 5.06,
+          "t1": 11.9,
+          "text": "No valve, no flap: the level is what shuts the tank, as long as the end of the pipe stays under the slurry."
+        },
+        {
+          "t0": 11.9,
+          "t1": 15.68,
+          "text": "And it stands proud: in the survey, one of them was knocked down by dogs!"
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-feed-tee",
+      "scope": "part:feed-tee",
+      "title": "Feed tee",
+      "scene": "digester",
+      "file": "part-feed-tee.mp3",
+      "duration": 18.08,
+      "chars": 309,
+      "hash": "77004592fd9f7578",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.2,
+          "text": "A plumber’s fitting, used as it comes."
+        },
+        {
+          "t0": 2.2,
+          "t1": 7.02,
+          "text": "What comes down changes direction here, and if a plug is to form, it forms here."
+        },
+        {
+          "t0": 7.02,
+          "t1": 11.2,
+          "text": "Hence this third side: the pipe can be reached with nothing taken apart."
+        },
+        {
+          "t0": 11.2,
+          "t1": 15.92,
+          "text": "The three-inch way dictates the size of the pieces, under one centimetre."
+        },
+        {
+          "t0": 15.92,
+          "t1": 18.08,
+          "text": "Our grain of rice passes without knocking."
+        }
+      ],
+      "cues": [
+        {
+          "t": 2.2,
+          "do": {
+            "explode": 0.6
+          }
+        },
+        {
+          "t": 11.2,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-clean-out-plug",
+      "scope": "part:clean-out-plug",
+      "title": "Clean-out plug",
+      "scene": "digester",
+      "file": "part-clean-out-plug.mp3",
+      "duration": 16.88,
+      "chars": 321,
+      "hash": "a3fa51835a4179db",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4,
+          "text": "A plug of no importance, at the foot of more than a metre of slurry."
+        },
+        {
+          "t0": 4,
+          "t1": 6.64,
+          "text": "It is for clearing the pipe, or draining the tank."
+        },
+        {
+          "t0": 6.64,
+          "t1": 11.08,
+          "text": "And when a blocked inlet is among the failures, being able to reach it is no small thing."
+        },
+        {
+          "t0": 11.08,
+          "t1": 15.44,
+          "text": "But opening it lets go at once what the column is pushing, at knee height: in open air,"
+        },
+        {
+          "t0": 15.44,
+          "t1": 16.88,
+          "text": "and far from any flame."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-inner-feed-pipe",
+      "scope": "part:inner-feed-pipe",
+      "title": "Inner feed pipe",
+      "scene": "digester",
+      "file": "part-inner-feed-pipe.mp3",
+      "duration": 13.6,
+      "chars": 250,
+      "hash": "8e4bd839019f7991",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.86,
+          "text": "Our grain goes down here, fifty-one centimetres in."
+        },
+        {
+          "t0": 2.86,
+          "t1": 4.04,
+          "text": "Why so far?"
+        },
+        {
+          "t0": 4.04,
+          "t1": 8.34,
+          "text": "To land in the sludge, and to get away from the overflow: or it would leave at once."
+        },
+        {
+          "t0": 8.34,
+          "t1": 11,
+          "text": "That is also where the tank turns sour first."
+        },
+        {
+          "t0": 11,
+          "t1": 13.6,
+          "text": "Our model has a single volume, and cannot see that gap."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 8.34,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-tank-connector",
+      "scope": "part:tank-connector",
+      "title": "Tank connector",
+      "scene": "digester",
+      "file": "part-tank-connector.mp3",
+      "duration": 16.16,
+      "chars": 277,
+      "hash": "45e1e7a2706f256f",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 6.84,
+          "text": "Here is the machine’s one true difficulty in plumbing: taking a pipe through a soft wall, below the level."
+        },
+        {
+          "t0": 6.84,
+          "t1": 11.16,
+          "text": "Rubber washers on each side, says the build manual, with silicone and tape."
+        },
+        {
+          "t0": 11.16,
+          "t1": 16.16,
+          "text": "For a leak here is not mended with the tank full: coming back to it means emptying everything."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-overflow-pipe",
+      "scope": "part:overflow-pipe",
+      "title": "Overflow pipe",
+      "scene": "digester",
+      "file": "part-overflow-pipe.mp3",
+      "duration": 14.64,
+      "chars": 238,
+      "hash": "2afb0b175acac764",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 6.46,
+          "text": "A pipe, a fall, and nothing else: the machine’s only level regulator, and it cannot wear out."
+        },
+        {
+          "t0": 6.46,
+          "t1": 11.26,
+          "text": "It takes the clear liquid, not the sludge: so solids stay far longer than water."
+        },
+        {
+          "t0": 11.26,
+          "t1": 14.64,
+          "text": "Our grain of rice will not leave this way, or not in one piece."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 14.64,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-gas-tap",
+      "scope": "part:gas-tap",
+      "title": "Gas tap",
+      "scene": "digester",
+      "file": "part-gas-tap.mp3",
+      "duration": 13.76,
+      "chars": 216,
+      "hash": "0cd578fbad78c7b6",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.46,
+          "text": "One tap, and that is the machine’s whole control."
+        },
+        {
+          "t0": 3.46,
+          "t1": 7.68,
+          "text": "The thesis names what that takes: a person who understands what she sees."
+        },
+        {
+          "t0": 7.68,
+          "t1": 13.76,
+          "text": "And glued, it can cost the whole bell: the thesis prefers tape, so that it can be unscrewed."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-bottom-valve",
+      "scope": "part:bottom-valve",
+      "title": "Bottom valve",
+      "scene": "digester",
+      "file": "part-bottom-valve.mp3",
+      "duration": 13.84,
+      "chars": 247,
+      "hash": "f11860171f988dc9",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.3,
+          "text": "This one is not on a household’s list: it is the research valve."
+        },
+        {
+          "t0": 4.3,
+          "t1": 8.62,
+          "text": "To follow a tank stirred by nothing, the thesis sampled at three heights."
+        },
+        {
+          "t0": 8.62,
+          "t1": 11.42,
+          "text": "That is how it saw the bottom more sour than the top."
+        },
+        {
+          "t0": 11.42,
+          "t1": 13.84,
+          "text": "Many of this lab’s figures came out through this hole."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-pallet",
+      "scope": "part:pallet",
+      "title": "Pallet",
+      "scene": "digester",
+      "file": "part-pallet.mp3",
+      "duration": 16.48,
+      "chars": 251,
+      "hash": "3be333391919b970",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.36,
+          "text": "Nothing was calculated here."
+        },
+        {
+          "t0": 2.36,
+          "t1": 7.22,
+          "text": "The thesis stood its tank on a pallet, and this drawing takes it as it is."
+        },
+        {
+          "t0": 7.22,
+          "t1": 12.1,
+          "text": "Let us move the parts apart: the pallet stays, and the tank lifts off it."
+        },
+        {
+          "t0": 12.1,
+          "t1": 13.76,
+          "text": "How long did it last?"
+        },
+        {
+          "t0": 13.76,
+          "t1": 16.48,
+          "text": "The thesis does not say, and four months could not."
+        }
+      ],
+      "cues": [
+        {
+          "t": 7.22,
+          "do": {
+            "explode": 0.6
+          }
+        },
+        {
+          "t": 12.1,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-float-limiter",
+      "scope": "part:float-limiter",
+      "title": "Float limiter",
+      "scene": "digester",
+      "file": "part-float-limiter.mp3",
+      "duration": 13.68,
+      "chars": 252,
+      "hash": "414b2ba1f37a5347",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.48,
+          "text": "Look at these two arches, above the machine."
+        },
+        {
+          "t0": 2.48,
+          "t1": 7.64,
+          "text": "They were not on the measured plant: they come from the build manual, scaled by this drawing."
+        },
+        {
+          "t0": 7.64,
+          "t1": 12.12,
+          "text": "The thesis rates low the risk of a full bell tipping, with no test behind that."
+        },
+        {
+          "t0": 12.12,
+          "t1": 13.68,
+          "text": "We do not take that judgement on."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-scum-layer",
+      "scope": "part:scum-layer",
+      "title": "Scum layer",
+      "scene": "digester",
+      "file": "part-scum-layer.mp3",
+      "duration": 18,
+      "chars": 311,
+      "hash": "9fed9b22ccb4b555",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.88,
+          "text": "The thesis sampled its tank layer by layer."
+        },
+        {
+          "t0": 2.88,
+          "t1": 6.35,
+          "text": "Seventy-four grams of dry matter per litre at the surface,"
+        },
+        {
+          "t0": 6.58,
+          "t1": 9.72,
+          "text": "a little over three in the middle, forty-one at the bottom."
+        },
+        {
+          "t0": 9.72,
+          "t1": 12.16,
+          "text": "A well-ordered tank, stirred by nothing!"
+        },
+        {
+          "t0": 12.16,
+          "t1": 18,
+          "text": "The scum is no waste: with the sludge, it is the tank’s stock, and what cushions three days without a feed."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "explode": 0.6
+          }
+        },
+        {
+          "t": 12.16,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-clear-liquor",
+      "scope": "part:clear-liquor",
+      "title": "Clear liquor",
+      "scene": "digester",
+      "file": "part-clear-liquor.mp3",
+      "duration": 17.2,
+      "chars": 268,
+      "hash": "33d16329adec0dfd",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.16,
+          "text": "About six hundred litres, almost water."
+        },
+        {
+          "t0": 3.16,
+          "t1": 6.54,
+          "text": "The liquid passes through in forty-two and a half days."
+        },
+        {
+          "t0": 6.54,
+          "t1": 11.86,
+          "text": "The solids stay about three hundred: that is what allows digestion on the spot."
+        },
+        {
+          "t0": 11.86,
+          "t1": 17.2,
+          "text": "And the button on this sheet dives into one of its drops, on the trail of our grain of rice."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-sludge-bed",
+      "scope": "part:sludge-bed",
+      "title": "Sludge bed",
+      "scene": "digester",
+      "file": "part-sludge-bed.mp3",
+      "duration": 16.72,
+      "chars": 268,
+      "hash": "a96e357a00051f1c",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.74,
+          "text": "Right at the bottom: this is where our grain of rice lands."
+        },
+        {
+          "t0": 2.74,
+          "t1": 7.88,
+          "text": "At start-up this bed was cow dung: sixty kilos, mixed by hand."
+        },
+        {
+          "t0": 7.88,
+          "t1": 10.56,
+          "text": "It holds the tank’s stock of methanogens."
+        },
+        {
+          "t0": 10.56,
+          "t1": 16.72,
+          "text": "When and how a household takes this sludge out, no source we have seen says, and we invent no interval."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-food-particle",
+      "scope": "part:food-particle",
+      "title": "Food particle",
+      "scene": "slurry",
+      "file": "part-food-particle.mp3",
+      "duration": 20.08,
+      "chars": 317,
+      "hash": "21a4e023aefd6316",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.76,
+          "text": "Here is what remains of our grain, and the carbon’s route starts here."
+        },
+        {
+          "t0": 4.76,
+          "t1": 10.52,
+          "text": "People often quote five hundred grams of methane from two kilos: that holds for dry matter."
+        },
+        {
+          "t0": 10.52,
+          "t1": 15.22,
+          "text": "On the thesis’s real wet scraps, it is about a hundred and five grams."
+        },
+        {
+          "t0": 15.22,
+          "t1": 20.08,
+          "text": "The difference is not in the tank: it is in the water those two kilos already held."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 15.22,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-hydrolysers",
+      "scope": "part:hydrolysers",
+      "title": "Hydrolysers",
+      "scene": "slurry",
+      "file": "part-hydrolysers.mp3",
+      "duration": 18.72,
+      "chars": 334,
+      "hash": "3a7c1d06d2b0e8ab",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.2,
+          "text": "How do you eat something bigger than yourself?"
+        },
+        {
+          "t0": 2.2,
+          "t1": 3.46,
+          "text": "Without swallowing it."
+        },
+        {
+          "t0": 3.46,
+          "t1": 7.68,
+          "text": "These organisms release enzymes, which cut our grain up outside."
+        },
+        {
+          "t0": 7.68,
+          "t1": 13.6,
+          "text": "The book calls this stage usually the slowest; the thesis quotes an author for whom the slowest are the last."
+        },
+        {
+          "t0": 13.6,
+          "t1": 15.58,
+          "text": "We have no means to settle it."
+        },
+        {
+          "t0": 15.58,
+          "t1": 18.72,
+          "text": "Our model takes half the gas of a cooked meal in two days."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-acid-makers",
+      "scope": "part:acid-makers",
+      "title": "Acid-makers",
+      "scene": "slurry",
+      "file": "part-acid-makers.mp3",
+      "duration": 17.84,
+      "chars": 277,
+      "hash": "50044b4bf8dc9ef9",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.94,
+          "text": "Quick, undemanding, always at work."
+        },
+        {
+          "t0": 2.94,
+          "t1": 8.78,
+          "text": "When a shock hits the tank, too much food, a change of temperature, they are not the ones who suffer."
+        },
+        {
+          "t0": 8.78,
+          "t1": 11.12,
+          "text": "They carry on, making more acid."
+        },
+        {
+          "t0": 11.12,
+          "t1": 13.36,
+          "text": "That is how a tank is lost."
+        },
+        {
+          "t0": 13.36,
+          "t1": 17.84,
+          "text": "The scenario Too much, at once shows them bustling while the methanogens fade."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-acetogens",
+      "scope": "part:acetogens",
+      "title": "Acetogens",
+      "scene": "slurry",
+      "file": "part-acetogens.mp3",
+      "duration": 18.08,
+      "chars": 291,
+      "hash": "8196df9657473ab9",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 6.38,
+          "text": "These organisms make acetate and hydrogen, on one condition, says the book: that hydrogen stays scarce."
+        },
+        {
+          "t0": 6.38,
+          "t1": 8.76,
+          "text": "So they need neighbours who use it up."
+        },
+        {
+          "t0": 8.76,
+          "t1": 12.02,
+          "text": "This chain is no series of pipes: it is a neighbourhood!"
+        },
+        {
+          "t0": 12.02,
+          "t1": 13.76,
+          "text": "Here they are, alone."
+        },
+        {
+          "t0": 13.76,
+          "t1": 18.08,
+          "text": "They exist only in the drawing: our model counts all acid as acetate."
+        }
+      ],
+      "cues": [
+        {
+          "t": 12.02,
+          "do": {
+            "isolate": true
+          }
+        },
+        {
+          "t": 18.08,
+          "do": {
+            "isolate": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-methanogens",
+      "scope": "part:methanogens",
+      "title": "Methanogens",
+      "scene": "slurry",
+      "file": "part-methanogens.mp3",
+      "duration": 22.08,
+      "chars": 383,
+      "hash": "dcbd4e8546bde199",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.7,
+          "text": "The only ones that make methane, and they are not bacteria!"
+        },
+        {
+          "t0": 3.7,
+          "t1": 8.92,
+          "text": "In the late nineteen seventies, science placed them in a line of their own: the archaea."
+        },
+        {
+          "t0": 8.92,
+          "t1": 13.54,
+          "text": "What was our grain reaches them as acetate and hydrogen, and they turn it into gas."
+        },
+        {
+          "t0": 13.54,
+          "t1": 16.66,
+          "text": "But they multiply slowly, and bear acid badly."
+        },
+        {
+          "t0": 16.66,
+          "t1": 20.02,
+          "text": "A tank only holds once this population has had time to grow."
+        },
+        {
+          "t0": 20.02,
+          "t1": 22.08,
+          "text": "Its limit lies there, not in the plumbing."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-sulphate-reducers",
+      "scope": "part:sulphate-reducers",
+      "title": "Sulphate reducers",
+      "scene": "slurry",
+      "file": "part-sulphate-reducers.mp3",
+      "duration": 16.4,
+      "chars": 305,
+      "hash": "5a95a5cc50890514",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.4,
+          "text": "These do not make the gas we want."
+        },
+        {
+          "t0": 2.4,
+          "t1": 7.02,
+          "text": "Hydrogen sulphide comes from the sulphur in food: that is the smell of the slurry."
+        },
+        {
+          "t0": 7.02,
+          "t1": 12.02,
+          "text": "They are in this world because of that gas, not because our model knows them: it has no sulphur."
+        },
+        {
+          "t0": 12.02,
+          "t1": 13.08,
+          "text": "How much is there?"
+        },
+        {
+          "t0": 13.08,
+          "t1": 16.4,
+          "text": "The filter’s sheet, on the gas line, will tell you what we do not know."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-fatty-acid-pool",
+      "scope": "part:fatty-acid-pool",
+      "title": "Fatty-acid pool",
+      "scene": "slurry",
+      "file": "part-fatty-acid-pool.mp3",
+      "duration": 26.72,
+      "chars": 454,
+      "hash": "556310334a611415",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.36,
+          "text": "Here is the trap."
+        },
+        {
+          "t0": 1.36,
+          "t1": 6.9,
+          "text": "If food arrives faster than the methanogens multiply, this stock grows and eats the buffer."
+        },
+        {
+          "t0": 6.9,
+          "t1": 8.7,
+          "text": "They stop: it grows more."
+        },
+        {
+          "t0": 8.7,
+          "t1": 11.54,
+          "text": "No switch in our model, it comes by itself."
+        },
+        {
+          "t0": 11.54,
+          "t1": 16.52,
+          "text": "The scenario Too much, at once: for three days the gas triples, then nothing."
+        },
+        {
+          "t0": 16.52,
+          "t1": 18.04,
+          "text": "And this model is hopeful."
+        },
+        {
+          "t0": 18.04,
+          "t1": 22.5,
+          "text": "In the field, the thesis marks a stopped, very sour plant as overfed."
+        },
+        {
+          "t0": 22.5,
+          "t1": 26.72,
+          "text": "If our reading is right, that is the one still sour five weeks later, with gas that would not burn."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-bicarbonate-buffer",
+      "scope": "part:bicarbonate-buffer",
+      "title": "Bicarbonate buffer",
+      "scene": "slurry",
+      "file": "part-bicarbonate-buffer.mp3",
+      "duration": 16,
+      "chars": 275,
+      "hash": "c3f4f24b76fb2ca5",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.06,
+          "text": "Those small grains are not rice."
+        },
+        {
+          "t0": 2.06,
+          "t1": 6.42,
+          "text": "They count the buffer, which takes up acid while hardly changing the acidity."
+        },
+        {
+          "t0": 6.42,
+          "t1": 11.74,
+          "text": "In our model, stop feeding at six point four on the acidity scale: the tank survives."
+        },
+        {
+          "t0": 11.74,
+          "t1": 16,
+          "text": "A few hours later, at six point three five, it no longer comes back by itself."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-ammonium",
+      "scope": "part:ammonium",
+      "title": "Ammonium",
+      "scene": "slurry",
+      "file": "part-ammonium.mp3",
+      "duration": 13.04,
+      "chars": 236,
+      "hash": "9d3f28c05e057092",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.54,
+          "text": "Here is what the gas does not take away."
+        },
+        {
+          "t0": 2.54,
+          "t1": 7.2,
+          "text": "The nitrogen of the proteins stays here, and makes the effluent a fertiliser."
+        },
+        {
+          "t0": 7.2,
+          "t1": 9.98,
+          "text": "Too much of it, says the book, would hinder the methanogens."
+        },
+        {
+          "t0": 9.98,
+          "t1": 13.04,
+          "text": "Our model has no nitrogen, and would not see that limit."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-gas-bubble",
+      "scope": "part:gas-bubble",
+      "title": "Gas bubble",
+      "scene": "slurry",
+      "file": "part-gas-bubble.mp3",
+      "duration": 19.76,
+      "chars": 343,
+      "hash": "407dffdaa195170f",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.4,
+          "text": "There it is!"
+        },
+        {
+          "t0": 1.4,
+          "t1": 4.04,
+          "text": "What was a grain of rice leaves the liquid."
+        },
+        {
+          "t0": 4.04,
+          "t1": 8.82,
+          "text": "A riddle: why does the gas from peelings, the leaner gas, carry more methane?"
+        },
+        {
+          "t0": 8.82,
+          "t1": 13.94,
+          "text": "If both foods make as much carbon dioxide as methane, the liquid keeps about the same volume of it."
+        },
+        {
+          "t0": 13.94,
+          "t1": 16.12,
+          "text": "In a small flow, that weighs more."
+        },
+        {
+          "t0": 16.12,
+          "t1": 19.76,
+          "text": "But a richer gas is not more energy: leftovers give nearly twice as much."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-surviving-germs",
+      "scope": "part:surviving-germs",
+      "title": "Surviving germs",
+      "scene": "slurry",
+      "file": "part-surviving-germs.mp3",
+      "duration": 16.72,
+      "chars": 278,
+      "hash": "22bfac7db4196f8d",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.1,
+          "text": "A cleaner drop is not a drop without germs."
+        },
+        {
+          "t0": 2.1,
+          "t1": 6.53,
+          "text": "At these temperatures, says the book, digestion cannot ensure that viruses,"
+        },
+        {
+          "t0": 6.7,
+          "t1": 9.36,
+          "text": "bacteria and parasites are inactivated."
+        },
+        {
+          "t0": 9.36,
+          "t1": 13.04,
+          "text": "Our model has no germs: on this point there are only texts."
+        },
+        {
+          "t0": 13.04,
+          "t1": 16.72,
+          "text": "So for this effluent: gloves, washed hands, no raw leaves."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-mincer",
+      "scope": "part:mincer",
+      "title": "Mincer",
+      "scene": "gas-line",
+      "file": "part-mincer.mp3",
+      "duration": 18.08,
+      "chars": 311,
+      "hash": "75e95d6b1400c031",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.46,
+          "text": "Back to the bench."
+        },
+        {
+          "t0": 1.46,
+          "t1": 5.9,
+          "text": "Our grain of rice has nothing to fear: in the canteen’s leftovers, only meat,"
+        },
+        {
+          "t0": 5.98,
+          "t1": 7.94,
+          "text": "fish and fruit went through here."
+        },
+        {
+          "t0": 7.94,
+          "t1": 12.2,
+          "text": "But on market waste, the fibres blunted its blades, again and again."
+        },
+        {
+          "t0": 12.2,
+          "t1": 14.56,
+          "text": "In the end it was a knife, then a blender."
+        },
+        {
+          "t0": 14.56,
+          "t1": 18.08,
+          "text": "A detail that weighs heavily, when the gesture comes back every day."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "flows": true
+          }
+        },
+        {
+          "t": 7.94,
+          "do": {
+            "flows": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-dilution-bucket",
+      "scope": "part:dilution-bucket",
+      "title": "Dilution bucket",
+      "scene": "gas-line",
+      "file": "part-dilution-bucket.mp3",
+      "duration": 14.32,
+      "chars": 262,
+      "hash": "8661d9b4fbed0921",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.4,
+          "text": "At first the thesis poured in the food, then ten litres of water behind it."
+        },
+        {
+          "t0": 4.4,
+          "t1": 8.88,
+          "text": "To block less, it changed: everything into the bucket, up to the mark, stir, pour."
+        },
+        {
+          "t0": 8.88,
+          "t1": 11.36,
+          "text": "Our grain of rice takes its last bath here."
+        },
+        {
+          "t0": 11.36,
+          "t1": 14.32,
+          "text": "A mark on a bucket stands in for scales and an instruction."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-bell-hose",
+      "scope": "part:bell-hose",
+      "title": "Bell hose",
+      "scene": "gas-line",
+      "file": "part-bell-hose.mp3",
+      "duration": 20,
+      "chars": 330,
+      "hash": "24b0d0833c86164d",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 1.88,
+          "text": "The only movement in this line."
+        },
+        {
+          "t0": 1.88,
+          "t1": 8.26,
+          "text": "At each filling it follows the bell over sixty-nine centimetres, without pulling, or it rips the tap off."
+        },
+        {
+          "t0": 8.26,
+          "t1": 10.5,
+          "text": "What was our grain passes through it."
+        },
+        {
+          "t0": 10.5,
+          "t1": 14.48,
+          "text": "But water gathers where it bends, and a leak here cannot be seen."
+        },
+        {
+          "t0": 14.48,
+          "t1": 20,
+          "text": "A rigid pipe would last longer, and would not follow: flexibility is paid for in faults."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-condensate-trap",
+      "scope": "part:condensate-trap",
+      "title": "Condensate trap",
+      "scene": "gas-line",
+      "file": "part-condensate-trap.mp3",
+      "duration": 16.24,
+      "chars": 248,
+      "hash": "cfb6bfc2896d534c",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.16,
+          "text": "A few grams of water, and there is a machine stopped."
+        },
+        {
+          "t0": 3.16,
+          "t1": 6.1,
+          "text": "Our model counts about two and a half grams a day."
+        },
+        {
+          "t0": 6.1,
+          "t1": 10.58,
+          "text": "That is little, but the bell pushes at only two centimetres."
+        },
+        {
+          "t0": 10.58,
+          "t1": 16.24,
+          "text": "Once full, this becomes a plug: it is drained, gas shut off, with no flame nearby."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-hydraulic-relief",
+      "scope": "part:hydraulic-relief",
+      "title": "Hydraulic relief",
+      "scene": "gas-line",
+      "file": "part-hydraulic-relief.mp3",
+      "duration": 17.36,
+      "chars": 280,
+      "hash": "820d0a5df879d6d7",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.88,
+          "text": "A water bottle, and a pipe dipping into it."
+        },
+        {
+          "t0": 2.88,
+          "t1": 6.6,
+          "text": "The true relief of this machine is the rim of its bell."
+        },
+        {
+          "t0": 6.6,
+          "t1": 12.56,
+          "text": "This bottle shows the principle: the level in the pipe follows the pressure, a centimetre per millibar."
+        },
+        {
+          "t0": 12.56,
+          "t1": 17.36,
+          "text": "And so low a pressure is no reason for less attention: the gas is still gas."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-h2s-filter",
+      "scope": "part:h2s-filter",
+      "title": "H₂S filter",
+      "scene": "gas-line",
+      "file": "part-h2s-filter.mp3",
+      "duration": 25.76,
+      "chars": 438,
+      "hash": "e7455e0cf2539df0",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.52,
+          "text": "The most dangerous gas in the machine, and the nose is not enough."
+        },
+        {
+          "t0": 3.52,
+          "t1": 7.28,
+          "text": "Hydrogen sulphide smells of rotten eggs at tiny doses."
+        },
+        {
+          "t0": 7.28,
+          "t1": 11.68,
+          "text": "Then the smell fades, and disappears at about a hundred parts per million."
+        },
+        {
+          "t0": 11.68,
+          "t1": 15.14,
+          "text": "At about five hundred, it kills at once, by the French guide."
+        },
+        {
+          "t0": 15.14,
+          "t1": 16.84,
+          "text": "So the smell is no alarm."
+        },
+        {
+          "t0": 16.84,
+          "t1": 19.4,
+          "text": "And in this gas, how much is there?"
+        },
+        {
+          "t0": 19.4,
+          "t1": 23.68,
+          "text": "Unknown: the thesis’s sensor hit its ceiling of a hundred, almost everywhere."
+        },
+        {
+          "t0": 23.68,
+          "t1": 25.76,
+          "text": "And of this filter, we promise nothing."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-flame-arrester",
+      "scope": "part:flame-arrester",
+      "title": "Flame arrester",
+      "scene": "gas-line",
+      "file": "part-flame-arrester.mp3",
+      "duration": 16.24,
+      "chars": 279,
+      "hash": "d05b153353f9c9b5",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.28,
+          "text": "A ball of steel or copper wool, and that is all."
+        },
+        {
+          "t0": 3.28,
+          "t1": 9.32,
+          "text": "The tutorial sets it where a flashback is feared: it lowers the temperature, and smothers the burning."
+        },
+        {
+          "t0": 9.32,
+          "t1": 12.42,
+          "text": "We found no test saying what it stops at these flows."
+        },
+        {
+          "t0": 12.42,
+          "t1": 16.24,
+          "text": "This drawing gives it a shape: it proves nothing about how well it works."
+        }
+      ],
+      "cues": [
+        {
+          "t": 3.28,
+          "do": {
+            "explode": 0.6
+          }
+        },
+        {
+          "t": 9.32,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-pressure-gauge",
+      "scope": "part:pressure-gauge",
+      "title": "Pressure gauge",
+      "scene": "gas-line",
+      "file": "part-pressure-gauge.mp3",
+      "duration": 18.32,
+      "chars": 295,
+      "hash": "3c04ff078ae51fbe",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 6,
+          "text": "A dial marked up to sixty millibars, for a pressure of two: the needle hardly moves."
+        },
+        {
+          "t0": 6,
+          "t1": 10.1,
+          "text": "It showed two at each of ten tests, and four at each of five with the half-brick."
+        },
+        {
+          "t0": 10.1,
+          "t1": 13.64,
+          "text": "Can so wide an instrument really tell such gaps?"
+        },
+        {
+          "t0": 13.64,
+          "t1": 18.32,
+          "text": "Here the needle follows our model, on its true scale: two graduations, at best!"
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-wall-sleeve",
+      "scope": "part:wall-sleeve",
+      "title": "Wall sleeve",
+      "scene": "gas-line",
+      "file": "part-wall-sleeve.mp3",
+      "duration": 16.96,
+      "chars": 263,
+      "hash": "6f19c86f50e5bb20",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.78,
+          "text": "A hole in a wall, and yet, it is a border."
+        },
+        {
+          "t0": 3.78,
+          "t1": 7.44,
+          "text": "No source describes this crossing: this sleeve is our reading."
+        },
+        {
+          "t0": 7.44,
+          "t1": 10.9,
+          "text": "See: the yard on one side, the kitchen on the other."
+        },
+        {
+          "t0": 10.9,
+          "t1": 13.38,
+          "text": "This is where the machine enters a living space."
+        },
+        {
+          "t0": 13.38,
+          "t1": 15.1,
+          "text": "A leak outside thins out."
+        },
+        {
+          "t0": 15.1,
+          "t1": 16.96,
+          "text": "In a closed room, it gathers."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-kitchen-valve",
+      "scope": "part:kitchen-valve",
+      "title": "Kitchen valve",
+      "scene": "gas-line",
+      "file": "part-kitchen-valve.mp3",
+      "duration": 19.28,
+      "chars": 313,
+      "hash": "cecaaade80788320",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 3.26,
+          "text": "A valve within reach, for what cannot be seen."
+        },
+        {
+          "t0": 3.26,
+          "t1": 8.18,
+          "text": "The neighbouring study finds it likely that flames went out with the cooks not seeing."
+        },
+        {
+          "t0": 8.18,
+          "t1": 10.08,
+          "text": "The gas goes on coming out."
+        },
+        {
+          "t0": 10.08,
+          "t1": 14.18,
+          "text": "Nothing automates this: a flame gone missing is first dealt with by shutting."
+        },
+        {
+          "t0": 14.18,
+          "t1": 19.28,
+          "text": "The scenario The flame goes out shuts it for you, and its alarm says why."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-biogas-burner",
+      "scope": "part:biogas-burner",
+      "title": "Biogas burner",
+      "scene": "gas-line",
+      "file": "part-biogas-burner.mp3",
+      "duration": 15.68,
+      "chars": 272,
+      "hash": "5c37327864934765",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.24,
+          "text": "Not a butane burner: this gas holds less energy per litre."
+        },
+        {
+          "t0": 4.24,
+          "t1": 7.28,
+          "text": "It is small: a hundred litres in twenty-two minutes."
+        },
+        {
+          "t0": 7.28,
+          "t1": 11.66,
+          "text": "A kilo of leftovers gives about thirty-two minutes on it, a kilo of peelings fourteen."
+        },
+        {
+          "t0": 11.66,
+          "t1": 15.68,
+          "text": "And in the neighbouring study, stoves already showed damage after a year."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-primary-air-sleeve",
+      "scope": "part:primary-air-sleeve",
+      "title": "Primary-air sleeve",
+      "scene": "gas-line",
+      "file": "part-primary-air-sleeve.mp3",
+      "duration": 17.12,
+      "chars": 295,
+      "hash": "98b41643e37565df",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.8,
+          "text": "A simple ring, and it decides the colour."
+        },
+        {
+          "t0": 2.8,
+          "t1": 8.94,
+          "text": "A long, yellowish flame, says the book, means incomplete burning: carbon monoxide in the kitchen."
+        },
+        {
+          "t0": 8.94,
+          "t1": 12.16,
+          "text": "It has no smell, and that is the danger of this setting."
+        },
+        {
+          "t0": 12.16,
+          "t1": 14.3,
+          "text": "For this burner we found no figure."
+        },
+        {
+          "t0": 14.3,
+          "t1": 17.12,
+          "text": "The eye does the work, at each lighting, with the window open."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-blue-flame",
+      "scope": "part:blue-flame",
+      "title": "Blue flame",
+      "scene": "gas-line",
+      "file": "part-blue-flame.mp3",
+      "duration": 27.04,
+      "chars": 484,
+      "hash": "cfd607b45e2b4ab8",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.7,
+          "text": "Here it is, what all the rest is for."
+        },
+        {
+          "t0": 2.7,
+          "t1": 3.98,
+          "text": "And our grain of rice?"
+        },
+        {
+          "t0": 3.98,
+          "t1": 6.74,
+          "text": "A cooked grain weighs a few hundredths of a gram."
+        },
+        {
+          "t0": 6.74,
+          "t1": 10.82,
+          "text": "At thirty-two minutes a kilo, do the sum: about a tenth of a second of flame."
+        },
+        {
+          "t0": 10.82,
+          "t1": 12.58,
+          "text": "All that way, for this!"
+        },
+        {
+          "t0": 12.58,
+          "t1": 17.68,
+          "text": "So it takes a great many: two kilos, mixed, give about forty-five minutes, by the thesis."
+        },
+        {
+          "t0": 17.68,
+          "t1": 19.82,
+          "text": "Its height here is not measured."
+        },
+        {
+          "t0": 19.82,
+          "t1": 25.06,
+          "text": "The tutorial warns: these flames show less than butane’s, and people get burnt without having seen them."
+        },
+        {
+          "t0": 25.06,
+          "t1": 27.04,
+          "text": "The button on this sheet lights the burner."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "isolate": true
+          }
+        },
+        {
+          "t": 12.58,
+          "do": {
+            "isolate": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-pot-stand",
+      "scope": "part:pot-stand",
+      "title": "Pot stand",
+      "scene": "gas-line",
+      "file": "part-pot-stand.mp3",
+      "duration": 15.68,
+      "chars": 273,
+      "hash": "a042b28701cf6e06",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 4.1,
+          "text": "Three parts and one distance: the burner, the stand, the pot."
+        },
+        {
+          "t0": 4.1,
+          "t1": 8.76,
+          "text": "The neighbouring study notes that the distance from burner to pot bottom counts for much."
+        },
+        {
+          "t0": 8.76,
+          "t1": 12.46,
+          "text": "Here, a dish too small loses what passes beside it."
+        },
+        {
+          "t0": 12.46,
+          "t1": 15.68,
+          "text": "The kitchen’s efficiency also comes down to a few centimetres of air."
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "do": {
+            "explode": 0.6
+          }
+        },
+        {
+          "t": 4.1,
+          "do": {
+            "explode": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "part-cooking-pot",
+      "scope": "part:cooking-pot",
+      "title": "Cooking pot",
+      "scene": "gas-line",
+      "file": "part-cooking-pot.mp3",
+      "duration": 19.92,
+      "chars": 362,
+      "hash": "56bb2884c9da7193",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 0.98,
+          "text": "End of the journey."
+        },
+        {
+          "t0": 0.98,
+          "t1": 6.8,
+          "text": "The day’s two kilos, at fifty-five per cent efficiency, bring about six litres of water to the boil."
+        },
+        {
+          "t0": 6.8,
+          "t1": 10.14,
+          "text": "The thesis says a third of the cooking of a household in the city."
+        },
+        {
+          "t0": 10.14,
+          "t1": 14.78,
+          "text": "This lab does not promise a dinner: the neighbouring study sees it finished on charcoal."
+        },
+        {
+          "t0": 14.78,
+          "t1": 16.24,
+          "text": "So, a lid."
+        },
+        {
+          "t0": 16.24,
+          "t1": 19.06,
+          "text": "And if a grain of rice stays at the bottom of the plate?"
+        },
+        {
+          "t0": 19.06,
+          "t1": 19.92,
+          "text": "It knows the way."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-vent-opening",
+      "scope": "part:vent-opening",
+      "title": "Vent opening",
+      "scene": "gas-line",
+      "file": "part-vent-opening.mp3",
+      "duration": 17.04,
+      "chars": 240,
+      "hash": "02f245130ec26a10",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.02,
+          "text": "An opening, high on the wall."
+        },
+        {
+          "t0": 2.02,
+          "t1": 7,
+          "text": "The thesis relies on open houses, which a European kitchen is not."
+        },
+        {
+          "t0": 7,
+          "t1": 10.62,
+          "text": "Methane, lighter than air, rises: this helps it."
+        },
+        {
+          "t0": 10.62,
+          "t1": 14.8,
+          "text": "Carbon dioxide and hydrogen sulphide, heavier, stay low."
+        },
+        {
+          "t0": 14.8,
+          "t1": 17.04,
+          "text": "And no vent stands in for a shut tap."
+        }
+      ],
+      "cues": []
+    },
+    {
+      "id": "part-gas-detector",
+      "scope": "part:gas-detector",
+      "title": "Gas detector",
+      "scene": "gas-line",
+      "file": "part-gas-detector.mp3",
+      "duration": 16.88,
+      "chars": 273,
+      "hash": "f5f4500c5c07feb5",
+      "captions": [
+        {
+          "t0": 0,
+          "t1": 2.84,
+          "text": "No household plant in our sources has one."
+        },
+        {
+          "t0": 2.84,
+          "t1": 6.78,
+          "text": "It comes, by analogy, from a French rule for other plants."
+        },
+        {
+          "t0": 6.78,
+          "t1": 11,
+          "text": "A methane detector reads neither carbon monoxide nor hydrogen sulphide."
+        },
+        {
+          "t0": 11,
+          "t1": 16.88,
+          "text": "It opens no window and shuts no tap: when it sounds, the gesture is still to be made, from outside."
+        }
+      ],
+      "cues": []
+    }
+  ]
+}
