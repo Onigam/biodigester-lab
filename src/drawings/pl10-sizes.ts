@@ -12,7 +12,7 @@ export const ITEMS = ['biogas-plant'] as const;
 const star = (x: number, digits = 2, unit = ' m'): L => l(`${nFr(x, digits)}${unit}*`, `${nEn(x, digits)}${unit}*`);
 
 function outline(d: Drawing, x: number, y: number, m: MachineSpec, name: L): void {
-  const v = d.view(x, y, 1 / 25);
+  const v = d.view(x, y, 1 / 20);
   const R = m.tankOuterDiameter / 2;
   const lvl = m.overflowLevel;
   v.rect([mm(-R), 0], [mm(R), mm(m.tankHeight)], { w: W.medium, fill: FILL.black });
@@ -44,22 +44,23 @@ export const sizesSheet: DrawingSheet = {
     const d = new Drawing();
     d.frame({
       title: l('Les autres tailles', 'The other sizes'),
-      subtitle: l('Cinq machines à la même échelle, 1:25', 'Five machines to one scale, 1:25'),
+      subtitle: l('Cinq machines à la même échelle, 1:20', 'Five machines to one scale, 1:20'),
       number: 'PL-B10',
-      scale: '1:25',
+      scale: '1:20',
     });
     heading(d, 14, 14, l('À LA MÊME ÉCHELLE', 'TO ONE SCALE'));
-    const y = 142;
+    const y = 188;
     d.paper().line([14, y], [406, y], { w: W.thin });
-    outline(d, 34, y, DRUM_60, l('Bidon de 60 L', '60 L drum'));
-    outline(d, 106, y, PLANT_1000, l('1 000 et 750 L', '1,000 and 750 L'));
-    outline(d, 180, y, PLANT_1500, l('1 500 et 1 000 L', '1,500 and 1,000 L'));
-    outline(d, 256, y, PLANT_1100, l('1 100 et 750 L', '1,100 and 750 L'));
-    outline(d, 348, y, SCHOOL_4000, l('4 000 et 3 000 L', '4,000 and 3,000 L'));
-    const h = grid(
+    outline(d, 30, y, DRUM_60, l('Bidon de 60 L', '60 L drum'));
+    outline(d, 112, y, PLANT_1000, l('1 000 et 750 L', '1,000 and 750 L'));
+    outline(d, 186, y, PLANT_1500, l('1 500 et 1 000 L', '1,500 and 1,000 L'));
+    outline(d, 266, y, PLANT_1100, l('1 100 et 750 L', '1,100 and 750 L'));
+    outline(d, 362, y, SCHOOL_4000, l('4 000 et 3 000 L', '4,000 and 3,000 L'));
+    const top = y + 10;
+    grid(
       d,
       14,
-      156,
+      top,
       [
         { label: l('Machine', 'Machine'), w: 58 },
         { label: l('Cuve, Ø, hauteur', 'Tank, Ø, height'), w: 42, align: 'end', mono: true },
@@ -122,19 +123,20 @@ export const sizesSheet: DrawingSheet = {
           ),
         ],
       ],
-      { size: 1.75 },
+      { size: 1.9, pad: 1 },
     );
-    marksLegend(d, 14, 156 + h + 6, 130);
+    // the tall tanks stand to the right: what explains the sheet goes in the air over the small ones
+    marksLegend(d, 14, 50, 124);
     note(
       d,
+      144,
+      51,
       150,
-      156 + h + 6,
-      70,
       l(
         'Dessinées à mi-course. Les autres tailles n’ont pas de 3D : le dessin de la Simulation reste celui de 1 000 L.',
         'Drawn at mid-travel. The other sizes have no 3D: the Simulation’s drawing stays that of the 1,000 L.',
       ),
-      { size: 1.75 },
+      { size: 2 },
     );
     return d;
   },

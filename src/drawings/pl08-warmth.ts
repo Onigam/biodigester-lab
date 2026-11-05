@@ -28,6 +28,40 @@ const MONTH_NAMES: Record<string, L> = {
 
 const n = (x: number, digits = 0): L => l(nFr(x, digits), nEn(x, digits));
 
+/** The year at Geneva, the four bare tanks of the table above it: the same figures, so that the winter is seen. All the model's. */
+function year(d: Drawing, x: number, y: number, w: number, h: number): void {
+  const p = d.paper();
+  const rows: [string, string, string][] = [
+    ['ea40', '40*', COLORS.muted],
+    ['ea44', '44*', COLORS.red],
+    ['ea60', '60*', COLORS.ink],
+    ['ea80', '80*', COLORS.copper],
+  ];
+  const max = 300;
+  const X = (i: number): number => x + ((i + 0.5) / GENEVA_MONTHS.length) * w;
+  const Y = (v: number): number => y + h - (v / max) * h;
+  p.rect([x, y], [x + w, y + h], { w: W.thin, fill: COLORS.paper });
+  for (const v of [100, 200, 300]) {
+    p.line([x, Y(v)], [x + w, Y(v)], { w: 0.1, color: COLORS.muted });
+    p.text([x - 1.5, Y(v)], `${v}`, { size: 1.75, anchor: 'end', baseline: 'middle', mono: true });
+  }
+  GENEVA_MONTHS.forEach((m, i) =>
+    p.text([X(i), y + h + 2.6], MONTH_NAMES[m]!, { size: 1.75, anchor: 'middle', baseline: 'middle', mono: true }),
+  );
+  rows.forEach(([key, name, color], k) => {
+    const row = GENEVA_TABLE.find((r) => r.key === key)!;
+    p.polyline(
+      row.rows.map((v, i) => [X(i), Y(v)] as [number, number]),
+      { w: key === 'ea44' ? W.thick : W.medium, color },
+    );
+    p.text([X(7) + k * 12, Y(90)], name, { size: 1.9, baseline: 'middle', color, mono: true, weight: 'bold' });
+  });
+  p.text([x, y - 2.5], l('gaz du modèle, L par jour*', 'the model’s gas, L a day*'), {
+    size: 1.75,
+    baseline: 'middle',
+  });
+}
+
 function curves(d: Drawing, x: number, y: number, w: number, h: number): void {
   const p = d.paper();
   const Tmin = 5;
@@ -101,17 +135,17 @@ export const warmthSheet: DrawingSheet = {
       scale: '—',
     });
     heading(d, 14, 14, l('LA VITESSE, SELON L’ÉNERGIE D’ACTIVATION', 'THE RATE, BY THE ACTIVATION ENERGY'));
-    curves(d, 26, 30, 142, 92);
+    curves(d, 26, 30, 142, 140);
     let y = note(
       d,
       14,
-      136,
+      180,
       154,
       lf(
         'Le chiffre décide de l’hiver, en kJ/mol. Le seul indice, {eaClue}, vient du résumé d’une étude sur une boue adaptée : l’activité à 11 °C y vaut environ la moitié de celle à 22 °C. Le réglage d’ouverture est {eaDefault}. Notre réglage n’est pas une mesure, et nous n’en avons trouvé aucune pour ces déchets.',
         'This figure decides the winter, in kJ/mol. The one clue, {eaClue}, comes from the summary of a study on an adapted sludge: activity at 11 °C there is about half that at 22 °C. The opening setting is {eaDefault}. Our setting is no measurement, and we found none for this waste.',
       ),
-      { size: 1.85 },
+      { size: 1.95 },
     );
     y = marksLegend(d, 14, y + 1, 154);
     grid(
@@ -134,7 +168,7 @@ export const warmthSheet: DrawingSheet = {
         { t: cat(n(r.need, r.need < 10 ? 2 : 1), '*'), bold: true },
         cat(n(r.watts), '*'),
       ]),
-      { size: 1.7 },
+      { size: 1.85, pad: 1.1 },
     );
     const x = 176;
     grid(
@@ -158,12 +192,12 @@ export const warmthSheet: DrawingSheet = {
         };
         return [names[id]!, ...s.air.map((t) => n(t, 1)), n(s.air.reduce((a, b) => a + b, 0) / 12, 1)];
       }),
-      { size: 1.62 },
+      { size: 1.75, pad: 1 },
     );
-    grid(
+    const hYear = grid(
       d,
       x,
-      46,
+      44,
       [
         { label: l('Genève, 2 kg par jour de restes, L par jour', 'Geneva, 2 kg a day of leftovers, L a day'), w: 56 },
         ...GENEVA_MONTHS.map((m) => ({ label: MONTH_NAMES[m]!, w: 14.4, align: 'end' as const, mono: true })),
@@ -172,23 +206,24 @@ export const warmthSheet: DrawingSheet = {
         { t: l(r.fr, r.en), bold: r.key === 'ea44' },
         ...r.rows.map((v) => (v === 0 ? { t: '0', color: COLORS.red } : { t: n(v) })),
       ]),
-      { size: 1.68, pad: 1 },
+      { size: 1.75, pad: 1 },
     );
-    note(
+    year(d, x + 8, 44 + hYear + 7, 222, 62);
+    const yNote = note(
       d,
       x,
-      116,
+      44 + hYear + 7 + 62 + 7,
       230,
       lf(
         'Tous ces chiffres sont le modèle seul, chacun avec son étoile : {heatStraw} demandés en paille, contre {gasEnergyCold} dans le gaz et environ {gasUsefulCold} au sortir d’un brûleur. Il paie donc sa chaleur de juin à septembre, en paille, et jamais à nu. Le départ à chaud en juillet, ici, fait tourner la cuve à l’acide un mois plus tôt que dans le scénario de la Simulation, qui a vécu depuis avril sous ce climat : la date dépend de son histoire. En dessous d’environ 10 °C, même la loi de vitesse est une extrapolation.',
         'All these figures are the model alone, each with its star: {heatStraw} asked in straw, against {gasEnergyCold} in the gas and about {gasUsefulCold} out of a burner. So it pays for its warmth from June to September, in straw, and never bare. The warm start in July here sours the tank a month sooner than in the Simulation’s scenario, which has lived on this climate since April: the date depends on its history. Below about 10 °C even the law of the rate is an extrapolation.',
       ),
-      { size: 1.85 },
+      { size: 1.9 },
     );
-    grid(
+    const hJump = grid(
       d,
       x,
-      144,
+      yNote + 1,
       [
         { label: l('Une cuve tenue à, °C', 'A tank held at, °C'), w: 56 },
         { label: '32', w: 26, align: 'end', mono: true },
@@ -212,18 +247,18 @@ export const warmthSheet: DrawingSheet = {
           lf('{ramp15}', '{ramp15}'),
         ],
       ],
-      { size: 1.7 },
+      { size: 1.85, pad: 1 },
     );
     note(
       d,
       x,
-      168,
-      190,
+      yNote + 1 + hJump + 2,
+      230,
       lf(
         'Ces seuils sortent d’un modèle à un seul volume : il est au-dessus des {bookLimit} du livre, et des {bookLimitHigh} d’une étude voisine, et une cuve réelle s’acidifie plus tôt près de son entrée. Ses {rampAt32} ne sont pas à croire.',
         'These thresholds come from a one-volume model: it stands above the book’s {bookLimit}, and a neighbouring study’s {bookLimitHigh}, and a real tank turns sour sooner near its inlet. Its {rampAt32} is not to be believed.',
       ),
-      { size: 1.75 },
+      { size: 1.85 },
     );
     return d;
   },

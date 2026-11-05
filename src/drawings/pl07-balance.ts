@@ -1,7 +1,9 @@
 import { COLORS, Drawing, W, type DrawingSheet } from '@onigam/lab-kit/drawings';
 import { l, type L } from '@onigam/lab-kit/i18n';
 import { lf } from '../data/part-helpers';
-import { box, cat, fig, FILL, grid, heading, marksLegend, note } from './draw';
+import { PLANT_1000 } from '../sim/machine';
+import { TANK } from '../three/dims';
+import { box, cat, fig, FILL, grid, heading, marksLegend, mL, mm, note } from './draw';
 
 // PL-B07: the mass balance: 2 kg and 18 L in, gas, effluent and sludge out, what was measured beside what the model gives. Where it does not retrieve a figure, the cell says so.
 
@@ -17,7 +19,7 @@ export const ITEMS = [
 /** Three bars for one sentence: the same 2 kg, by the designer's count and by the scale. */
 function bars(d: Drawing, x: number, y: number): void {
   const p = d.paper();
-  const k = 0.24;
+  const k = 0.3;
   const rows: { name: L; g: number; label: L; fill: string }[] = [
     {
       name: l('Selon le concepteur, sec', 'By the designer, dry'),
@@ -30,11 +32,36 @@ function bars(d: Drawing, x: number, y: number): void {
     { name: l('Thèse, épluchures', 'Thesis, peelings'), g: 54, label: fig('methaneMarket'), fill: FILL.green },
   ];
   rows.forEach((r, i) => {
-    const yy = y + i * 12;
-    p.text([x, yy + 4], r.name, { size: 1.85, baseline: 'middle' });
-    p.rect([x + 46, yy], [x + 46 + r.g * k, yy + 8], { w: W.thin, fill: r.fill });
-    p.text([x + 48 + r.g * k, yy + 4], r.label, { size: 1.85, baseline: 'middle', mono: true });
+    const yy = y + i * 17;
+    p.text([x, yy + 6], r.name, { size: 2, baseline: 'middle' });
+    p.rect([x + 50, yy], [x + 50 + r.g * k, yy + 12], { w: W.thin, fill: r.fill });
+    p.text([x + 52 + r.g * k, yy + 6], r.label, { size: 2, baseline: 'middle', mono: true });
   });
+}
+
+/** The tank's layers on 26 November 2008: ten of 85 L, drawn from the tank's own bore and level. The surface's 74 g/L and the bottom's 41 g/L are what the thesis printed; the layers between, a range. */
+function layers(d: Drawing, x: number, y: number): void {
+  const K = 1 / 10;
+  const v = d.view(x + TANK.innerR * 1000 * K, y, K);
+  const p = d.paper();
+  const lvl = PLANT_1000.overflowLevel;
+  const r = TANK.innerR;
+  const H = lvl / 10;
+  for (let i = 0; i < 10; i++) {
+    const fill = i === 9 ? FILL.scum : i === 0 ? FILL.sludge : FILL.liquor;
+    v.rect([mm(-r), mm(i * H)], [mm(r), mm((i + 1) * H)], { w: W.thin, fill });
+  }
+  v.rect([mm(-r), 0], [mm(r), mm(lvl)], { w: W.medium });
+  v.dim([mm(-r), 0], [mm(-r), mm(lvl)], -3, { dir: 'v', label: mL(lvl, ''), size: 1.75 });
+  const X = x + 2 * r * 1000 * K;
+  const Y = (h: number): number => y - h * 1000 * K;
+  const word = (h: number, t: L): void => {
+    p.line([X, Y(h)], [X + 3, Y(h)], { w: W.thin, color: COLORS.muted });
+    note(d, X + 4, Y(h) - 1.5, 41, t, { size: 1.95 });
+  };
+  word(lvl - H / 2, l('74 g/L : la surface', '74 g/L: the surface'));
+  word(lvl / 2, l('3,3 à 3,6 g/L, sur environ 600 L', '3.3 to 3.6 g/L, over about 600 L'));
+  word(H / 2, l('41 g/L : le fond', '41 g/L: the bottom'));
 }
 
 function flow(d: Drawing): void {
@@ -100,7 +127,7 @@ export const balanceSheet: DrawingSheet = {
       title: l('Le bilan de matière', 'The mass balance'),
       subtitle: l('2 kg et 18 L par jour, à environ 30 °C', '2 kg and 18 L a day, at about 30 °C'),
       number: 'PL-B07',
-      scale: '—',
+      scale: '— · 1:10',
     });
     heading(d, 14, 14, l('UN JOUR, SUR LES RESTES', 'ONE DAY, ON LEFTOVERS'));
     flow(d);
@@ -168,9 +195,9 @@ export const balanceSheet: DrawingSheet = {
           '—',
         ],
       ],
-      { size: 1.75 },
+      { size: 1.9, pad: 1.2 },
     );
-    grid(
+    const h1 = grid(
       d,
       246,
       14,
@@ -195,31 +222,16 @@ export const balanceSheet: DrawingSheet = {
         ],
         [l('Phosphore, effluent', 'Phosphorus, effluent'), '248 mg/L', '225 mg/L'],
       ],
-      { size: 1.75 },
+      { size: 1.9, pad: 1.2 },
     );
-    grid(
-      d,
-      246,
-      66,
-      [
-        { label: l('Les couches, dix de 85 L', 'The layers, ten of 85 L'), w: 80 },
-        { label: l('Matière sèche', 'Dry matter'), w: 80, align: 'end', mono: true },
-      ],
-      [
-        [l('Surface', 'Surface'), '74 g/L'],
-        [l('Environ 600 L', 'About 600 L'), l('3,3 à 3,6 g/L', '3.3 to 3.6 g/L')],
-        [l('Fond', 'Bottom'), '41 g/L'],
-      ],
-      { size: 1.75 },
-    );
-    heading(d, 14, 146, l('DEUX KILOS, COMPTÉS DE DEUX FAÇONS', 'TWO KILOS, COUNTED TWO WAYS'));
-    bars(d, 14, 156);
-    let y = marksLegend(d, 246, 92, 150);
+    heading(d, 14, 151, l('DEUX KILOS, COMPTÉS DE DEUX FAÇONS', 'TWO KILOS, COUNTED TWO WAYS'));
+    bars(d, 14, 160);
+    let y = marksLegend(d, 246, 14 + h1 + 4, 160);
     y = note(
       d,
       246,
       y + 1,
-      150,
+      160,
       cat(
         l(
           'La part organique de 94 % vient du tableau de la thèse ; son résumé imprime 91 %. ',
@@ -230,8 +242,10 @@ export const balanceSheet: DrawingSheet = {
           'The 700 L per organic kilo for the market pass what the COD figure of the same thesis can give: we draw no conclusion on the yield per kilo of solids. The mixed day, about 200 L at 61 % and 45 min, is a sum by the thesis: {mixLitres} at {mixCh4} and {mixMinutes} by the model. Starch allows at most {starchCeiling} of methane per kilo.',
         ),
       ),
-      { size: 1.85 },
+      { size: 1.95 },
     );
+    heading(d, 246, y + 8, l('LA CUVE PAR COUCHES, DIX DE 85 L, 1:10', 'THE TANK BY LAYERS, TEN OF 85 L, 1:10'));
+    layers(d, 256, y + 16 + PLANT_1000.overflowLevel * 100);
     return d;
   },
 };

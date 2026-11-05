@@ -6,7 +6,7 @@ import { GENEVA_TABLE } from '../data/figures';
 import { PARTS } from '../data/parts';
 import { nEn, nFr } from '../data/units';
 import { PLANT_1000, PLANT_1500 } from '../sim/machine';
-import { BELL, FEED, TANK } from '../three/dims';
+import { BELL, FEED, LINE, TANK } from '../three/dims';
 import { SHEET_GROUPS, SHEETS } from './index';
 import { surfaces } from './machine-view';
 import { pressureCurve } from './pl03-bell';
@@ -23,6 +23,8 @@ const root = (d: { svg: SVGSVGElement }): FakeElement => d.svg as unknown as Fak
 const key = (id: string, lang: Lang): string => `${id}/${lang}`;
 const textsOf = (id: string, lang: Lang): string[] => textBoxes(rendered.get(key(id, lang))!).map((t) => t.content);
 const n = (v: number, lang: Lang, d = 0): string => (lang === 'fr' ? nFr(v, d) : nEn(v, d));
+/** As the sheets' `mL` prints a length: at most two decimals, no trailing zero. */
+const trimmed = (v: number, lang: Lang): string => n(v, lang, 2).replace(/[,.]?0+$/, '');
 
 beforeAll(() => {
   installFakeDom();
@@ -228,6 +230,14 @@ describe('the numbers are read, not typed', () => {
     }
     expect(t).toContain('research only');
   });
+  it('PL-B05 lays the line as the 3D does, every place with its star, and says it is no plan to follow', () => {
+    for (const lang of LANGS) {
+      const t = textsOf('gas-line-schematic', lang);
+      for (const v of [LINE.y, LINE.tableH, LINE.roomH]) expect(t, String(v)).toContain(`${trimmed(v, lang)} m*`);
+      expect(t.join(' ')).toContain('1:30');
+    }
+    expect(textsOf('gas-line-schematic', 'en').join(' ')).toMatch(/plan to follow/);
+  });
   it('PL-B06 draws the windows from the simulation’s form', () => {
     expect(phWindow(7, 6, 7)).toBe(1);
     expect(phWindow(6, 6, 7)).toBeCloseTo(Math.exp(-3), 5);
@@ -242,6 +252,12 @@ describe('the numbers are read, not typed', () => {
       expect(t).toContain('76 L†');
     }
     expect(SHEETS.find((s) => s.id === 'mass-balance')!.description.en).toMatch(/does not retrieve the gas/);
+    for (const lang of LANGS) {
+      const t = textsOf('mass-balance', lang).join(' ');
+      expect(t).toContain('74 g/L');
+      expect(t).toContain('41 g/L');
+      expect(t).toMatch(/3[,.]3 /);
+    }
   });
   it('PL-B08 prints the year at Geneva row by row, from a table the runs hold', () => {
     const t = textsOf('warmth-and-time', 'en');
@@ -250,10 +266,20 @@ describe('the numbers are read, not typed', () => {
       /A question the model does not decide/,
     );
     expect(t.join(' ')).toMatch(/no measurement found/);
+    expect(t.join(' ')).toMatch(/the model’s gas/);
   });
   it('PL-B09 says the true level of H₂S is unknown, and makes no promise', () => {
     expect(SHEETS.find((s) => s.id === 'hazards')!.description.en).toMatch(/true level stays unknown/);
     expect(textsOf('hazards', 'en').join(' ')).toMatch(/we do not repeat that as an assurance/);
+  });
+  it('PL-B09 draws the 3D’s room with its stars, and says on the sheet what no source has studied', () => {
+    for (const lang of LANGS) {
+      const t = textsOf('hazards', lang);
+      for (const v of [LINE.valveY, LINE.detectorY, LINE.roomH])
+        expect(t, String(v)).toContain(`${trimmed(v, lang)} m*`);
+    }
+    expect(textsOf('hazards', 'en').join(' ')).toMatch(/studied a closed/);
+    expect(textsOf('hazards', 'fr').join(' ')).toMatch(/étudié une cuisine/);
   });
   it('PL-B10 draws the sizes from the simulation’s own specs, and says they have no 3D', () => {
     expect(PLANT_1500.tankOuterDiameter).toBe(1.15);

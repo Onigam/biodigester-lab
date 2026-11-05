@@ -2,18 +2,18 @@
 
 Ten sheets in `src/drawings/`, generated from `src/three/dims.ts`, `src/sim/machine.ts` and `src/data/figures.ts`, pinned by `src/drawings/drawings.test.ts`. The cartouche of each says « pour comprendre, pas un plan à suivre » (`configureDrawings` in `src/drawings/index.ts`). ARTI is named on none. `SHEET_GROUPS` is for `plans.groups` in `src/lab.ts`.
 
-| No.    | Sheet                 | Group    | What it shows                                                                                                  |
-| ------ | --------------------- | -------- | -------------------------------------------------------------------------------------------------------------- |
-| PL-B01 | `general-arrangement` | `plant`  | the yard from above at 1:100, every length starred; the plant from the side at 1:25, the bell full             |
-| PL-B02 | `digester-section`    | `plant`  | along the axis at 1:12.5; what the thesis prints and what we estimate in two tables; balloons from the guide   |
-| PL-B03 | `bell-and-rim`        | `plant`  | the areas in plan, the scale at 1:5, pressure along the travel from `bellPressure`, the readings in red        |
-| PL-B04 | `feed-and-overflow`   | `plant`  | the same section at rest and full, each surface's level from the simulation; the chain of fittings             |
-| PL-B05 | `gas-line-schematic`  | `plant`  | in the order of the gas, what was on the measured plant and what comes from elsewhere; what weighs in the line |
-| PL-B06 | `food-chain`          | `life`   | the four stages, what the model keeps of them, the pH windows from `MODEL`                                     |
-| PL-B07 | `mass-balance`        | `life`   | a day in and out; the thesis beside the model, calendar and steady; two kilos counted dry and wet              |
-| PL-B08 | `warmth-and-time`     | `limits` | the rate for four activation energies from `arrhenius`, four climates, a year at Geneva, the heat budget       |
-| PL-B09 | `hazards`             | `limits` | the H₂S ladder on a log scale, the gas's figures side by side, where each gathers, no promise                  |
-| PL-B10 | `size-comparison`     | `limits` | five machines at 1:25, each from its own spec in `src/sim/machine.ts`, with what is known of each              |
+| No.    | Sheet                 | Group    | What it shows                                                                                                                                                           |
+| ------ | --------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PL-B01 | `general-arrangement` | `plant`  | the yard from above at 1:100, every length starred; the plant from the side at 1:25, the bell full                                                                      |
+| PL-B02 | `digester-section`    | `plant`  | along the axis at 1:12.5; what the thesis prints and what we estimate in two tables; balloons from the guide                                                            |
+| PL-B03 | `bell-and-rim`        | `plant`  | the areas in plan, the scale at 1:5, pressure along the travel from `bellPressure`, the readings in red                                                                 |
+| PL-B04 | `feed-and-overflow`   | `plant`  | the same section at rest and full, each surface's level from the simulation; the chain of fittings                                                                      |
+| PL-B05 | `gas-line-schematic`  | `plant`  | in the order of the gas, what was on the measured plant and what comes from elsewhere; what weighs in the line; the line at 1:30 as the 3D lays it, every place starred |
+| PL-B06 | `food-chain`          | `life`   | the four stages, what the model keeps of them, the pH windows from `MODEL`                                                                                              |
+| PL-B07 | `mass-balance`        | `life`   | a day in and out; the thesis beside the model, calendar and steady; two kilos counted dry and wet; the tank's ten layers at 1:12.5                                      |
+| PL-B08 | `warmth-and-time`     | `limits` | the rate for four activation energies from `arrhenius`, four climates, a year at Geneva in a table and a chart, the heat budget                                         |
+| PL-B09 | `hazards`             | `limits` | the H₂S ladder on a log scale, the gas's figures side by side, where each gathers in the 3D's room at 1:25, no promise                                                  |
+| PL-B10 | `size-comparison`     | `limits` | five machines at 1:20, each from its own spec in `src/sim/machine.ts`, with what is known of each                                                                       |
 
 **Order.** The kit lists the sheets group by group, in the order `src/lab.ts` gives the groups: `SHEET_GROUPS` keeps the numbers running, and a test holds it. The list follows research §0.6.
 
