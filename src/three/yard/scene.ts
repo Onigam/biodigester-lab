@@ -964,6 +964,13 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
   for (const id of YARD_PARTS) {
     registry.add(id, parts[id], new THREE.Vector3(...EXPLODE[id]), undefined, FRAMING[id]);
   }
+  const foliage: { id: YardPart; mesh: THREE.Mesh }[] = [];
+  for (const id of YARD_PARTS) {
+    for (const mesh of registry.get(id)!.meshes) {
+      const mat = mesh.material as THREE.Material;
+      if (mat.alphaTest > 0 || mat.name === 'mango-mass') foliage.push({ id, mesh });
+    }
+  }
   applyWear(scene, 3.2, (m) => {
     const n = (m.material as THREE.Material).name;
     return (
@@ -1038,6 +1045,8 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
       const p = params();
       const scenery = !now.isolated;
       setting.visible = scenery;
+      // the kit's ghost and wire have no alpha for a leaf card: thousands of them stacked into blue clouds in the sky (QA M4). They show only solid; the wood, the planks and the soil keep the ghost
+      for (const f of foliage) f.mesh.visible = registry.get(f.id)!.display === 'solid';
       padShadow.visible = scenery;
       palletShadow.visible = scenery;
       buttShadow.visible = scenery;

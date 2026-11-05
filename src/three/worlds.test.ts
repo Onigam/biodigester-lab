@@ -306,6 +306,31 @@ describe('the digester world', () => {
 });
 
 describe('the yard', () => {
+  it('under x-ray or a guide’s wire, keeps no leaf card, which would stack into blue clouds (QA M4)', () => {
+    const shown = (o: THREE.Object3D): boolean => {
+      for (let p: THREE.Object3D | null = o; p; p = p.parent) if (!p.visible) return false;
+      return true;
+    };
+    const cards = (id: 'shade-tree' | 'vegetable-bed') =>
+      yard.registry.get(id)!.meshes.filter((m) => {
+        const mat = m.material as THREE.Material;
+        return mat.alphaTest > 0 || (m.userData.solidMaterial as THREE.Material | undefined)?.alphaTest;
+      });
+    const wood = yard.scene.getObjectByName('mango-wood')!;
+    expect(cards('shade-tree').length).toBeGreaterThan(0);
+    expect(cards('vegetable-bed').length).toBeGreaterThan(0);
+    for (const display of ['ghost', 'wire'] as const) {
+      yard.registry.setDisplay('shade-tree', display);
+      yard.registry.setDisplay('vegetable-bed', display);
+      run(yard, stateWith());
+      for (const m of [...cards('shade-tree'), ...cards('vegetable-bed')]) expect(shown(m)).toBe(false);
+      expect(shown(wood)).toBe(true);
+      yard.registry.setDisplay('shade-tree', 'solid');
+      yard.registry.setDisplay('vegetable-bed', 'solid');
+      run(yard, stateWith());
+      for (const m of [...cards('shade-tree'), ...cards('vegetable-bed')]) expect(shown(m)).toBe(true);
+    }
+  });
   it('stands everything on the ground: the pad, the butt’s blocks, the bin, the beds, the tree', () => {
     yard.update(stateWith(), 1 / 60, view());
     yard.scene.updateMatrixWorld(true);
