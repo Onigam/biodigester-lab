@@ -177,8 +177,8 @@ export const DIGESTER_PARTS: PartInfo[] = [
       },
     ),
     tip: l(
-      'L’outil Coupe tranche ici à la hauteur du trop-plein : orbitez vers le haut, et cet anneau apparaît en plan. Activez Flux : les points gris sont le gaz perdu, en proportion du modèle.',
-      'The Section tool cuts here at the overflow’s height: orbit up, and this ring appears in plan. Switch on Flows: the grey dots are the gas lost, in the model’s proportion.',
+      'Un clic sur cet anneau ouvre tout seul la coupe à la hauteur du trop-plein : il apparaît en plan, vu d’en haut. Activez Flux : la vue revient à la coupe en long, et les points gris sont le gaz perdu, en proportion du modèle.',
+      'A click on this ring opens the section at the overflow’s height by itself: it shows in plan, from above. Switch on Flows: the view goes back to the cut along the axis, and the grey dots are the gas lost, in the model’s proportion.',
     ),
     design: lf(
       'Le défaut et la soupape sont le même trou. D’autres cloches flottent sur une couronne d’eau séparée, ce qui arrête cette fuite, et la thèse propose aussi deux cuves mieux ajustées. Le climat le voit : à environ {rimBreakEven} de perte, le méthane perdu pèse autant que le gaz en bouteille remplacé, sous des conditions que la leçon 7 détaille.',
