@@ -337,7 +337,8 @@ const SEGS: Record<string, string> = {
   '4': 'fgbc',
   L: 'fed',
 };
-function paintText(
+/** `bearing` is where the text starts, its left end as read from outside the bell. A rising bearing runs to the viewer's left, so the text runs down the bearings: the other way it is mirrored (QA M9). */
+export function paintText(
   text: string,
   bearing: number,
   y: number,
@@ -348,7 +349,7 @@ function paintText(
 ): void {
   const w = h * 0.56;
   const t = h * 0.14;
-  const arc = (x: number) => bearing + x / BELL.outerR;
+  const arc = (x: number) => bearing - x / BELL.outerR;
   [...text].forEach((ch, n) => {
     const x0 = n * (w + t * 1.4);
     const x1 = x0 + w;
@@ -366,7 +367,7 @@ function paintText(
     };
     for (const key of SEGS[ch] ?? '') {
       const [a, b, c, d] = segs[key];
-      paintOnBell(arc(a), arc(b), c, d, out, nor, idx);
+      paintOnBell(arc(b), arc(a), c, d, out, nor, idx);
     }
   });
 }
@@ -515,10 +516,12 @@ export function buildMachine(o: MachineOptions = {}): Machine {
     const t = long ? 0.0035 : 0.0022;
     paintOnBell(from, from + arc, y - t, y + t, mp, mn, mi);
     if (long) {
+      // the stroke runs to the viewer's left from the section's edge, and the figure stands past its end: it starts farther round and reads back towards the stroke
       const text = String(litres);
-      const b = from + arc + 1.8 * D2R;
-      paintText(text, b, y - 0.018, 0.036, mp, mn, mi);
-      paintText('L', b + (text.length * 0.0275 + 0.012) / BELL.outerR, y - 0.018, 0.036, mp, mn, mi);
+      const widthL = (text.length * 0.0275 + 0.012 + 0.0202) / BELL.outerR;
+      const start = from + arc + 1.8 * D2R + widthL;
+      paintText(text, start, y - 0.018, 0.036, mp, mn, mi);
+      paintText('L', start - (text.length * 0.0275 + 0.012) / BELL.outerR, y - 0.018, 0.036, mp, mn, mi);
     }
   }
   marks.add(flatGeometry(mp, mn, mi), look.white, null);

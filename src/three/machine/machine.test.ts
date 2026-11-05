@@ -14,7 +14,7 @@ import {
 import { bellAt, boxOf, finiteTree, gap, stateWith } from '../test-utils';
 import { BELL, BRICK, BUCKET, FEED, LIMITER, MARKS, OVERFLOW, PALLET, TANK, BASE_Y } from '../dims';
 import { cutGeometry } from './clip';
-import { bellOuterAt, buildMachine, MACHINE_PARTS, type Machine } from './machine';
+import { bellOuterAt, buildMachine, MACHINE_PARTS, paintText, type Machine } from './machine';
 import { pipeSolid, revolveY, V } from './shapes';
 import { axisX, bellPose } from './slurry';
 
@@ -299,3 +299,47 @@ function trianglesArea(g: THREE.BufferGeometry): number {
   }
   return sum;
 }
+
+describe('the figures on the bell (QA M9)', () => {
+  // seen from outside at -X, the viewer's right is +Z
+  const zOf = (pos: number[]) => {
+    let lo = Infinity;
+    let hi = -Infinity;
+    for (let i = 2; i < pos.length; i += 3) {
+      lo = Math.min(lo, pos[i]);
+      hi = Math.max(hi, pos[i]);
+    }
+    return { lo, hi };
+  };
+  const painted = (text: string, y = 1, h = 0.036) => {
+    const pos: number[] = [];
+    paintText(text, 0.3, y, h, pos, [], []);
+    return pos;
+  };
+  it('run left to right as read from outside', () => {
+    const one = zOf(painted('1'));
+    const eleven = zOf(painted('11'));
+    expect(eleven.hi).toBeGreaterThan(one.hi + 0.01);
+    expect(eleven.lo).toBeCloseTo(one.lo - 0, 2);
+  });
+  it('are not flipped: a 1 stands at the right of its cell, an L has its upright on the left', () => {
+    const one = zOf(painted('1'));
+    const zero = zOf(painted('0'));
+    expect(one.lo).toBeGreaterThan(zero.lo + 0.005);
+    expect(one.hi).toBeCloseTo(zero.hi, 3);
+    const L = painted('L');
+    const upper: number[] = [];
+    for (let i = 0; i < L.length; i += 3) if (L[i + 1] > 1 + 0.036 * 0.6) upper.push(L[i], L[i + 1], L[i + 2]);
+    expect(zOf(upper).hi).toBeLessThan(zOf(L).hi - 0.005);
+  });
+  it('face out, as the strokes do', () => {
+    const idx: number[] = [];
+    const nor: number[] = [];
+    const pos: number[] = [];
+    paintText('1', 0.3, 1, 0.036, pos, nor, idx);
+    const v = (i: number) => new THREE.Vector3(pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2]);
+    const n = new THREE.Vector3().crossVectors(v(idx[1]).sub(v(idx[0])), v(idx[2]).sub(v(idx[0]))).normalize();
+    const out = v(idx[0]).setY(0).normalize();
+    expect(n.dot(out)).toBeGreaterThan(0.5);
+  });
+});
