@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { BiodigesterSim } from '../sim/engine';
 import { SCENARIO_IDS, PRESET_IDS } from '../sim/presets';
 import { sunPlaceFor } from './sun-test-helper';
-import { BASE_Y, BELL, FEED, HOSE, LIMITER, LINE, MACHINE, PAD, TANK, YARD } from './dims';
+import { BASE_Y, BELL, DROP, FEED, HOSE, LIMITER, LINE, MACHINE, PAD, TANK, YARD } from './dims';
 import { createDigesterScene, type DigesterScene } from './digester/scene';
 import { createDropScene, DROP_PARTS } from './drop/scene';
 import { createGasLineScene, LINE_PARTS } from './gasline/scene';
@@ -470,6 +470,17 @@ describe('the drop', () => {
       const R = 2.5;
       for (const x of [b.min.x, b.max.x]) expect(Math.abs(x), id).toBeLessThan(R);
     }
+  });
+  it('has nothing of the slide standing in its floor (QA M3)', () => {
+    drop.scene.updateMatrixWorld(true);
+    const proud: string[] = [];
+    drop.scene.getObjectByName('stage')!.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh || !['slide-frost'].includes((m.material as THREE.Material).name)) return;
+      const b = boxOf(m);
+      if (b.min.x < DROP.R && b.max.y > DROP.slideH) proud.push(m.name || (m.material as THREE.Material).name);
+    });
+    expect(proud).toEqual([]);
   });
   it('lets the kinds come apart along the chain', () => {
     const r = drop.registry;

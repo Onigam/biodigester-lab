@@ -124,8 +124,9 @@ export function createDropScene(): DropScene {
   plate.name = 'slide';
   plate.renderOrder = 1;
   stage.add(plate);
+  // the frosted end stops short of the drop: it stands a hair proud of the glass, and under the liquid it cut a pale wedge out of the drop's floor, which looked torn (QA M3)
   const frost = new THREE.Mesh(
-    box(sx - 1.15, sx - 0.05, DROP.slideH - 0.002, DROP.slideH + 0.002, -sz + 0.05, sz - 0.05),
+    box(DROP.R + 0.12, sx - 0.05, DROP.slideH - 0.002, DROP.slideH + 0.002, -sz + 0.05, sz - 0.05),
     new THREE.MeshStandardMaterial({ color: 0xe8e4d8, roughness: 0.96, name: 'slide-frost' }),
   );
   stage.add(frost);
