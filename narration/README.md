@@ -106,6 +106,10 @@ Pelton Lab's tone (`lab-kit/docs/narration-style.md`). The thread is **one grain
 
 The rays say a part can be reached, not that it reads. To look at: `part-blue-flame` under isolate, a flame alone in the air, with no burner under it; `part-gas-bell` and `part-digester-tank`, framed from behind the machine (their `viewDir`), where « notre bulle arrive dessous » cannot be seen and the tank's open top is at 18°; `scene-digester`'s section from `rim-gap`'s framing; the drop's parts under `isolate` and `explode`; `scene-gas-line`'s pair frames, `hydraulic-relief,h2s-filter` and `flame-arrester,pressure-gauge`; the yard at night, where the voice can land on any part, since the clock does not stop for it.
 
+## The clock under the voice (no audio or cue changed)
+
+`src/voice-clock.ts`: while the voice speaks with the yard on screen, the clock stops by day; `scene-yard`'s last sentence, « Et si la nuit tombe pendant qu'on en parle », is the one place it runs on to the night, read from the captions, and no part is named after it. In the tank, the drop and the line the clock runs, also inside `intro`, since the voice shows the bell rising there. The sentence's second half, « ici, les journées sont très courtes », stays as generated: the review's M1 reads it as a joke a listener can take for a fact about Dar es Salaam. It is for the owner's ear, and the next generation.
+
 ## To listen for (not measured, a script cannot tell)
 
 Start with `fr/intro`, `fr/scene-slurry` and `en/part-rim-gap` (below, under « After generation »), then `part-methanogens`, `part-h2s-filter`, `part-half-brick`. **Not in the script at all,** so no risk: biodigesteur, digestat, kilojoules par mole, pH, Low-tech Lab, H₂S and CO₂ as letters (titles only: `Filtre à H₂S` is not spoken).
