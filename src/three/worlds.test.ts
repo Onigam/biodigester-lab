@@ -511,6 +511,24 @@ describe('the gas line', () => {
     line.registry.setAllFactors(0);
     run(line, stateWith());
   });
+  it('carries the relief’s bottle on a strap that reaches the board (QA M10)', () => {
+    run(line, stateWith());
+    const relief = line.registry.get('hydraulic-relief')!;
+    const solid = relief.meshes.filter((m) => !(m.material as THREE.Material).transparent);
+    const bottle = boxOf(line.scene.getObjectByName('relief-bottle')!);
+    const x = bottle.getCenter(new THREE.Vector3()).x + 0.015;
+    const boardEdge = LINE.y - 0.2;
+    const boardBack = LINE.boardZ + 0.03;
+    const ray = new THREE.Raycaster();
+    // from behind the board, from the shelf up past the board's lower edge: never a gap
+    for (let y = bottle.min.y; y < boardEdge + 0.05; y += 0.02) {
+      ray.set(new THREE.Vector3(x, y, LINE.boardZ - 1), new THREE.Vector3(0, 0, 1));
+      const hit = ray.intersectObjects(solid, false)[0];
+      expect(hit, `at ${y.toFixed(2)}`).toBeDefined();
+      expect(hit!.point.z, `at ${y.toFixed(2)}`).toBeLessThanOrEqual(boardBack);
+      expect(hit!.point.z, `at ${y.toFixed(2)}`).toBeGreaterThan(boardBack - 0.03);
+    }
+  });
   it('with the trap off, nothing of it stays behind, the hose runs on, and the water stands along the hose', () => {
     const off = createGasLineScene(() => ({ addedWeight: 0, trap: false }));
     const s = stateWith({ trap: false, hoseWater: 200 });

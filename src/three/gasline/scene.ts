@@ -475,15 +475,16 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   put(relief, cylX(0.0185, rx - 0.028, rx + 0.028, by, pz, 12), brass);
   put(relief, cylY(0.015, by - 0.03, by + 0.002, rx, pz, 12), brass);
   put(relief, rod(V(rx, by - 0.012, pz), V(rx, by - 0.05, pz), 0.009, 10), brass);
-  // the bottle's cradle on the board
-  put(relief, box(rx - 0.075, rx + 0.075, bottleBase - 0.012, bottleBase, bz + 0.052, pz + 0.07), zinc);
-  put(relief, box(rx - 0.012, rx + 0.012, bottleBase - 0.02, bottleBase + 0.09, bz + 0.052, bz + 0.058), zinc);
+  // the bottle's cradle: a shelf under it and a ring round it, on a strap behind the bottle. The strap runs up behind the board and is bolted through it, two heads on the board's face
+  const strapZ0 = pz - bottleR;
+  put(relief, box(rx - 0.075, rx + 0.075, bottleBase - 0.012, bottleBase, strapZ0, pz + 0.07), zinc);
+  put(relief, box(rx - 0.02, rx + 0.02, bottleBase - 0.02, by - 0.13, strapZ0, bz + 0.03), zinc);
   put(
     relief,
     pipeSolid([V(rx, bottleBase + 0.09, pz), V(rx, bottleBase + 0.1, pz)], bottleR + 0.003, bottleR + 0.0003, 22),
     zinc,
   );
-  put(relief, box(rx - 0.008, rx + 0.008, bottleBase + 0.09, bottleBase + 0.1, bz + 0.055, pz - bottleR), zinc);
+  for (const sy of [by - 0.15, by - 0.185]) put(relief, cylZ(0.0065, bz + 0.052, bz + 0.0555, rx, sy, 10), steel);
 
   // ---- the H₂S filter: a clear can of iron wool between two threaded ends, rust through it. Tried and unproven at the measured plant
   const fx = LINE.filterX;
