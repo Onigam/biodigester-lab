@@ -401,6 +401,35 @@ describe('the drop', () => {
 });
 
 describe('the gas line', () => {
+  it('keeps the machine when the line comes apart, and the hose on its tap (QA B1)', () => {
+    const shown = (o: THREE.Object3D): boolean => {
+      for (let p: THREE.Object3D | null = o; p; p = p.parent) if (!p.visible) return false;
+      return true;
+    };
+    const flex = line.parts['bell-hose'].children.find((c) => c.name === 'hose-flex') as THREE.Mesh;
+    const tapped = (s: BioState) => {
+      run(line, s);
+      const tap = new THREE.Vector3();
+      line.machine.tapOutlet.getWorldPosition(tap);
+      const pos = flex.geometry.attributes.position;
+      const v = new THREE.Vector3();
+      flex.updateWorldMatrix(true, false);
+      let near = Infinity;
+      for (let i = 0; i < pos.count; i++)
+        near = Math.min(near, v.fromBufferAttribute(pos, i).applyMatrix4(flex.matrixWorld).distanceTo(tap));
+      expect(shown(line.scene.getObjectByName('digester-tank') ?? line.machine.parts['digester-tank'])).toBe(true);
+      expect(shown(flex)).toBe(true);
+      expect(near).toBeLessThan(HOSE.r + 0.002);
+    };
+    // « Éclaté » all the way, and the drop-in of a guide's step, where one part has barely left
+    line.registry.setAllFactors(1);
+    tapped(bellAt(0.6));
+    line.registry.setAllFactors(0);
+    line.registry.setFactor('condensate-trap', 0.08);
+    tapped(bellAt(0.2));
+    line.registry.setAllFactors(0);
+    run(line, stateWith());
+  });
   it('with the trap off, nothing of it stays behind, the hose runs on, and the water stands along the hose', () => {
     const off = createGasLineScene(() => ({ addedWeight: 0, trap: false }));
     const s = stateWith({ trap: false, hoseWater: 200 });

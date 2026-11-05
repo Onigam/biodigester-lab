@@ -1223,7 +1223,8 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
       pad.visible = scenery;
       padShadow.visible = scenery;
       palletShadow.visible = scenery;
-      plant.visible = scenery && !now.exploded;
+      // the machine stays when the line comes apart: the hose, which does not move, is still held by its tap. Hidden, it left the hose hanging from nothing (QA B1), and a guide's drop-in made it blink
+      plant.visible = scenery;
       machine.update(s, d, { addedWeight: p.addedWeight, live: scenery && !now.exploded });
 
       // the hose flexes as the bell moves: both ends stay on what they are fixed to
