@@ -1,6 +1,20 @@
 import * as THREE from 'three';
 import type { BioState } from '../../sim/types';
-import { BELL, BRICK, BRICK_AT, BUCKET, FEED, LIMITER, MARKS, OVERFLOW, PALLET, TANK, TAP, VALVES } from '../dims';
+import {
+  BELL,
+  BRICK,
+  BRICK_AT,
+  BUCKET,
+  FEED,
+  LIMITER,
+  MACHINE,
+  MARKS,
+  OVERFLOW,
+  PALLET,
+  TANK,
+  TAP,
+  VALVES,
+} from '../dims';
 import { cutGeometry, EMPTY } from './clip';
 import { machineLook, type MachineLook } from './look';
 import { box, cylX, cylY, hex, mergeAll, pipeSolid, revolveY, rod, rounded, V, type P2 } from './shapes';
@@ -194,6 +208,30 @@ export interface Machine {
 }
 
 const D2R = Math.PI / 180;
+
+/**
+ * What the drawn machine shows of a state. The lab draws one machine, the 1,000 L tank, and Simulation's other sizes change only the figures: the voice and the panel's hint both say so. So a state of another size is carried
+ * into the drawn tank by shares: its bell by its share of travel, its surface at the drawn overflow and pressed down as far as the model's pressure presses it, its layers by their share of the depth. In metres its numbers would stand
+ * the slurry 76 cm above this tank's rim (QA B2). On the drawn machine the state passes through untouched.
+ */
+export function asDrawn(s: BioState, out: BioState): BioState {
+  if (s.onDrawnMachine) return s;
+  Object.assign(out, s);
+  const share = Math.min(1, Math.max(0, s.bellRiseShare));
+  const level = MACHINE.overflowLevel;
+  const depth = s.levelRing > 0 ? level / s.levelRing : 1;
+  out.bellRiseShare = share;
+  out.bellRise = share * BELL.travel;
+  out.bellRimHeight = BELL.restRim + out.bellRise;
+  out.bellTopHeight = out.bellRimHeight + BELL.height;
+  out.bellTilt = MACHINE.tiltRest + (MACHINE.tiltFull - MACHINE.tiltRest) * share;
+  out.levelRing = level;
+  out.levelRiser = level + (s.levelRiser - s.levelRing);
+  out.levelInner = level - (s.levelRing - s.levelInner);
+  out.sludgeHeight = s.sludgeHeight * depth;
+  out.scumHeight = s.scumHeight * depth;
+  return out;
+}
 
 /** The tank's outer face at a height, for what is strapped to it. */
 const tankProfile = (): P2[] => {
@@ -944,6 +982,7 @@ export function buildMachine(o: MachineOptions = {}): Machine {
 
   const brickOn = { k: 0 };
   const pose = bellPose(BELL.restRim, 5);
+  const drawnNow = {} as BioState;
   const tmpP = new THREE.Vector3();
   let view: MachineView = views ? 'cut' : 'whole';
   let feedSeen = -1;
@@ -976,7 +1015,8 @@ export function buildMachine(o: MachineOptions = {}): Machine {
       gasMesh.geometry = v === 'cut' ? gasFaceGeo : v === 'whole' ? gasWholeGeo : EMPTY;
       lastGas = -1;
     },
-    update(s, dt, o2 = {}) {
+    update(state, dt, o2 = {}) {
+      const s = asDrawn(state, drawnNow);
       bellPose(s.bellRimHeight, s.bellTilt, pose);
       bellPoseGroup.position.set(pose.xc, pose.rim, 0);
       bellPoseGroup.rotation.z = pose.theta;

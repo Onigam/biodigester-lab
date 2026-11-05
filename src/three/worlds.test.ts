@@ -3,11 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { BiodigesterSim } from '../sim/engine';
 import { SCENARIO_IDS, PRESET_IDS } from '../sim/presets';
 import { sunPlaceFor } from './sun-test-helper';
-import { BASE_Y, HOSE, LINE, PAD, TANK, YARD } from './dims';
+import { BASE_Y, BELL, FEED, HOSE, LIMITER, LINE, MACHINE, PAD, TANK, YARD } from './dims';
 import { createDigesterScene, type DigesterScene } from './digester/scene';
 import { createDropScene, DROP_PARTS } from './drop/scene';
 import { createGasLineScene, LINE_PARTS } from './gasline/scene';
-import { MACHINE_PARTS } from './machine/machine';
+import { asDrawn, MACHINE_PARTS } from './machine/machine';
 import { PART_NAMES, partName } from './part-ids';
 import { bellAt, boxOf, drawStats, finiteTree, gap, isolateOne, raysToPart, stateWith, view } from './test-utils';
 import { createYardScene, groundHeight, PLANT_TURN, YARD_PARTS } from './yard/scene';
@@ -352,6 +352,49 @@ describe('the yard', () => {
   });
   it('makes the plant’s base height add up', () => {
     expect(BASE_Y).toBeCloseTo(TANK.wall + 0.15, 6);
+  });
+});
+
+describe('the drawn machine, whatever the size in Simulation (QA B2)', () => {
+  const dig = digester as DigesterScene;
+  const sim = new BiodigesterSim();
+  it('draws every size in the 1,000 L tank, the bell by its share of travel, as the hint says', () => {
+    const full = bellAt(1);
+    for (let i = 0; i < 3; i++) dig.machine.update(full, 1 / 30);
+    const topFull = dig.machine.pose.rim + BELL.height;
+    for (const id of PRESET_IDS) {
+      sim.applyPreset(id);
+      sim.set({ timeScale: 86400, burner: 'off' });
+      for (let i = 0; i < 40; i++) sim.step(1 / 10);
+      const s = sim.state;
+      for (const m of [dig.machine, yard.machine, line.machine]) {
+        for (let i = 0; i < 3; i++) m.update(s, 1 / 30);
+        const pose = m.pose;
+        const share = Math.min(1, Math.max(0, s.bellRiseShare));
+        expect(pose.rim, id).toBeCloseTo(BELL.restRim + share * BELL.travel, 6);
+        expect(pose.rim + BELL.height, id).toBeLessThanOrEqual(topFull + 1e-9);
+        expect(pose.rim + BELL.height + BELL.outerR * Math.sin(pose.theta), id).toBeLessThan(LIMITER.barY - LIMITER.r);
+        const ring = m.slurry.ringMesh.geometry.attributes.position;
+        expect(ring.getY(0), id).toBeCloseTo(MACHINE.overflowLevel, 6);
+        expect(ring.getY(0), id).toBeLessThan(TANK.height);
+        const riser = m.root.getObjectByName('riser-surface')!;
+        expect(riser.position.y, id).toBeLessThan(FEED.funnelTop);
+      }
+    }
+    sim.applyPreset('plant-1000');
+  });
+  it('passes the drawn machine’s own state through untouched', () => {
+    const s = stateWith();
+    expect(s.onDrawnMachine).toBe(true);
+    expect(asDrawn(s, {} as BioState)).toBe(s);
+  });
+  it('keeps the layers inside the depth drawn, on the smallest and the largest', () => {
+    for (const id of PRESET_IDS) {
+      sim.applyPreset(id);
+      const d = asDrawn(sim.state, {} as BioState);
+      expect(d.sludgeHeight + d.scumHeight, id).toBeLessThan(MACHINE.overflowLevel);
+    }
+    sim.applyPreset('plant-1000');
   });
 });
 
