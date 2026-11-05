@@ -74,6 +74,29 @@ function envTexture(): THREE.DataTexture {
   return tex;
 }
 
+/**
+ * From a day in 4 s the yard's light stops following the hour: five scenarios open at a day a second, and the whole picture went from a mean brightness of 146 to 51 and back once a second (docs/qa.md, M1). Their speed is what
+ * lets them show weeks, so the light gives way, not the speed. It settles on the high sun the world opens on, the hour stays on the strip, and a clock paused or slowed brings the true sun back. Below this speed the sky is the state's.
+ */
+export const HOLD_LIGHT_FROM = 21_600;
+export const HELD_SUN = { alt: 55, az: 0 } as const;
+/** Seconds of real time for the change: quick to the held sun, ahead of the night a rush would cross; slower back, so that a night the voice asks for falls and does not drop. */
+export const HOLD_RISE = 0.4;
+export const HOLD_FALL = 1.2;
+
+/** Where the light's blend goes this frame: 0 the true sun, 1 the held one. */
+export function nextHold(hold: number, dt: number, p: { running?: boolean; timeScale?: number }): number {
+  const fast = p.running === true && (p.timeScale ?? 0) >= HOLD_LIGHT_FROM;
+  return clamp(hold + (fast ? dt / HOLD_RISE : -dt / HOLD_FALL), 0, 1);
+}
+
+/** The sun the yard shows for that blend, the azimuth by its short way round. */
+export function shownSun(altDeg: number, azDeg: number, hold: number): { alt: number; az: number } {
+  if (hold <= 0) return { alt: altDeg, az: azDeg };
+  const turn = ((((HELD_SUN.az - azDeg + 180) % 360) + 360) % 360) - 180;
+  return { alt: lerp(altDeg, HELD_SUN.alt, hold), az: azDeg + turn * hold };
+}
+
 export interface SkyRig {
   sun: THREE.DirectionalLight;
   /** 0 = full day, 1 = deep night. */

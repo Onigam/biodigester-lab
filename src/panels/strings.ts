@@ -19,8 +19,8 @@ const PANEL = {
     'The machine, from the food to the flame: what lives in the tank, the bell, the hose, the sun. The sourness, the resting bell and the dead flame appear by themselves, with no switch. All of it is one well-mixed volume: a real tank is not stirred.',
   ],
   speedHint: [
-    'L’horloge s’ouvre à une heure par seconde, le ×3600 de la barre du bas : à sa vraie vitesse, la cloche ne se verrait pas monter. ×86400 est un jour par seconde.',
-    'The clock opens at an hour a second, the ×3600 in the bottom bar: at its true speed the bell would not be seen to rise. ×86400 is a day a second.',
+    'L’horloge s’ouvre à une heure par seconde, le ×3600 de la barre du bas : à sa vraie vitesse, la cloche ne se verrait pas monter. ×86400 est un jour par seconde. Dès ×21600, la cour garde la lumière du jour, et l’heure reste dans la barre : ce soleil-là ferait clignoter l’image.',
+    'The clock opens at an hour a second, the ×3600 in the bottom bar: at its true speed the bell would not be seen to rise. ×86400 is a day a second. From ×21600 the yard keeps the light of day, and the hour stays in the bar: a sun that fast would make the picture flash.',
   ],
   preset: ['Point de départ', 'Starting point'],
   custom: ['Autres réglages', 'Other settings'],

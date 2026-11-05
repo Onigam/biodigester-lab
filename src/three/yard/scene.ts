@@ -23,7 +23,7 @@ import { compost, concrete, corrugated, plaster, redEarth, soil, timber } from '
 import { dynamic, mergeStatic } from '../merge';
 import { partName } from '../part-ids';
 import { anchor, hotspots, partsNow, viewFrom, type HotspotDef } from '../world';
-import { createSky, type SkyRig } from './sky';
+import { createSky, nextHold, shownSun, type SkyRig } from './sky';
 import { bananaClump, bedPlants, farTrees, leafCard, leafMaterial, mangoTree } from './vegetation';
 
 // The `yard` world, the setting: a generic warm yard, nothing here is a measured place. The whole circle in one look: the scraps in, the flame out, the fertiliser to the beds. The plant stands in full sun on its pad, the kitchen behind
@@ -107,12 +107,16 @@ const smooth = (a: number, b: number, x: number): number => {
   return t * t * (3 - 2 * t);
 };
 
-export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'feedKg' | 'waterPerKg'>): YardScene {
+export function createYardScene(
+  params: () => Pick<BioParams, 'addedWeight' | 'feedKg' | 'waterPerKg'> &
+    Partial<Pick<BioParams, 'running' | 'timeScale'>>,
+): YardScene {
   const scene = new THREE.Scene();
   scene.name = 'yard';
   scene.background = new THREE.Color(0xbcd0e0);
   scene.userData.look = { toneMapping: 'aces', exposure: 0.84, saturation: 1.06 };
   const sky = createSky(scene);
+  let lightHold = 0;
 
   const parts = Object.fromEntries(
     YARD_PARTS.map((id) => {
@@ -1041,8 +1045,10 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
     update(s, dt, view) {
       const now = partsNow(registry);
       const d = dt * view.slowMo;
-      sky.update(s.sunAlt, s.sunAz);
       const p = params();
+      lightHold = nextHold(lightHold, dt, p);
+      const shown = shownSun(s.sunAlt, s.sunAz, lightHold);
+      sky.update(shown.alt, shown.az);
       const scenery = !now.isolated;
       setting.visible = scenery;
       // the kit's ghost and wire have no alpha for a leaf card: thousands of them stacked into blue clouds in the sky (QA M4). They show only solid; the wood, the planks and the soil keep the ghost
