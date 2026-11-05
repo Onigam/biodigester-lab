@@ -17,6 +17,8 @@ The lab has no water world: its liquid is the slurry. Rule of `lab-quality.md` �
 | Relief's dip tube                | `pressureMbar`: 1 cm a mbar. The model has no relief: this is the model's pressure on an estimated device                                                                         | by eye                                                   |
 | Liquor's tint, the drop's colour | `sourIndex` tints the liquor, `dropRgb` paints the drop. Physics tags both estimates                                                                                              | test on the drop                                         |
 
+**On another size in Simulation** every one of these is carried into the drawn 1,000 L tank by shares (`asDrawn`, `docs/3d.md` §1): the surface stands at the drawn overflow, the bell at its share of travel, the layers at their share of the depth, and the inside's drop stays the model's P/ρg. In metres the 4,000 L plant's surface stood 76 cm above this tank's rim (QA B2). The figures stay that machine's. Only the drawn machine's picture is a measurement of anything.
+
 ## Decoration, listed as such
 
 - **The bubbles' speed and size.** 16 cm/s, 6 to 12 mm, for the eye. No source times a bubble.

@@ -1,6 +1,6 @@
 import type * as THREE from 'three';
 
-// A world's `update` has the state and the view, not the camera nor the selection (kit requests 7 and 12). `src/main.ts` hands the running stage here once the lab is up. In Node, and with no WebGL, there is no link: nothing is selected, and the view counts as wide.
+// A world's `update` has the state and the view, not the camera nor the selection (kit request 14). `src/main.ts` hands the running stage here once the lab is up. In Node, and with no WebGL, there is no link: nothing is selected, and the view counts as wide.
 
 export interface StageLink {
   camera: THREE.PerspectiveCamera;

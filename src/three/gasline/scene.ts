@@ -1140,7 +1140,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
 
   // ---- merge and register
   const registry = new WorldRegistry();
-  // a narrow view fits the line to its width: the burner's name, at its right end, would run out of the picture unless the overview leaves it room (QA M6). Kit request 12
+  // a narrow view fits the line to its width: the burner's name, at its right end, would run out of the picture unless the overview leaves it room (QA M6). Kit requests 12 and 15
   const burnerRoom = new THREE.Box3(V(tx + LINE.tableW / 2, 1, 0), V(tx + LINE.tableW / 2 + 1.4, 1, 0));
   registry.overview(() => (narrowView() ? [burnerRoom] : []));
   for (const id of LINE_PARTS) {
