@@ -8,6 +8,7 @@ import { buildMachine, MACHINE_PARTS, type Machine, type MachinePart } from '../
 import { box, boxUV, hoseCurve, rewriteTube, tubeThrough, V } from '../machine/shapes';
 import { concrete } from '../machine/textures';
 import { partName } from '../part-ids';
+import { selectedPart } from '../stage-link';
 import { anchor, hotspots, paperFloor, partsNow, viewFrom, workshopScene, type HotspotDef } from '../world';
 
 // The `digester` world: the machine alone, on a piece of its pad, on the paper. It opens cut along its axis, as this is what the world is for: the bell rises live from the simulation, the slurry stands where the model
@@ -63,7 +64,8 @@ const HOTSPOTS: HotspotDef[] = [
 
 const FRAMING: Partial<Record<MachinePart, PartFraming>> = {
   'digester-tank': { viewDir: viewFrom(18, -150) },
-  'gas-bell': { viewDir: viewFrom(18, -150) },
+  // from the side the world is cut on: the bell standing in its slurry, the gas under it. From behind it was a closed barrel, 31 to 35 % of it seen (QA M2)
+  'gas-bell': { viewDir: viewFrom(16, -24) },
   'scale-marks': { frame: new THREE.Box3(V(-0.62, 1.42, -0.42), V(-0.26, 2.12, 0.02)), viewDir: viewFrom(8, -82) },
   'half-brick': { viewDir: viewFrom(30, -160) },
   'gas-tap': { viewDir: viewFrom(32, -120) },
@@ -298,13 +300,15 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
     declutter: true,
     update(s, dt, view) {
       const now = partsNow(registry);
+      // the open ring can be seen only from above, in the section across: 1 to 3 % of it shows otherwise, from every side (QA M2). So selecting it asks for that section by itself, unless its gas is on show, which is drawn along the cut, or the part comes apart or stands alone
+      const ringAsked = selectedPart() === 'rim-gap' && !view.schematic && !now.exploded && !now.ghosted;
       // a guide's step stays in section: the inner feed pipe of its step 4 is drawn inside the tank, and a closed tank hides it
-      const v = view.cutaway ? 'across' : now.xray || now.isolated ? 'whole' : 'cut';
+      const v = view.cutaway ? 'across' : now.xray || now.isolated ? 'whole' : ringAsked ? 'across' : 'cut';
       machine.setView(v);
       const live = !now.hidden && !now.exploded;
       machine.update(s, dt * view.slowMo, { addedWeight: params().addedWeight, live: live && !now.ghosted });
 
-      const across = view.cutaway;
+      const across = v === 'across';
       const scenery = !now.isolated && !now.exploded && !across;
       pad.visible = !now.isolated;
       padShadow.visible = !now.isolated && !now.exploded;

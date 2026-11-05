@@ -9,6 +9,7 @@ import { createDropScene, DROP_PARTS } from './drop/scene';
 import { createGasLineScene, LINE_PARTS } from './gasline/scene';
 import { asDrawn, MACHINE_PARTS } from './machine/machine';
 import { PART_NAMES, partName } from './part-ids';
+import { linkStage } from './stage-link';
 import { bellAt, boxOf, drawStats, finiteTree, gap, isolateOne, raysToPart, stateWith, view } from './test-utils';
 import { createYardScene, groundHeight, PLANT_TURN, YARD_PARTS } from './yard/scene';
 import { PART_OPENS, WORLD } from './index';
@@ -352,6 +353,43 @@ describe('the yard', () => {
   });
   it('makes the plant’s base height add up', () => {
     expect(BASE_Y).toBeCloseTo(TANK.wall + 0.15, 6);
+  });
+});
+
+describe('a click on the digester’s two key parts (QA M2)', () => {
+  const dig = digester as DigesterScene;
+  const select = (id: string | null) => linkStage({ camera: new THREE.PerspectiveCamera(), selected: id });
+  it('opens the section by itself for the ring, and only as long as nothing else needs the cut', () => {
+    select('rim-gap');
+    run(dig, stateWith());
+    expect(dig.machine.view).toBe('across');
+    // its gas is drawn along the cut: the voice's « points gris » must still show
+    run(dig, stateWith(), { schematic: true });
+    expect(dig.machine.view).toBe('cut');
+    expect(dig.flows.object.visible).toBe(true);
+    run(dig, stateWith());
+    expect(dig.machine.view).toBe('across');
+    select('gas-bell');
+    run(dig, stateWith());
+    expect(dig.machine.view).toBe('cut');
+    linkStage(null);
+    run(dig, stateWith());
+    expect(dig.machine.view).toBe('cut');
+  });
+  it('sees the ring, from where its click stands, in that section', () => {
+    linkStage(null);
+    run(dig, stateWith(), { cutaway: true });
+    const box = dig.registry.frameBounds('rim-gap');
+    const from = box.getCenter(new THREE.Vector3()).addScaledVector(dig.registry.get('rim-gap')!.viewDir!, 4);
+    expect(raysToPart(dig, 'rim-gap', from, box)).toBeGreaterThan(0.5);
+    run(dig, stateWith());
+  });
+  it('looks at the bell from the side the world is cut on', () => {
+    expect(dig.registry.get('gas-bell')!.viewDir!.z).toBeGreaterThan(0.5);
+    run(dig, stateWith());
+    const box = dig.registry.frameBounds('gas-bell');
+    const from = box.getCenter(new THREE.Vector3()).addScaledVector(dig.registry.get('gas-bell')!.viewDir!, 5);
+    expect(raysToPart(dig, 'gas-bell', from, box)).toBeGreaterThan(0.4);
   });
 });
 
