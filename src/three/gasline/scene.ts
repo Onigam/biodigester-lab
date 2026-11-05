@@ -1160,7 +1160,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   const flows = new FlowDots(170, 0.036);
   scene.add(flows.object);
   const gasPoints1: THREE.Vector3[] = curve.map((p) => p.clone());
-  const gas1 = flows.add({ points: gasPoints1, color: 0x2f78dc, spacing: 0.22 });
+  const gas1 = flows.add({ points: gasPoints1, color: 0x2f78dc, spacing: 0.34 });
   const gasLine = [
     hoseOut,
     ...upPath.slice(1),
@@ -1171,7 +1171,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
     V(tx, jetAxisY, tz),
     V(tx, headTop, tz),
   ];
-  const gas2 = flows.add({ points: gasLine, color: 0x2f78dc, spacing: 0.2 });
+  const gas2 = flows.add({ points: gasLine, color: 0x2f78dc, spacing: 0.34 });
   const scraps = flows.add({
     points: [
       V(mx, barrelY + 0.1, mz - 0.05),
@@ -1180,7 +1180,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
       V(LINE.plantX - 0.635, 1.5, 0),
     ],
     color: 0xd27a30,
-    spacing: 0.18,
+    spacing: 0.3,
   });
 
   const lastTap = new THREE.Vector3(1e3, 0, 0);
@@ -1286,9 +1286,10 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
       if (showFlows) {
         // the gas at its true speed in the hose: litres an hour over the bore. Slowed by the view's own slow motion
         const area = Math.PI * (HOSE.bore / 2) ** 2;
+        // with the burner out the gas is still there, up to the closed valve, and stands still: the dots show its way and move only while it burns (QA M5)
         const v = (s.burnerLph / 1000 / 3600 / area) * view.slowMo;
-        flows.set(gas1, v, s.flameOn ? 1 : 0);
-        flows.set(gas2, v, s.flameOn ? 1 : 0);
+        flows.set(gas1, v, 1);
+        flows.set(gas2, v, 1);
         flows.set(scraps, 0.25 * view.slowMo, 1);
         flows.step(dt);
       }

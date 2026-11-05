@@ -522,6 +522,26 @@ describe('the gas line', () => {
     line.registry.setAllFactors(0);
     run(line, stateWith());
   });
+  it('shows the gas’s way with the burner out, still, and runs it along the line while it burns (QA M5)', () => {
+    const off = { ...stateWith(), flameOn: false, burnerLph: 0 };
+    run(line, off, { schematic: true });
+    expect(line.flows.object.visible).toBe(true);
+    const [gas1, gas2] = line.flows.live;
+    expect(gas1!.show).toBe(1);
+    expect(gas2!.show).toBe(1);
+    expect(gas1!.speed).toBe(0);
+    const before = [...gas2!.u];
+    run(line, off, { schematic: true });
+    expect(gas2!.u).toEqual(before);
+    const lit = { ...off, flameOn: true, burnerLph: 269 };
+    run(line, lit, { schematic: true });
+    expect(gas1!.speed).toBeGreaterThan(0);
+    expect(gas2!.speed).toBeGreaterThan(0);
+    // from the tap to the burner: the line's path starts at the hose's low point and ends over the burner
+    const pts = gas2!.points;
+    expect(pts[pts.length - 1]!.x).toBeGreaterThan(pts[0]!.x);
+    run(line, stateWith());
+  });
   it('carries the relief’s bottle on a strap that reaches the board (QA M10)', () => {
     run(line, stateWith());
     const relief = line.registry.get('hydraulic-relief')!;

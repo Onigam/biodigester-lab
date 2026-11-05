@@ -1,7 +1,16 @@
 import * as THREE from 'three';
+import { patchMaterial } from '@onigam/lab-kit/three';
 
 // The dots of « Flux »: what moves through a line, drawn over everything. Each path has its own colour, its own speed and its own share of the dots, so that the gas that misses the bell can be seen beside
 // what it catches, in the model's proportion. What their speed means is said in docs/3d.md: they are slowed or quickened for the eye, and a path's dots stand still when the model says nothing flows there.
+
+/**
+ * How big a dot is drawn, as a share of half the picture's height. Its size in metres left it one to three pixels at a world's home, and « Flux » changed 0.22 % of the picture (QA M5). It never gets smaller than `FLOW_MIN`,
+ * about 9.5 px in a 678 px view, nor larger than `FLOW_MAX`, close up. Where the paths lie close together, as in the cut tank, the finer one.
+ */
+export const FLOW_MIN = 0.028;
+export const FLOW_FINE = 0.022;
+export const FLOW_MAX = 0.07;
 
 export interface FlowPath {
   points: THREE.Vector3[];
@@ -30,10 +39,11 @@ function softDot(): THREE.DataTexture {
   for (let j = 0; j < n; j++) {
     for (let i = 0; i < n; i++) {
       const d = Math.hypot((i + 0.5) / n - 0.5, (j + 0.5) / n - 0.5) * 2;
-      const a = Math.max(0, 1 - d);
+      // a bead of the path's colour in a darker ring of the same: it reads on the black of the tank and on the pale of the paper
       const k = (j * n + i) * 4;
-      data[k] = data[k + 1] = data[k + 2] = 255;
-      data[k + 3] = Math.round(255 * Math.min(1, a * 2.2));
+      const ring = THREE.MathUtils.smoothstep(d, 0.56, 0.68);
+      data[k] = data[k + 1] = data[k + 2] = Math.round(255 * (1 - 0.72 * ring));
+      data[k + 3] = Math.round(255 * (1 - THREE.MathUtils.smoothstep(d, 0.84, 1)));
     }
   }
   dotTexture = new THREE.DataTexture(data, n, n, THREE.RGBAFormat);
@@ -55,6 +65,7 @@ export class FlowDots {
   constructor(
     private readonly max: number,
     size: number,
+    minShare = FLOW_MIN,
     over = true,
   ) {
     this.pos = new Float32Array(max * 3);
@@ -71,6 +82,14 @@ export class FlowDots {
       transparent: true,
       depthWrite: false,
       depthTest: !over,
+    });
+    // `size` holds the pixel ratio, `scale` the picture's half height in CSS pixels
+    patchMaterial(mat, `flow-dot-size:${size}:${minShare}`, (shader) => {
+      shader.vertexShader = shader.vertexShader.replace(
+        '#include <logdepthbuf_vertex>',
+        `gl_PointSize = clamp( gl_PointSize, ${minShare.toFixed(4)} * scale * size / ${size.toFixed(4)}, ${FLOW_MAX.toFixed(4)} * scale * size / ${size.toFixed(4)} );
+        #include <logdepthbuf_vertex>`,
+      );
     });
     this.object = new THREE.Points(g, mat);
     this.object.frustumCulled = false;

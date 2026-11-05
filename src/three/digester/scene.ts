@@ -3,7 +3,7 @@ import { applyWear, contactRing, contactShadow, PartRegistry } from '@onigam/lab
 import type { PartFraming, SceneModule } from '@onigam/lab-kit/three';
 import type { BioParams, BioState } from '../../sim/types';
 import { BASE_Y, BELL, FEED, HOSE, OVERFLOW, PAD, TANK, TAP } from '../dims';
-import { FlowDots } from '../flows';
+import { FLOW_FINE, FlowDots } from '../flows';
 import { buildMachine, MACHINE_PARTS, type Machine, type MachinePart } from '../machine/machine';
 import { box, boxUV, hoseCurve, rewriteTube, tubeThrough, V } from '../machine/shapes';
 import { concrete } from '../machine/textures';
@@ -230,13 +230,13 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
   });
 
   // ---- flows: the feed's way in the machine's frame, the gas in the bell's
-  const flows = new FlowDots(170, 0.022);
+  const flows = new FlowDots(170, 0.022, FLOW_FINE);
   machine.root.add(flows.object);
   const y = FEED.axisY;
   const feedPath = flows.add({
     points: [V(FEED.riserX, FEED.funnelTop, 0.004), V(FEED.riserX, y, 0.004), V(0.02, y, 0.004)],
     color: 0xd27a30,
-    spacing: 0.1,
+    spacing: 0.15,
   });
   const liquorPath = flows.add({
     points: [
@@ -249,21 +249,21 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
       V(OVERFLOW.elbowX, OVERFLOW.axisY - 0.05, 0.005),
       V(OVERFLOW.elbowX, OVERFLOW.axisY - OVERFLOW.drop, 0.005),
     ],
-    color: 0x8a6a2a,
-    spacing: 0.12,
+    color: 0xc9a23c,
+    spacing: 0.16,
   });
   // what misses the bell: up the ring, out into the air
   const rimPathL = flows.add({
     points: [V(-0.482, 0.12, 0.005), V(-0.486, 1.05, 0.005), V(-0.47, 2.1, 0.005)],
     color: 0x7a8f9a,
-    spacing: 0.14,
+    spacing: 0.17,
   });
   const rimPathR = flows.add({
     points: [V(0.49, 0.2, 0.005), V(0.5, 1.05, 0.005), V(0.56, 2.1, 0.005)],
     color: 0x7a8f9a,
-    spacing: 0.14,
+    spacing: 0.17,
   });
-  const bellFlows = new FlowDots(70, 0.022);
+  const bellFlows = new FlowDots(70, 0.022, FLOW_FINE);
   machine.bellPoseGroup.add(bellFlows.object);
   const gasPath = bellFlows.add({
     points: [
@@ -275,7 +275,7 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
       V(TAP.x - 0.08, BELL.height + 0.062, TAP.z),
     ],
     color: 0x3f7fb5,
-    spacing: 0.09,
+    spacing: 0.15,
   });
 
   const out = new THREE.Vector3();

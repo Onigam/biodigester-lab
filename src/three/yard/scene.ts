@@ -981,10 +981,10 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
   const scrapPath = flows.add({
     points: [caddyTop, caddyTop.clone().lerp(funnelP, 0.5).setY(1.7), funnelP],
     color: 0xd27a30,
-    spacing: 0.18,
+    spacing: 0.45,
   });
   const gasPts: THREE.Vector3[] = [...curve.map((p) => p.clone()), ...fixedPath];
-  const gasPath = flows.add({ points: gasPts, color: 0x2f78dc, spacing: 0.24 });
+  const gasPath = flows.add({ points: gasPts, color: 0x2f78dc, spacing: 0.55 });
   const bk = toWorld(-0.8, BUCKET.h + PAD.h, 0);
   const effPath = flows.add({
     points: [
@@ -994,8 +994,8 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
       V(YARD.bedX + 0.2, 0.32, YARD.bedZ + 0.8),
       V(YARD.bedX + YARD.bedW / 2, 0.3, YARD.bedZ + 2.4),
     ],
-    color: 0x7a6a2a,
-    spacing: 0.3,
+    color: 0xa58a35,
+    spacing: 0.6,
   });
 
   const lastTap = new THREE.Vector3(1e3, 0, 0);
