@@ -310,6 +310,9 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
       machine.update(s, dt * view.slowMo, { addedWeight: params().addedWeight, live: live && !now.ghosted });
 
       const across = v === 'across';
+      // the section takes the bell's upper part away: its dot comes down onto the collar that stays, at the back, clear of the gas's, or it would point at the air
+      if (across) anchors['gas-bell'].position.set(0.05, machine.acrossY - machine.pose.rim, -0.43);
+      else anchors['gas-bell'].position.set(-0.12, BELL.height - 0.06, -0.3);
       const scenery = !now.isolated && !now.exploded && !across;
       pad.visible = !now.isolated;
       padShadow.visible = !now.isolated && !now.exploded;

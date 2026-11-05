@@ -418,6 +418,16 @@ describe('a click on the digester’s two key parts (QA M2)', () => {
     run(dig, stateWith());
     expect(dig.machine.view).toBe('cut');
   });
+  it('brings the bell’s dot down onto what the section leaves of it', () => {
+    run(dig, stateWith(), { cutaway: true });
+    dig.update(stateWith(), 1 / 30, view({ cutaway: true }));
+    dig.scene.updateMatrixWorld(true);
+    const dot = dig.hotspots.find((h) => h.partId === 'gas-bell')!.anchor;
+    const at = new THREE.Vector3().setFromMatrixPosition(dot.matrixWorld);
+    const plane = new THREE.Vector3(0, dig.machine.acrossY, 0).applyMatrix4(dig.machine.root.matrixWorld).y;
+    expect(Math.abs(at.y - plane)).toBeLessThan(0.05);
+    run(dig, stateWith());
+  });
   it('sees the ring, from where its click stands, in that section', () => {
     linkStage(null);
     run(dig, stateWith(), { cutaway: true });
