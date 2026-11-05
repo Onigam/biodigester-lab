@@ -59,7 +59,8 @@ export const EXPLODE: Record<YardPart, [number, number, number]> = {
 
 const HOTSPOTS: HotspotDef[] = [
   { id: 'biogas-plant', ...partName('biogas-plant'), goto: 'digester' },
-  { id: 'kitchen-house', ...partName('kitchen-house') },
+  // the labels' short names: the sheet's would run out of a narrow view (QA M6)
+  { id: 'kitchen-house', ...partName('kitchen-house'), fr: 'Cuisine', en: 'Kitchen' },
   { id: 'shade-tree', ...partName('shade-tree') },
   { id: 'vegetable-bed', ...partName('vegetable-bed') },
   { id: 'compost-heap', ...partName('compost-heap') },
@@ -917,12 +918,15 @@ export function createYardScene(params: () => Pick<BioParams, 'addedWeight' | 'f
   const at = (id: YardPart, x: number, y: number, z: number) => {
     anchors[id] = anchor(parts[id], x, y, z, `${id}-label`);
   };
-  at('biogas-plant', 0.2, 2.5, 0.1);
-  at('kitchen-house', YARD.kitchenX + 2.2, ridge + 0.1, zc);
+  // on the plant's right as the home view sees it: its name starts past the plant and leaves it to be found at 390 px
+  at('biogas-plant', 0.85, 3.0, -0.25);
+  at('kitchen-house', YARD.kitchenX, ridge + 0.1, zc);
   at('shade-tree', YARD.treeX, YARD.treeH - 0.3, YARD.treeZ);
-  at('vegetable-bed', YARD.bedX + 2.2, 1.8, YARD.bedZ + 1.4);
+  at('vegetable-bed', YARD.bedX + 0.4, 0.6, YARD.bedZ + 2);
   at('compost-heap', hx, 1.05, hz);
-  at('hose-run', 1.2, 0.5, -2.4);
+  // on its run across the ground, below the plant's name
+  const hoseAt = fixedPath[Math.round(fixedPath.length * 0.46)]!;
+  at('hose-run', hoseAt.x, hoseAt.y + 0.05, hoseAt.z);
   const buttAnchor = new THREE.Vector3(buttX, 1.14, buttZ).applyAxisAngle(V(0, 1, 0), PLANT_TURN);
   at('water-butt', buttAnchor.x, buttAnchor.y, buttAnchor.z);
   const bucketAnchor = V(-0.8, 0.46, 0).applyAxisAngle(V(0, 1, 0), PLANT_TURN);

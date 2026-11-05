@@ -91,6 +91,23 @@ describe('each world', () => {
     expect(WORLD['gas-line'].cutaway).toBe(false);
     expect(WORLD.digester.cutaway).toBe(true);
   });
+  it('keeps a sheet’s name out of a label’s short name only where a narrow view needs it (QA M6)', () => {
+    const short: Record<string, [string, string]> = {
+      'kitchen-house': ['Cuisine', 'Kitchen'],
+      'biogas-burner': ['Brûleur', 'Burner'],
+      'food-particle': ['Particule', partName('food-particle').en],
+      'condensate-trap': ['Piège à eau', partName('condensate-trap').en],
+      'bell-hose': ['Tuyau', partName('bell-hose').en],
+    };
+    for (const w of Object.values(worlds)) {
+      for (const h of w.hotspots) {
+        const name = partName(h.partId);
+        const label = h.label as unknown as { fr: string; en: string };
+        const want = short[h.partId] ?? [name.fr, name.en];
+        expect([label.fr, label.en], h.partId).toEqual(want);
+      }
+    }
+  });
   it('holds its label anchors inside what the part draws, or nearly', () => {
     for (const w of Object.values(worlds)) {
       w.update(stateWith(), 1 / 60, view());
@@ -541,6 +558,18 @@ describe('the gas line', () => {
     const pts = gas2!.points;
     expect(pts[pts.length - 1]!.x).toBeGreaterThan(pts[0]!.x);
     run(line, stateWith());
+  });
+  it('leaves the burner’s name room in a narrow view only, in an entry nothing lists (QA M6)', () => {
+    const reg = line.registry;
+    const ids = reg.ids();
+    expect(ids).toHaveLength(LINE_PARTS.length);
+    const room = () => reg.bounds('(overview)');
+    linkStage(null);
+    expect(room().isEmpty()).toBe(true);
+    const camera = new THREE.PerspectiveCamera(40, 0.5);
+    linkStage({ camera, selected: null });
+    expect(room().max.x).toBeGreaterThan(LINE.burnerX + LINE.tableW / 2 + 1);
+    linkStage(null);
   });
   it('carries the relief’s bottle on a strap that reaches the board (QA M10)', () => {
     run(line, stateWith());

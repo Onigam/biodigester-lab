@@ -186,21 +186,22 @@ export function createDigesterScene(params: () => Pick<BioParams, 'addedWeight'>
   const at = (id: MachinePart, x: number, y: number, z: number) => {
     anchors[id] = anchor(machine.parts[id], x, y, z, `${id}-label`);
   };
-  at('gas-bell', -0.12, BELL.height - 0.28, -0.3);
+  // the main labels stand apart at 768 and 390 px, in both languages (QA M6): the bell's near its top, the gas to the left under it, the funnel's on its left lip and above it, the liquor over the tank's own
+  at('gas-bell', -0.12, BELL.height - 0.06, -0.3);
   anchors['gas-bell'].parent!.remove(anchors['gas-bell']);
   machine.bellPoseGroup.add(anchors['gas-bell']);
-  at('gas-space', 0.16, 1.12, 0);
+  at('gas-space', -0.28, 1.03, 0);
   at('scale-marks', -0.442, 0.86, -0.07);
   at('gas-tap', TAP.x - 0.03, BELL.height + 0.1, TAP.z);
   at('half-brick', 0, 0.16, 0);
   anchors['half-brick'].parent!.remove(anchors['half-brick']);
   machine.brickPose.add(anchors['half-brick']);
   at('digester-tank', -0.518, 0.56, 0.01);
-  at('clear-liquor', 0.1, 0.52, 0);
+  at('clear-liquor', 0.1, 0.72, 0);
   at('sludge-bed', -0.22, 0.05, 0);
   at('scum-layer', -0.1, 1.0, 0);
   at('rim-gap', 0.5, 1.04, -0.01);
-  at('feed-funnel', FEED.riserX + 0.09, FEED.funnelTop, 0);
+  at('feed-funnel', FEED.riserX - 0.09, FEED.funnelTop + 0.05, 0);
   at('feed-riser', FEED.riserX + 0.04, 0.62, 0);
   at('feed-tee', FEED.riserX - 0.01, FEED.axisY - 0.05, 0);
   at('clean-out-plug', FEED.riserX + 0.1, FEED.axisY, 0);

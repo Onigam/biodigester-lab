@@ -64,7 +64,8 @@ export const EXPLODE: Record<DropPart, [number, number, number]> = {
 };
 
 const HOTSPOTS: HotspotDef[] = [
-  { id: 'food-particle', ...partName('food-particle') },
+  // the label's short name: the sheet's would cross the drop at 390 px (QA M6)
+  { id: 'food-particle', ...partName('food-particle'), fr: 'Particule' },
   { id: 'acid-makers', ...partName('acid-makers') },
   { id: 'fatty-acid-pool', ...partName('fatty-acid-pool') },
   { id: 'methanogens', ...partName('methanogens') },
@@ -733,10 +734,10 @@ export function createDropScene(): DropScene {
   };
   at('food-particle', -1.86, 0.5, 0.26);
   at('hydrolysers', -1.32, 1.12, 0.3);
-  at('acid-makers', -0.34, 0.92, 0.3);
+  at('acid-makers', -0.64, 1.1, 0.3);
   at('fatty-acid-pool', 0.08, 0.3, 0.42);
   at('acetogens', 0.6, 1.02, 0.24);
-  at('methanogens', 1.24, 0.72, 0.28);
+  at('methanogens', 1.04, 0.72, 0.28);
   at('gas-bubble', 1.2, 1.44, 0.1);
   at('bicarbonate-buffer', -0.7, 0.26, 0.92);
   at('ammonium', 1.16, 0.3, 0.76);
@@ -804,7 +805,8 @@ export function createDropScene(): DropScene {
     hotspots: hotspots(HOTSPOTS, anchors),
     home: { position: new THREE.Vector3(0.05, 2.1, 6.5), target: new THREE.Vector3(0, 0.62, 0) },
     minDistance: 0.3,
-    maxDistance: 16,
+    // a narrow view's overview stands this far: any less and the drop is cut on both sides at 768 px (QA M6)
+    maxDistance: 30,
     near: 0.02,
     far: 70,
     homePadding: 0.72,

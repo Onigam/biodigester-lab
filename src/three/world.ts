@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { l } from '@onigam/lab-kit/i18n';
-import { PAPER_STUDIO, patchMaterial, type Hotspot, type PartRegistry } from '@onigam/lab-kit/three';
+import { PAPER_STUDIO, PartRegistry, patchMaterial, type Hotspot } from '@onigam/lab-kit/three';
 
 // What the workshop worlds share: the paper, its light, the hotspots' declarations. No fog: the paper floor fades by itself, so nothing can eat the machine, wherever the camera stands.
 
@@ -159,4 +159,31 @@ export function partsNow(reg: PartRegistry): {
     if (p.factor > 0.001) exploded = true;
   }
   return { hidden: hidden > 0, isolated: solid === 1 && hidden === ids.length - 1, exploded, ghosted, xray };
+}
+
+const OVERVIEW = '(overview)';
+
+/**
+ * A registry that adds what the world's overview must hold beyond its parts. The kit's `Stage.frameAll` frames the registered parts only, so this sits in an entry of no part: no mesh, no name, not in `ids()`, so nothing lists it, selects it or counts it.
+ * With a part alone on screen it gives nothing, and the overview frames that part.
+ */
+export class WorldRegistry extends PartRegistry {
+  private extent: (() => THREE.Box3[]) | null = null;
+
+  overview(extent: () => THREE.Box3[]): void {
+    this.extent = extent;
+    if (!this.parts.has(OVERVIEW)) this.add(OVERVIEW, new THREE.Object3D());
+  }
+
+  override ids(): string[] {
+    return super.ids().filter((id) => id !== OVERVIEW);
+  }
+
+  override bounds(id: string): THREE.Box3 {
+    if (id !== OVERVIEW) return super.bounds(id);
+    const box = new THREE.Box3();
+    for (const part of this.parts.values()) if (part.display === 'hidden') return box;
+    for (const b of this.extent?.() ?? []) box.union(b);
+    return box;
+  }
 }

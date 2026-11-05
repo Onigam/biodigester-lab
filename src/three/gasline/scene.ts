@@ -1,13 +1,5 @@
 import * as THREE from 'three';
-import {
-  applyWear,
-  contactRing,
-  contactShadow,
-  glass,
-  group,
-  patchMaterial,
-  PartRegistry,
-} from '@onigam/lab-kit/three';
+import { applyWear, contactRing, contactShadow, glass, group, patchMaterial } from '@onigam/lab-kit/three';
 import type { PartFraming, SceneModule } from '@onigam/lab-kit/three';
 import type { BioParams, BioState } from '../../sim/types';
 import { BASE_Y, BUCKET, HOSE, LINE, PAD } from '../dims';
@@ -34,7 +26,17 @@ import {
 import { concrete, plaster, timber } from '../machine/textures';
 import { dynamic, mergeStatic } from '../merge';
 import { partName } from '../part-ids';
-import { anchor, hotspots, paperFloor, partsNow, viewFrom, workshopScene, type HotspotDef } from '../world';
+import { narrowView } from '../stage-link';
+import {
+  anchor,
+  hotspots,
+  paperFloor,
+  partsNow,
+  viewFrom,
+  workshopScene,
+  WorldRegistry,
+  type HotspotDef,
+} from '../world';
 
 // The `gas-line` world, laid out left to right in the order things flow, at about their true length: on the far left the scraps start, minced and diluted; the machine, the same as everywhere, turned so that its tap faces the
 // line; the hose that flexes with the bell, down to its low point, its trap; up to a board with the relief, the filter, the arrester, the gauge; through the wall of the kitchen; the valve, the burner, its air, the flame, the pot, the
@@ -82,10 +84,11 @@ export const EXPLODE: Record<LinePart, [number, number, number]> = {
 };
 
 const HOTSPOTS: HotspotDef[] = [
-  { id: 'bell-hose', ...partName('bell-hose') },
-  { id: 'condensate-trap', ...partName('condensate-trap') },
+  { id: 'bell-hose', ...partName('bell-hose'), fr: 'Tuyau' },
+  { id: 'condensate-trap', ...partName('condensate-trap'), fr: 'Piège à eau' },
   { id: 'h2s-filter', ...partName('h2s-filter') },
-  { id: 'biogas-burner', ...partName('biogas-burner') },
+  // the labels' short names, here and on the hose and the trap: the sheets' would cross each other or run out of a narrow view (QA M6)
+  { id: 'biogas-burner', ...partName('biogas-burner'), fr: 'Brûleur', en: 'Burner' },
   { id: 'mincer', ...partName('mincer') },
   { id: 'pressure-gauge', ...partName('pressure-gauge'), minor: true },
   { id: 'hydraulic-relief', ...partName('hydraulic-relief'), minor: true },
@@ -1112,18 +1115,20 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
 
   // ---- anchors
   const anchors: Record<string, THREE.Object3D> = {};
+  // on the hose's upper reach, where its name has the air to itself
+  const hoseAt = curve[Math.round(curve.length * 0.14)]!;
   const at = (id: LinePart, x: number, y: number, z: number) => {
     anchors[id] = anchor(parts[id], x, y, z, `${id}-label`);
   };
-  at('bell-hose', trapX - 0.56, 0.86, bz);
+  at('bell-hose', hoseAt.x, hoseAt.y, hoseAt.z);
   at('condensate-trap', trapX, jarY0 + jarH + 0.05, bz + 0.02);
   at('hydraulic-relief', rx, bottleBase - 0.01, pz + 0.06);
-  at('h2s-filter', fx, canY0 + fh + 0.02, pz + 0.018);
+  at('h2s-filter', fx, canY0 + fh + 0.18, pz + 0.018);
   at('flame-arrester', ax, by + barrelR + 0.01, pz);
   at('pressure-gauge', gx, dialY + dialR + 0.01, dialZ);
   at('wall-sleeve', wx - 0.02, by + 0.05, pz);
   at('kitchen-valve', vx + 0.03, by + 0.05, zPipe);
-  at('biogas-burner', tx - 0.14, jetAxisY - 0.02, tz + 0.03);
+  at('biogas-burner', tx - 0.45, jetAxisY - 0.02, tz + 0.03);
   at('primary-air-sleeve', airX + 0.025, jetAxisY + 0.03, tz);
   at('blue-flame', tx, headTop + 0.03, tz + headR);
   at('pot-stand', tx + ringR, tableY + 0.07, tz);
@@ -1134,7 +1139,10 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   at('dilution-bucket', dbX, dilBk.h + 0.02, dbZ);
 
   // ---- merge and register
-  const registry = new PartRegistry();
+  const registry = new WorldRegistry();
+  // a narrow view fits the line to its width: the burner's name, at its right end, would run out of the picture unless the overview leaves it room (QA M6). Kit request 12
+  const burnerRoom = new THREE.Box3(V(tx + LINE.tableW / 2, 1, 0), V(tx + LINE.tableW / 2 + 1.4, 1, 0));
+  registry.overview(() => (narrowView() ? [burnerRoom] : []));
   for (const id of LINE_PARTS) {
     mergeStatic(parts[id], { bakeKey: 'gas-line' });
     registry.add(id, parts[id], new THREE.Vector3(...EXPLODE[id]), undefined, FRAMING[id]);
@@ -1209,7 +1217,8 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
     hotspots: hotspots(HOTSPOTS, anchors),
     home: { position: new THREE.Vector3(-0.1, 3.0, 11.2), target: new THREE.Vector3(-0.28, 1.08, -0.1) },
     minDistance: 0.25,
-    maxDistance: 26,
+    // a narrow view's overview, with its room for the burner's name, stands this far: any less and the mincer is cut at 768 px (QA M6)
+    maxDistance: 46,
     near: 0.03,
     far: 90,
     homePadding: 1.04,
