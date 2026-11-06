@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { applyWear, contactRing, contactShadow, grassDetail, group, PartRegistry, rng } from '@onigam/lab-kit/three';
 import type { PartFraming, SceneModule } from '@onigam/lab-kit/three';
 import type { BioParams, BioState } from '../../sim/types';
-import { BASE_Y, BUCKET, HOSE, PAD, YARD } from '../dims';
+import { BASE_Y, BUCKET, HOSE, PAD, TRACES, YARD } from '../dims';
 import { FlowDots } from '../flows';
 import { buildMachine, type Machine } from '../machine/machine';
 import {
@@ -24,6 +24,7 @@ import { dynamic, mergeStatic } from '../merge';
 import { partName } from '../part-ids';
 import { anchor, hotspots, partsNow, viewFrom, type HotspotDef } from '../world';
 import { createSky, nextHold, shownSun, type SkyRig } from './sky';
+import { broom, sandals, stool, traceLooks, washingLine, washingUp, type Tie, type WashingLine } from './traces';
 import { bananaClump, bedPlants, farTrees, leafCard, leafMaterial, mangoTree } from './vegetation';
 
 // The `yard` world, the setting: a generic warm yard, nothing here is a measured place. The whole circle in one look: the scraps in, the flame out, the fertiliser to the beds. The plant stands in full sun on its pad, the kitchen behind
@@ -83,6 +84,8 @@ export interface YardScene extends SceneModule<BioState> {
   flows: FlowDots;
   hose: THREE.Mesh;
   sleeve: THREE.Vector3;
+  /** What the family leaves about the yard (traces.ts), for the tests: the line and where it is tied, the things on the earth. */
+  traces: { line: WashingLine; tie: Tie; onEarth: { name: string; box: THREE.Box3 }[]; plateOnRim: number };
   /** Tap to wall, m: K7's 5 m. */
   hoseLength: () => number;
 }
@@ -760,6 +763,45 @@ export function createYardScene(
   tree.root.position.set(YARD.treeX, 0, YARD.treeZ);
   parts['shade-tree'].add(tree.root);
 
+  // ---- what the family leaves about the yard (traces.ts, docs/scenery.md). Nobody is drawn: the wash on a line from the mango to a pole, a stool and the washing-up by the kitchen's west wall, a
+  // broom leant there, sandals before the door beside the kitchen. Where the film's cameras look, clear of the plant and the hose. Scenery: in `setting`, merged and hidden with it
+  const traceLook = traceLooks();
+  const tie = barkAround(tree.root, YARD.treeX, TRACES.lineTrunkY, YARD.treeZ);
+  const washing = washingLine(tie, traceLook);
+  setting.add(washing.group);
+  const kWestX = YARD.kitchenX - YARD.kitchenW / 2;
+  const seat = stool(traceLook);
+  seat.position.set(TRACES.stoolX, 0, TRACES.stoolZ);
+  seat.rotation.y = 0.14;
+  setting.add(seat);
+  // the plate's face towards the yard, where one comes from
+  const dishes = washingUp(traceLook, V(-0.49, 0, 0.87));
+  dishes.group.position.set(TRACES.basinX, 0, TRACES.basinZ);
+  setting.add(dishes.group);
+  const broomFoot = V(TRACES.broomX, 0, TRACES.broomZ);
+  const broomHeadX = kWestX - 0.018;
+  const broomRise = Math.sqrt(TRACES.broomL ** 2 - (broomHeadX - broomFoot.x) ** 2 - 0.08 ** 2);
+  const sweep = broom(traceLook, broomFoot, V(broomHeadX, broomRise, TRACES.broomZ + 0.08));
+  setting.add(sweep);
+  const pair = sandals(traceLook);
+  pair.position.set(eastX + 0.12, 0, kz - YARD.kitchenD + 0.5 + 0.035 + TRACES.sandalL);
+  pair.rotation.y = 0.05;
+  setting.add(pair);
+  // measured before the setting is merged into a few meshes
+  const onEarth = [seat, dishes.group, sweep, pair, washing.pole.mesh].map((o) => {
+    o.updateWorldMatrix(true, true);
+    return { name: o.name || 'line-pole', box: new THREE.Box3().setFromObject(o, true) };
+  });
+  const plateOnRim = (() => {
+    // how far the plate's back stands from the basin's bead where it leans: 0 when it rests on it
+    dishes.plate.updateWorldMatrix(true, true);
+    const n = new THREE.Vector3(0, 1, 0).applyQuaternion(dishes.plate.getWorldQuaternion(new THREE.Quaternion()));
+    const back = dishes.plate.getWorldPosition(new THREE.Vector3());
+    const c = V(-0.49, 0, 0.87).normalize();
+    const bead = V(TRACES.basinX, TRACES.basinH - 0.004, TRACES.basinZ).addScaledVector(c, TRACES.basinR1 + 0.004);
+    return bead.sub(back).dot(n);
+  })();
+
   // ---- the compost heap, a slatted bin of old planks, a mound of what must not go in, a few sticks and a fork
   const heap = parts['compost-heap'];
   const hx = YARD.compostX;
@@ -978,7 +1020,19 @@ export function createYardScene(
   applyWear(scene, 3.2, (m) => {
     const n = (m.material as THREE.Material).name;
     return (
-      ['ground', 'plot-earth', 'hdpe', 'hdpe-bell', 'surface', 'sky', 'pallet', 'effluent', 'hose'].includes(n) ||
+      [
+        'ground',
+        'plot-earth',
+        'hdpe',
+        'hdpe-bell',
+        'surface',
+        'sky',
+        'pallet',
+        'effluent',
+        'hose',
+        'line-cord',
+      ].includes(n) ||
+      n.startsWith('cloth') ||
       n.includes('leaf') ||
       n === 'greens' ||
       n === 'tomato' ||
@@ -1028,6 +1082,7 @@ export function createYardScene(
     flows,
     hose: flex,
     sleeve: sleeveAt,
+    traces: { line: washing, tie, onEarth, plateOnRim },
     hoseLength() {
       let L = 0;
       for (let i = 1; i < curve.length; i++) L += curve[i].distanceTo(curve[i - 1]);
@@ -1098,6 +1153,48 @@ function plankZ(x0: number, x1: number, y0: number, y1: number, z0: number, z1: 
   const uv = g.attributes.uv;
   for (let i = 0; i < p.count; i++) uv.setXY(i, (p.getY(i) + p.getX(i)) * 2.5, p.getZ(i) * 0.8);
   return g;
+}
+
+/**
+ * The trunk's bark at height `y` near (x, z), measured on the wood that is drawn, so that a cord tied there sits on it: rays from all round onto the few triangles of the trunk at that height (the whole tree's
+ * wood is thousands), its outline, its centre and mean radius, and the bark towards any direction.
+ */
+function barkAround(tree: THREE.Object3D, x: number, y: number, z: number): Tie {
+  const wood = tree.getObjectByName('mango-wood') as THREE.Mesh;
+  tree.updateWorldMatrix(true, true);
+  const pos = wood.geometry.attributes.position;
+  const index = wood.geometry.index;
+  const n = index ? index.count : pos.count;
+  const at = (k: number) =>
+    new THREE.Vector3().fromBufferAttribute(pos, index ? index.getX(k) : k).applyMatrix4(wood.matrixWorld);
+  const keep: number[] = [];
+  for (let k = 0; k < n; k += 3) {
+    const t = [at(k), at(k + 1), at(k + 2)];
+    if (t.every((p) => Math.abs(p.y - y) < 0.3 && Math.hypot(p.x - x, p.z - z) < 0.8))
+      for (const p of t) keep.push(p.x, p.y, p.z);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(keep, 3));
+  const trunk = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
+  const ray = new THREE.Raycaster();
+  // from a point on the axis, inwards along `d`: the bark there
+  const cast = (from: THREE.Vector3, d: THREE.Vector3): THREE.Vector3 => {
+    const dir = d.clone().setY(0).normalize();
+    ray.set(from.clone().addScaledVector(dir, 1.5), dir.clone().negate());
+    const hit = ray.intersectObject(trunk, false)[0];
+    return hit ? hit.point.clone() : from.clone().addScaledVector(dir, 0.25);
+  };
+  const ring: THREE.Vector3[] = [];
+  for (let i = 0; i < 48; i++) {
+    const a = (i / 48) * Math.PI * 2;
+    ring.push(cast(new THREE.Vector3(x, y, z), new THREE.Vector3(Math.cos(a), 0, Math.sin(a))));
+  }
+  const centre = ring
+    .reduce((s, p) => s.add(p), new THREE.Vector3())
+    .divideScalar(ring.length)
+    .setY(y);
+  const r = ring.reduce((s, p) => s + Math.hypot(p.x - centre.x, p.z - centre.z), 0) / ring.length;
+  return { centre, r, ring, toward: (d) => cast(centre, d) };
 }
 
 /** A polyline made smooth by a Catmull-Rom through its points, exact at its ends. */

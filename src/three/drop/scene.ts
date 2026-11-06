@@ -5,7 +5,7 @@ import type { BioState } from '../../sim/types';
 import { DROP } from '../dims';
 import { FlowDots } from '../flows';
 import { extentMarker } from '../machine/machine';
-import { box, revolveY, tubeThrough, V, type P2 } from '../machine/shapes';
+import { box, mergeAll, revolveY, tubeThrough, V, type P2 } from '../machine/shapes';
 import { partName } from '../part-ids';
 import { anchor, hotspots, paperFloor, partsNow, viewFrom, workshopScene, type HotspotDef } from '../world';
 import {
@@ -119,18 +119,54 @@ export function createDropScene(): DropScene {
   const slideShadow = contactShadow(DROP.slideX, DROP.slideZ, 0.22, 0.3);
   slideShadow.position.y = 0.002;
   stage.add(slideShadow);
-  const plateMat = glass(0.34);
-  plateMat.color.set(0xd8e6e4);
+  // Glass, not a pale sheet: little colour of its own, so that what is under it shows through, dark on a dark ground (a film's black backdrop made the old pale plate a grey board, the frosted end a white
+  // one), the light it reflects, and its four cut edges darker and green, as a slide's are. Its frosted end and its edges hang from the plate, so that whatever takes the slide down takes them too
+  const plateMat = glass(0.16);
+  plateMat.name = 'slide-glass';
+  plateMat.color.set(0x7e9a93);
+  plateMat.clearcoat = 0.6;
+  plateMat.envMapIntensity = 0.75;
   const plate = new THREE.Mesh(box(-sx, sx, 0.003, DROP.slideH, -sz, sz), plateMat);
   plate.name = 'slide';
   plate.renderOrder = 1;
   stage.add(plate);
-  // the frosted end stops short of the drop: it stands a hair proud of the glass, and under the liquid it cut a pale wedge out of the drop's floor, which looked torn (QA M3)
+  const edgeMat = new THREE.MeshPhysicalMaterial({
+    name: 'slide-edge',
+    color: 0x3c5b54,
+    roughness: 0.14,
+    clearcoat: 1,
+    transparent: true,
+    opacity: 0.62,
+    depthWrite: false,
+  });
+  const lip = 0.0015;
+  const band = 0.022;
+  const edges = new THREE.Mesh(
+    mergeAll([
+      box(-sx - lip, sx + lip, 0.003, DROP.slideH + lip, sz - band, sz + lip),
+      box(-sx - lip, sx + lip, 0.003, DROP.slideH + lip, -sz - lip, -sz + band),
+      box(-sx - lip, -sx + band, 0.003, DROP.slideH + lip, -sz + band, sz - band),
+      box(sx - band, sx + lip, 0.003, DROP.slideH + lip, -sz + band, sz - band),
+    ]),
+    edgeMat,
+  );
+  edges.name = 'slide-edges';
+  edges.renderOrder = 1;
+  plate.add(edges);
+  // the frosted end stops short of the drop: it stands a hair proud of the glass, and under the liquid it cut a pale wedge out of the drop's floor, which looked torn (QA M3). Frosted glass lets the ground through
   const frost = new THREE.Mesh(
     box(DROP.R + 0.12, sx - 0.05, DROP.slideH - 0.002, DROP.slideH + 0.002, -sz + 0.05, sz - 0.05),
-    new THREE.MeshStandardMaterial({ color: 0xe8e4d8, roughness: 0.96, name: 'slide-frost' }),
+    new THREE.MeshStandardMaterial({
+      color: 0xdedbd2,
+      roughness: 0.9,
+      transparent: true,
+      opacity: 0.58,
+      depthWrite: false,
+      name: 'slide-frost',
+    }),
   );
-  stage.add(frost);
+  frost.renderOrder = 1;
+  plate.add(frost);
 
   // ---- the drop. A shell with its inside lit like liquid, and in front of everything its surface, only an edge and highlights
   const prof: P2[] = [];

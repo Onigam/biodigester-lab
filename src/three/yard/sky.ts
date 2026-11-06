@@ -17,14 +17,75 @@ export function sunDirection(altDeg: number, azDeg: number, out = new THREE.Vect
   return out.set(-Math.sin(z) * Math.cos(a), Math.sin(a), Math.cos(z) * Math.cos(a));
 }
 
+/** Where three's Sky.js cuts its sun off, from the zenith: π/1.95, the sun 2.3° under the horizon. Its sky goes black there; the night's own fade takes over from 2° down. */
+export const SKY_CUTOFF = 1.6110731556870734;
+
+/** Preetham's sun intensity over its EE, with the shader's own earth-shadow cut-off (`steepness` 1.5): what dims its sky as the sun goes down. */
+export function preethamSun(altDeg: number): number {
+  const zenith = Math.PI / 2 - (altDeg * Math.PI) / 180;
+  return Math.max(0, 1 - Math.exp(-(SKY_CUTOFF - zenith) / 1.5));
+}
+
+/** From this height of the sun down, the sky is held up. */
+const LIFT_FROM = 9;
+const LIFT_MAX = 40;
+
+/**
+ * How much the low sky is lifted. Preetham's sky falls about as the square of its sun intensity near the horizon: from 17:30 to 18:00 at the measured site its upper sky went 12 times darker while the yard,
+ * lit by the hemisphere, lost a tenth (stills of 6/11, docs/scenery.md): a black sky over a lit yard. Held, it falls as `fall` says, a little faster than the light on the ground, on into the night's own fade.
+ */
+export function skyLift(altDeg: number): number {
+  if (altDeg >= LIFT_FROM) return 1;
+  const e = preethamSun(altDeg);
+  const ratio = e > 0 ? (preethamSun(LIFT_FROM) / e) ** 2 : Infinity;
+  const fall = (0.55 + 0.45 * smooth(-1, LIFT_FROM, altDeg)) * smooth(-8, 0, altDeg);
+  return Math.max(1, Math.min(LIFT_MAX, ratio) * fall);
+}
+
+/** How much of the low sun's warmth the sky takes: none by day, all of it with the sun a few degrees up, gone again once it is well down. */
+export function skyDusk(altDeg: number): number {
+  return (1 - smooth(3, 24, altDeg)) * smooth(-6, 0, altDeg);
+}
+
 function injectNight(sky: Sky): void {
   const m = sky.material;
   m.uniforms.uNight = { value: 0 };
+  m.uniforms.uDusk = { value: 0 };
+  m.uniforms.uLift = { value: 1 };
   const hook = 'gl_FragColor = vec4( texColor, 1.0 );';
   if (!m.fragmentShader.includes(hook)) return;
-  m.fragmentShader = m.fragmentShader.replace('void main() {', 'uniform float uNight;\nvoid main() {').replace(
-    hook,
-    /* glsl */ `
+  m.fragmentShader = m.fragmentShader
+    .replace('void main() {', 'uniform float uNight;\nuniform float uDusk;\nuniform float uLift;\nvoid main() {')
+    .replace(
+      hook,
+      /* glsl */ `
+      {
+        // held up against Preetham's cut-off, with a knee: the dim sky takes the lift, the sun's glow keeps what it had
+        float l0 = dot(texColor, vec3(0.2126, 0.7152, 0.0722));
+        float l1 = l0 * uLift;
+        float knee = 1.0;
+        float lo = l1 < knee ? l1 : knee + (l1 - knee) / (1.0 + (l1 - knee) / (2.0 * knee));
+        texColor *= max(lo, l0) / max(l0, 1e-7);
+        // the low sun: near the horizon on its side the sky turns amber, in a band that stands higher towards the sun and fades round the horizon away from it. Its brightness is held under a
+        // soft ceiling: a sky this bright near the sun goes white in the tone mapping whatever its hue, and a warm glow must stay a colour. Every weight is smooth, no step, no ring
+        float upD = max(direction.y, 0.0);
+        vec2 dh = normalize(direction.xz + vec2(1e-6, 0.0));
+        vec2 sh = normalize(vSunDirection.xz + vec2(1e-6, 0.0));
+        float side = 0.5 + 0.5 * dot(dh, sh);
+        float band = exp(-upD / (0.045 + 0.2 * side * side));
+        // the sun's own glare, a few degrees round it, stays white
+        float glare = smoothstep(0.99, 0.9997, dot(direction, vSunDirection));
+        float w = uDusk * band * (0.12 + 0.88 * side * side * side) * (1.0 - 0.75 * glare);
+        w = 1.0 - exp(-2.2 * w);
+        // in the band the hue goes to amber (0.2126 + 0.7152 · 0.5 + 0.0722 · 0.2 = 0.5846 of luminance per unit) and the brightness under a ceiling of 0.55, the two blended by their logarithm:
+        // the haze by a low sun is many times brighter than the sky above it, and a linear blend left it white
+        float lum = max(dot(texColor, vec3(0.2126, 0.7152, 0.0722)), 1e-7);
+        float lumC = lum / (1.0 + lum / 0.55);
+        vec3 hue = mix(texColor / lum, vec3(1.0, 0.5, 0.2) / 0.5846, w);
+        texColor = hue * exp(mix(log(lum), log(lumC), w));
+        // a fixed dither under one step of the 8 bits it ends in: a slow gradient bands without it. The same on every frame
+        texColor *= 1.0 + 0.008 * (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5);
+      }
       {
         float up = max(direction.y, 0.0);
         vec3 nightCol = mix(vec3(0.012, 0.020, 0.048), vec3(0.003, 0.005, 0.014), pow(up, 0.6));
@@ -36,7 +97,7 @@ function injectNight(sky: Sky): void {
         texColor = mix(texColor, nightCol + vec3(star) * 0.9, uNight);
       }
       ${hook}`,
-  );
+    );
 }
 
 /** A sky-and-ground gradient for the reflections, warm below: red earth. */
@@ -171,6 +232,8 @@ export function createSky(scene: THREE.Scene): SkyRig {
       rig.night = 1 - day;
       u.sunPosition.value.copy(direction);
       u.uNight.value = smooth(-2, -10, alt);
+      u.uDusk.value = skyDusk(alt);
+      u.uLift.value = skyLift(alt);
       const sunI = 3.5 * smooth(-1, 6, alt) * (1 - 0.45 * low);
       const moonI = 1.3 * (1 - day);
       if (sunI >= moonI) {

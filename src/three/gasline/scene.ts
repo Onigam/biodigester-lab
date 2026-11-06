@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { applyWear, contactRing, contactShadow, glass, group, patchMaterial } from '@onigam/lab-kit/three';
 import type { PartFraming, SceneModule } from '@onigam/lab-kit/three';
 import type { BioParams, BioState } from '../../sim/types';
-import { BASE_Y, BUCKET, HOSE, LINE, PAD } from '../dims';
+import { BASE_Y, BUCKET, HOSE, LINE, PAD, TRACES } from '../dims';
 import { FlowDots } from '../flows';
 import { buildMachine, type Machine } from '../machine/machine';
 import {
@@ -27,6 +27,7 @@ import { concrete, plaster, timber } from '../machine/textures';
 import { dynamic, mergeStatic } from '../merge';
 import { partName } from '../part-ids';
 import { narrowView } from '../stage-link';
+import { enamelMug, enamelPlate, traceLooks } from '../yard/traces';
 import {
   anchor,
   hotspots,
@@ -135,6 +136,8 @@ export interface GasLineScene extends SceneModule<BioState> {
   /** The whole line, tap to burner, m: K7's 5 m. */
   lineLength: () => number;
   hoseUp: THREE.Mesh;
+  /** The plate and the mug waiting on the table beside the pot, measured before the room is merged: one person's meal (docs/scenery.md). */
+  tableware: { name: string; box: THREE.Box3 }[];
 }
 
 const HOSE_N = 34;
@@ -296,6 +299,19 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
   }
   put(room, boxTimber(tx - tw + 0.03, tx + tw - 0.03, th - 0.09, th - 0.034, tz - td + 0.04, tz - td + 0.06), wood);
   put(room, boxTimber(tx - tw + 0.03, tx + tw - 0.03, th - 0.09, th - 0.034, tz + td - 0.06, tz + td - 0.04), wood);
+  // a plate and a mug waiting behind the burner, at the back of the table, out of the way of the cameras that come close to the pot from the front and the right: the meal is for someone. The yard's
+  // own enamel (yard/traces.ts), scenery of the room
+  const tableLook = traceLooks();
+  const plate = enamelPlate(tableLook);
+  plate.position.set(tx - tw + 0.03 + TRACES.plateR, th, tz - td + 0.015 + TRACES.plateR);
+  const mug = enamelMug(tableLook);
+  mug.position.set(tx - 0.11, th, tz - td + 0.018 + TRACES.mugR);
+  mug.rotation.y = -0.9;
+  room.add(plate, mug);
+  const tableware = [plate, mug].map((o) => {
+    o.updateWorldMatrix(true, true);
+    return { name: o.name, box: new THREE.Box3().setFromObject(o, true) };
+  });
 
   // ---- the hose: from the tap, flexing with the bell, down to the low point, by the part's own two pieces
   const trapX = LINE.trapX;
@@ -1201,6 +1217,7 @@ export function createGasLineScene(params: () => Pick<BioParams, 'addedWeight' |
     registry,
     machine,
     parts,
+    tableware,
     needle,
     flameMesh,
     flows,

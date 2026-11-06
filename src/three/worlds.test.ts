@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { BiodigesterSim } from '../sim/engine';
 import { SCENARIO_IDS, PRESET_IDS } from '../sim/presets';
 import { sunPlaceFor } from './sun-test-helper';
-import { BASE_Y, BELL, DROP, FEED, HOSE, LIMITER, LINE, MACHINE, PAD, TANK, YARD } from './dims';
+import { BASE_Y, BELL, DROP, FEED, HOSE, LIMITER, LINE, MACHINE, PAD, TANK, TRACES, YARD } from './dims';
 import { createDigesterScene, type DigesterScene } from './digester/scene';
 import { createDropScene, DROP_PARTS } from './drop/scene';
 import { createGasLineScene, LINE_PARTS } from './gasline/scene';
@@ -12,6 +12,7 @@ import { PART_NAMES, partName } from './part-ids';
 import { linkStage } from './stage-link';
 import { bellAt, boxOf, drawStats, finiteTree, gap, isolateOne, raysToPart, stateWith, view } from './test-utils';
 import { createYardScene, groundHeight, PLANT_TURN, YARD_PARTS } from './yard/scene';
+import { preethamSun, SKY_CUTOFF, skyDusk, skyLift } from './yard/sky';
 import { PART_OPENS, WORLD } from './index';
 import type { SceneModule } from '@onigam/lab-kit/three';
 import type { BioState } from '../sim/types';
@@ -396,6 +397,109 @@ describe('the yard', () => {
   it('makes the plant’s base height add up', () => {
     expect(BASE_Y).toBeCloseTo(TANK.wall + 0.15, 6);
   });
+  it('ties the washing line on the trunk that is drawn and on its pole, the wash on the cord and clear of the earth', () => {
+    yard.scene.updateMatrixWorld(true);
+    const { line, tie } = yard.traces;
+    const cord = line.cord;
+    const toPole = new THREE.Vector3(line.pole.x - tie.centre.x, 0, line.pole.z - tie.centre.z).normalize();
+    // the bark where the cord leaves it, found again by a ray of the test's own
+    const wood = yard.scene.getObjectByName('mango-wood') as THREE.Mesh;
+    const ray = new THREE.Raycaster(tie.centre.clone().addScaledVector(toPole, 1.5), toPole.clone().negate());
+    const bark = ray.intersectObject(wood, false)[0];
+    expect(bark).toBeDefined();
+    expect(bark.point.distanceTo(cord[0])).toBeLessThan(0.008);
+    const end = cord[cord.length - 1];
+    expect(Math.abs(Math.hypot(end.x - line.pole.x, end.z - line.pole.z) - line.pole.r)).toBeLessThan(0.001);
+    expect(Math.abs(end.y - TRACES.linePostY)).toBeLessThan(0.001);
+    expect(TRACES.linePostY).toBeLessThan(TRACES.linePostH);
+    // its lowest point: the sag, nothing more
+    expect(Math.min(...cord.map((p) => p.y))).toBeGreaterThan(
+      Math.min(TRACES.lineTrunkY, TRACES.linePostY) - TRACES.lineSag - 0.002,
+    );
+    // each cloth's top edge on the cord, its hem well off the earth
+    const segDist = (p: THREE.Vector3) => {
+      let best = Infinity;
+      const s = new THREE.Line3();
+      const q = new THREE.Vector3();
+      for (let i = 1; i < cord.length; i++)
+        best = Math.min(
+          best,
+          s
+            .set(cord[i - 1], cord[i])
+            .closestPointToPoint(p, true, q)
+            .distanceTo(p),
+        );
+      return best;
+    };
+    expect(line.wash.length).toBe(4);
+    for (const m of line.wash) {
+      const p = m.geometry.attributes.position;
+      const top: THREE.Vector3[] = [];
+      let low = Infinity;
+      let maxY = -Infinity;
+      for (let i = 0; i < p.count; i++) maxY = Math.max(maxY, p.getY(i));
+      for (let i = 0; i < p.count; i++) {
+        low = Math.min(low, p.getY(i));
+        const v = new THREE.Vector3(p.getX(i), p.getY(i), p.getZ(i));
+        if (segDist(v) < 0.05 && v.y > maxY - 0.06) top.push(v);
+      }
+      expect(top.length, m.name).toBeGreaterThan(4);
+      for (const v of top) expect(segDist(v), m.name).toBeLessThan(TRACES.lineR + 0.002);
+      expect(low, m.name).toBeGreaterThan(0.9);
+    }
+    // the pole stands inside the plot, clear of the wall
+    expect(line.pole.x - line.pole.r).toBeGreaterThan(YARD.x0 + 0.3);
+  });
+  it('stands the stool, the washing-up, the broom, the sandals and the line’s pole on the earth, and leans the plate on the basin', () => {
+    for (const { name, box } of yard.traces.onEarth) {
+      expect(Math.abs(box.min.y), name).toBeLessThan(0.003);
+      // and on the plot's earth, not on the wall or the pad
+      expect(box.min.x, name).toBeGreaterThan(YARD.x0);
+      const pad = Math.hypot((box.min.x + box.max.x) / 2 - YARD.padX, (box.min.z + box.max.z) / 2 - YARD.padZ);
+      expect(pad, name).toBeGreaterThan(Math.hypot(PAD.halfX, PAD.halfZ) + 0.3);
+    }
+    expect(Math.abs(yard.traces.plateOnRim)).toBeLessThan(0.002);
+    // nothing of those by the kitchen's west wall inside it
+    const kWest = YARD.kitchenX - YARD.kitchenW / 2;
+    for (const { name, box } of yard.traces.onEarth)
+      if (box.min.x < kWest) expect(box.max.x, name).toBeLessThan(kWest + 0.001);
+  });
+});
+
+describe('the yard’s evening sky', () => {
+  // Preetham's sky near the horizon falls about as the square of its sun intensity; held up by the lift, its fall from 9° to sunset stays near the yard's own (a tenth, stills of 6/11), not a black sky over a lit yard
+  const shown = (alt: number) => (preethamSun(alt) / preethamSun(9)) ** 2 * skyLift(alt);
+  it('sums with the shader’s own cut-off', () => {
+    const sky = yard.scene.getObjectByName('sky') as THREE.Mesh;
+    expect((sky.material as THREE.ShaderMaterial).vertexShader).toContain(`const float cutoffAngle = ${SKY_CUTOFF};`);
+    expect(preethamSun(-2.4)).toBe(0);
+  });
+  it('keeps the day sky as it was', () => {
+    for (const alt of [9, 20, 55, 80]) expect(skyLift(alt)).toBe(1);
+    expect(skyDusk(40)).toBe(0);
+    expect(skyDusk(-7)).toBe(0);
+  });
+  it('holds the low sky up as the yard keeps its light, and lets it go into the night', () => {
+    // 17:42 and 18:00 at the measured site in October: the sun at 5.6° and 1.2°
+    expect(shown(5.6)).toBeGreaterThan(0.8);
+    expect(shown(1.2)).toBeGreaterThan(0.5);
+    // without the lift: a tenth at 18:00
+    expect((preethamSun(1.2) / preethamSun(9)) ** 2).toBeLessThan(0.11);
+    // never brighter than the day it comes from, never lifted beyond its cap, gone when the night is
+    for (let alt = -8; alt <= 9; alt += 0.25) {
+      expect(shown(alt), `at ${alt}°`).toBeLessThan(1.05);
+      expect(skyLift(alt)).toBeLessThanOrEqual(40);
+    }
+    expect(skyLift(-8)).toBe(1);
+    // and smooth down to sunset: no step from one twentieth of a degree to the next. Below, Preetham's own sky runs out at 2.3° down, and it falls faster than the yard (docs/scenery.md, open)
+    for (let alt = -0.5; alt < 9; alt += 0.05)
+      expect(Math.abs(shown(alt + 0.05) - shown(alt)), `at ${alt}°`).toBeLessThan(0.02);
+  });
+  it('warms most at the film’s hour, the sun a few degrees up', () => {
+    expect(skyDusk(5.6)).toBeGreaterThan(0.9);
+    expect(skyDusk(12)).toBeGreaterThan(0.6);
+    expect(skyDusk(12)).toBeLessThan(skyDusk(5.6));
+  });
 });
 
 describe('a click on the digester’s two key parts (QA M2)', () => {
@@ -533,6 +637,22 @@ describe('the drop', () => {
       if (b.min.x < DROP.R && b.max.y > DROP.slideH) proud.push(m.name || (m.material as THREE.Material).name);
     });
     expect(proud).toEqual([]);
+  });
+  it('draws the slide as glass: little colour of its own, its frosted end and its edges hanging from it', () => {
+    const slide = drop.scene.getObjectByName('slide') as THREE.Mesh;
+    const glassMat = slide.material as THREE.MeshPhysicalMaterial;
+    expect(glassMat.transparent).toBe(true);
+    expect(glassMat.opacity).toBeLessThan(0.25);
+    const found: string[] = [];
+    slide.traverse((o) => {
+      const m = (o as THREE.Mesh).material as THREE.Material | undefined;
+      if (m && o !== slide) found.push(m.name);
+    });
+    expect(found.sort()).toEqual(['slide-edge', 'slide-frost']);
+    const frost = (
+      slide.children.find((o) => ((o as THREE.Mesh).material as THREE.Material).name === 'slide-frost') as THREE.Mesh
+    ).material as THREE.Material;
+    expect(frost.transparent).toBe(true);
   });
   it('lets the kinds come apart along the chain', () => {
     const r = drop.registry;
@@ -709,6 +829,23 @@ describe('the gas line', () => {
     expect(Math.abs(vent.min.z + LINE.roomD / 2)).toBeLessThan(0.003);
     const det = boxOf(line.parts['gas-detector']);
     expect(Math.abs(det.min.z + LINE.roomD / 2)).toBeLessThan(0.003);
+  });
+  it('sets a plate and a mug on the table beside the pot, clear of the stand, the pot and the burner', () => {
+    const table = LINE.tableH + 0.05;
+    expect(line.tableware.map((t) => t.name).sort()).toEqual(['mug', 'plate']);
+    const stand = boxOf(line.parts['pot-stand']);
+    const pot = boxOf(line.parts['cooking-pot']);
+    const burner = boxOf(line.parts['biogas-burner']);
+    for (const { name, box } of line.tableware) {
+      expect(Math.abs(box.min.y - table), name).toBeLessThan(0.002);
+      expect(box.min.x, name).toBeGreaterThan(LINE.burnerX - LINE.tableW / 2);
+      expect(box.max.x, name).toBeLessThan(LINE.burnerX + LINE.tableW / 2);
+      expect(box.min.z, name).toBeGreaterThan(LINE.burnerZ - LINE.tableD / 2);
+      expect(box.max.z, name).toBeLessThan(LINE.burnerZ + LINE.tableD / 2);
+      expect(box.intersectsBox(stand), name).toBe(false);
+      expect(box.intersectsBox(pot), name).toBe(false);
+      expect(box.intersectsBox(burner), name).toBe(false);
+    }
   });
   it('reads the bell’s pressure on the gauge, zero at nought and the flame only while it burns', () => {
     const s = stateWith();

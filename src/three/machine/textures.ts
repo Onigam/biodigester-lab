@@ -101,6 +101,37 @@ export function timber(seed: number, tint: RGB, N = 256): THREE.DataTexture {
   });
 }
 
+/**
+ * A kanga, the printed cotton cloth of the coast, faded by the sun: a border all round with a row of diamonds in it, a field of small leaves. U across, V down; a line it is folded over shows the lower
+ * half. Not a pattern of any maker: a generic one, in sober colours.
+ */
+export function kanga(seed: number, field: RGB, border: RGB, motif: RGB, N = 128): THREE.DataTexture {
+  const n = periodicNoise(seed, 12);
+  const BAND = 0.12;
+  return fill(N, (u, v) => {
+    const fade = 0.9 + 0.12 * n(u, v);
+    let c: RGB = field;
+    const edge = Math.min(u, 1 - u, v, 1 - v);
+    if (edge < BAND) {
+      c = border;
+      // a diamond every so often along the band, in the motif's colour
+      const along = Math.min(u, 1 - u) < Math.min(v, 1 - v) ? v : u;
+      const dx = Math.abs(((along * 9) % 1) - 0.5);
+      const dy = Math.abs(edge / BAND - 0.5);
+      if (dx + dy < 0.3) c = motif;
+      if (edge < 0.012) c = motif;
+    } else {
+      // the field: a scatter of small leaves in rows, offset row by row, half-way to the motif's colour
+      const row = Math.floor(v * 11);
+      const gx = (u * 11 + (row % 2) * 0.5) % 1;
+      const gy = (v * 11) % 1;
+      const leaf = Math.abs(gx - 0.5) / 0.22 + Math.abs(gy - 0.5) / 0.36;
+      if (leaf < 1) c = mix3(field, motif, 0.55);
+    }
+    return [c[0] * fade, c[1] * fade, c[2] * fade];
+  });
+}
+
 /** Cast concrete: pale, its pores, a slow stain, the marks of a board. */
 export function concrete(seed: number, tint: RGB, N = 512): { map: THREE.DataTexture; bump: THREE.DataTexture } {
   const a = periodicNoise(seed, 5);

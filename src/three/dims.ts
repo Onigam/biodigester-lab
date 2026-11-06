@@ -205,6 +205,51 @@ export const YARD = {
   caddyZ: 0.5,
 } as const;
 
+/**
+ * What the family leaves about the yard. Nobody is drawn, and the film shows no one: these say who lives here. Scenery, not parts. Every size an estimate, the usual one, every place a choice: where the
+ * director's cameras look (onigam-video, films/biodigester-lab/gen.py), clear of the plant, the hose and the paths.
+ */
+export const TRACES = {
+  /** The washing line: tied round the mango's trunk at this height, out to a pole towards the west wall, its height there, its sag in the middle with the wash on it. A 5 mm cord. */
+  lineTrunkY: 1.8,
+  linePostX: -9.6,
+  linePostZ: -6.0,
+  linePostH: 1.98,
+  linePostY: 1.86,
+  postR: 0.04,
+  lineSag: 0.11,
+  lineR: 0.0025,
+  /** The wash, each by its middle, metres along the cord from the trunk, its width along the cord and its drop: a kanga folded over, a child's school shirt, small shorts, a towel. */
+  kanga: { s: 0.95, w: 1.1, h: 0.55 },
+  shirt: { s: 1.95, w: 0.56, h: 0.5 },
+  shorts: { s: 2.55, w: 0.34, h: 0.34 },
+  towel: { s: 3.1, w: 0.48, h: 0.44 },
+  /** A low wooden stool, against the kitchen's west wall: seat, height. */
+  stoolX: 0.7,
+  stoolZ: -4.25,
+  stoolW: 0.36,
+  stoolD: 0.24,
+  stoolH: 0.27,
+  /** The washing-up basin beside it, a spun aluminium karai: radii at the floor and the rim, depth. */
+  basinX: 0.5,
+  basinZ: -3.66,
+  basinR0: 0.165,
+  basinR1: 0.225,
+  basinH: 0.11,
+  /** Enamelled tin plate and mug: the plate drying against the basin, the mug upside down beside it, and the same on the kitchen table in the gas line. */
+  plateR: 0.11,
+  plateH: 0.022,
+  mugR: 0.042,
+  mugH: 0.085,
+  /** A short broom of palm ribs leaning on the same wall: its length, where its foot stands. */
+  broomL: 0.72,
+  broomX: 0.78,
+  broomZ: -5.25,
+  /** A pair of rubber sandals before the step of the door beside the kitchen: length, width. */
+  sandalL: 0.26,
+  sandalW: 0.095,
+} as const;
+
 // ---------------------------------------------------------------------------------------------------- the gas line. Unknown in every source, all estimates (research §3): a generic reading of each device
 
 /** Every height from the ground, every x along the line. Laid out in the order the gas flows, at about its true length (K7's 5 m). */
